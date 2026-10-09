@@ -18,13 +18,7 @@
 
 \title{Fed-MediShield: Behaviour-Probing Defence Against Backdoor Attacks in Federated Intrusion Detection for the Internet of Medical Things}
 
-\author{\IEEEauthorblockN{Author One}
-\IEEEauthorblockA{\textit{Department} \\
-\textit{Institution}\\
-City, Country \\
-email}
-\and
-\IEEEauthorblockN{Author Two}
+\author{\IEEEauthorblockN{Author Name}
 \IEEEauthorblockA{\textit{Department} \\
 \textit{Institution}\\
 City, Country \\
@@ -201,12 +195,12 @@ Fig.~\ref{fig:rounds} shows the ASR per round: under FedAvg the backdoor reaches
 \label{fig:rounds}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig12_score_distributions}
+\includegraphics[width=0.78\textwidth]{fig12_score_distributions}
 \caption{Suspicion score of honest and poisoned updates relative to the alert threshold (five seeds per dataset).}
 \label{fig:scores}
-\end{figure}
+\end{figure*}
 
 \begin{figure*}[t]
 \centering
@@ -218,12 +212,12 @@ Fig.~\ref{fig:rounds} shows the ASR per round: under FedAvg the backdoor reaches
 \subsection{Official test split}
 The frozen final models were evaluated once on the official CICIoMT2024 test files (pre-registered). ASR was 0.03$\pm$0.04\% with Fed-MediShield and 99.58$\pm$0.57\% with FedAvg, and both reached the same accuracy (65.3\%) and flagged 99.1\% of attack traffic as malicious. Accuracy is lower than on validation (85\%) for every method because 98\% of the official DoS test flows are labelled DDoS (Fig.~\ref{fig:test}): both classes are ICMP floods, indistinguishable per flow in the six-file subset. With the two flood classes merged (a supplementary, post-hoc analysis) test accuracy is 98.2\% for both methods. The remaining weaknesses of the base IDS, MQTT and Spoofing confused with benign traffic, are identical with and without the defence.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig13_official_test_flood}
+\includegraphics[width=0.78\textwidth]{fig13_official_test_flood}
 \caption{Official CICIoMT2024 test split, Fed-MediShield under attack (five seeds pooled): six classes (left) and DoS+DDoS merged (right).}
 \label{fig:test}
-\end{figure}
+\end{figure*}
 
 \subsection{Robustness}
 Table~\ref{tab:robust} summarises robustness tests of the final configuration (two development seeds for the delayed attack, three to five seeds otherwise). The backdoor was removed for all trigger types, attack schedules, poison rates and one to three attackers. With four of eight attackers (no honest majority) the hold rule paused training and then stopped it, which is the intended safe behaviour. In the persistence test (Fig.~\ref{fig:persist}) the attack stopped after round 7: FedAvg kept the backdoor at about 96\% for eight further honest rounds, as DualVeil-style attacks exploit~\cite{zhang2026dualveil}, whereas Fed-MediShield kept it near zero and restored the former attackers' weight to 97\% once they behaved honestly.
@@ -294,7 +288,23 @@ Fed-MediShield protects a federated IoMT IDS by probing the decision an attacker
 \section*{Code Availability}
 Code, protocols and result tables will be released at [repository and DOI to be added].
 
-\bibliographystyle{IEEEtran}
-\bibliography{references}
+\begin{thebibliography}{99}
+\bibitem{hassan2025survey} S.~R. Hassan, M.~U. Tanveer, S.~Prajapat, and M.~Shabaz, ``A comprehensive survey on intrusion detection in internet of medical things: Datasets, federated learning, blockchain, and future research directions,'' \emph{ICT Express}, vol.~11, pp. 1291--1310, 2025.
+\bibitem{mcmahan2017fedavg} B.~McMahan, E.~Moore, D.~Ramage, S.~Hampson, and B.~A. y~Arcas, ``Communication-efficient learning of deep networks from decentralized data,'' in \emph{Proc. Int. Conf. Artificial Intelligence and Statistics (AISTATS)}, 2017, pp. 1273--1282.
+\bibitem{bagdasaryan2020backdoor} E.~Bagdasaryan, A.~Veit, Y.~Hua, D.~Estrin, and V.~Shmatikov, ``How to backdoor federated learning,'' in \emph{Proc. Int. Conf. Artificial Intelligence and Statistics (AISTATS)}, 2020, pp. 2938--2948.
+\bibitem{blanchard2017krum} P.~Blanchard, E.~M. El~Mhamdi, R.~Guerraoui, and J.~Stainer, ``Machine learning with adversaries: Byzantine tolerant gradient descent,'' in \emph{Advances in Neural Information Processing Systems (NeurIPS)}, 2017.
+\bibitem{yin2018median} D.~Yin, Y.~Chen, R.~Kannan, and P.~Bartlett, ``Byzantine-robust distributed learning: Towards optimal statistical rates,'' in \emph{Proc. Int. Conf. Machine Learning (ICML)}, 2018, pp. 5650--5659.
+\bibitem{pillutla2022rfa} K.~Pillutla, S.~M. Kakade, and Z.~Harchaoui, ``Robust aggregation for federated learning,'' \emph{IEEE Trans. Signal Process.}, vol.~70, pp. 1142--1154, 2022.
+\bibitem{pathak2026early} J.~Pathak, P.~Mundra, Y.~Sejpal, T.~Mahapatra, and A.~S. Rajput, ``Early round detection protocols: Strategies against untargeted adversarial attacks in federated learning network,'' \emph{Computer Networks}, vol.~279, Art. no.~112098, 2026.
+\bibitem{bi2026hflmnd} Q.~Bi, L.~Ge, M.~Jiang, L.~Tian, and W.~Lin, ``HFLMND: Toward robust and efficient hierarchical federated learning via malicious node detection,'' \emph{Knowledge-Based Systems}, vol.~336, Art. no.~115270, 2026.
+\bibitem{zhang2022fldetector} Z.~Zhang, X.~Cao, J.~Jia, and N.~Z. Gong, ``FLDetector: Defending federated learning against model poisoning attacks via detecting malicious clients,'' in \emph{Proc. ACM SIGKDD Conf. Knowledge Discovery and Data Mining (KDD)}, 2022, pp. 2545--2555.
+\bibitem{dadkhah2024ciciomt} S.~Dadkhah, E.~C.~P. Neto, R.~Ferreira, R.~C. Molokwu, S.~Sadeghi, and A.~A. Ghorbani, ``CICIoMT2024: A benchmark dataset for multi-protocol security assessment of IoMT,'' \emph{Internet of Things}, vol.~28, Art. no.~101351, 2024.
+\bibitem{moustafa2021ton} N.~Moustafa, ``A new distributed architecture for evaluating AI-based security systems at the edge: Network TON\_IoT datasets,'' \emph{Sustainable Cities and Society}, vol.~72, Art. no.~102994, 2021.
+\bibitem{sun2019canyou} Z.~Sun, P.~Kairouz, A.~T. Suresh, and H.~B. McMahan, ``Can you really backdoor federated learning?'' \emph{arXiv preprint arXiv:1911.07963}, 2019.
+\bibitem{zhang2026dualveil} M.~Zhang \emph{et~al.}, ``DualVeil: Persistent and invisible backdoor attacks in federated learning via dual optimization,'' \emph{Knowledge-Based Systems}, vol.~339, Art. no.~115650, 2026.
+\bibitem{cao2021fltrust} X.~Cao, M.~Fang, J.~Liu, and N.~Z. Gong, ``FLTrust: Byzantine-robust federated learning via trust bootstrapping,'' in \emph{Proc. Network and Distributed System Security Symp. (NDSS)}, 2021.
+\bibitem{fung2020foolsgold} C.~Fung, C.~J.~M. Yoon, and I.~Beschastnikh, ``The limitations of federated learning in sybil settings,'' in \emph{Proc. Int. Symp. Research in Attacks, Intrusions and Defenses (RAID)}, 2020, pp. 301--316.
+\bibitem{menon2021logit} A.~K. Menon, S.~Jayasumana, A.~S. Rawat, H.~Jain, A.~Veit, and S.~Kumar, ``Long-tail learning via logit adjustment,'' in \emph{Proc. Int. Conf. Learning Representations (ICLR)}, 2021.
+\end{thebibliography}
 
 \end{document}
