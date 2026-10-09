@@ -96,17 +96,17 @@ Z_i^{(f)}[q] = \min\!\left(\frac{\big(K_i^{(f)}[q] - \max(m_{-i}[q], \pi_i[q])\b
 with an effect floor $\epsilon = 0.05$. One probe is selected on the discovery fold and confirmed on the other, which suppresses chance maxima over the 588 probes: $q^\star = \arg\max_q Z_i^{(1)}[q]$ and $A_i = \max(0, \min(Z_i^{(1)}[q^\star], Z_i^{(2)}[q^\star]))$. The profile removed honest false alarms that otherwise locked out a client whose legitimate rule the global model never absorbed.
 
 \subsection{Calibration}
-The score is standardised per training phase (rounds 1--3 and later), $S_i = (A_i - \mu_{\phi})/\sigma_{\phi}$, using known-clean trajectories. The alert threshold $T_\phi$ is the 0.99 quantile of clean scores plus a margin, with a floor of 3, and the penalty width $\omega_\phi$ is a robust spread of clean scores. Calibration is validated by leave-one-seed-out transfer and by a live development gate on development seeds before any evaluation run.
+The score is standardised per training phase $\phi$ (rounds 1--3 and later), $S_i = (A_i - c_{\phi})/s_{\phi}$, where $c_\phi$ is the median and $s_\phi$ the scaled MAD (at least 1) of $A$ on known-clean trajectories. The alert threshold is $T_\phi = \max(3,\, q_{0.99} + 0.25)$, where $q_{0.99}$ is the 0.99 quantile of clean scores, and the penalty width is $\omega_\phi = \max(1,\, 0.25\,T_\phi,\, \text{scaled MAD of clean } S)$. Calibration is validated by leave-one-seed-out transfer and by a live development gate on development seeds before any evaluation run.
 
 \subsection{Bounded influence}
 A flagged client ($S_i > T_\phi$) receives severity $\sigma_i = \min(2, (S_i - T_\phi)/\omega_\phi)$; immediate risk is $\rho_i = \ln(100)\,\sigma_i^2$, so one penalty width cuts trust to 1\%. A bounded memory $\mu_i \le \ln 1.25$ grows with alerts and halves after each clean participation, so memory alone discounts a later update by at most 20\%. The coefficient is
 \begin{equation}
 a_i = p_i\, e^{-(\rho_i + \mu_i)} \min\!\left(1, \frac{C}{\lVert \delta_i \rVert}\right), \qquad 0 \le a_i \le p_i,
 \end{equation}
-with clip bound $C$ from clean update norms. The new model is $w + \sum_i a_i \delta_i$; the unassigned mass $1 - \sum_i a_i$ stays on the previous model, so there is no renormalisation that would amplify the remaining updates.
+with clip bound $C$ set per client and phase to 1.25 times the largest clean update norm (live submissions cannot enlarge it). The new model is $w + \sum_i a_i \delta_i$; the unassigned mass $1 - \sum_i a_i$ stays on the previous model, so there is no renormalisation that would amplify the remaining updates.
 
 \subsection{Revocation and hold rule}
-The first poisoned round cannot be detected, so at a client's first detection episode the server subtracts its recent applied contributions (window of three rounds, at most $p_i$ per round, oldest first). Later alerts attenuate the current update but do not revoke past honest work, which prevents oscillation under intermittent attacks. If half the clients are flagged or too little informative mass remains, the round is held (the global model is unchanged and no client state is committed); three consecutive invalid rounds stop training.
+The first poisoned round cannot be detected, so at a client's first detection episode the server subtracts the fraction $1 - e^{-(\rho_i+\mu_i)}$ of the contributions it applied from that client in the previous three rounds (oldest first, at most $p_i$ per round, never more than was applied). Later alerts attenuate the current update but do not revoke past honest work, which prevents oscillation under intermittent attacks. If at least half the clients are flagged or the proposed mass of informative updates falls below 0.25, the round is held (the global model is unchanged and no client state is committed); three consecutive invalid rounds stop training.
 
 \begin{algorithm}[t]
 \caption{One Fed-MediShield server round}
@@ -119,7 +119,7 @@ The first poisoned round cannot be detected, so at a client's first detection ep
 \EndFor
 \For{each client $i$}
   \State $Z_i \gets$ excess over $\max(m_{-i}, \pi_i)$ (Eq.~3); $A_i \gets$ discover/confirm
-  \State $S_i \gets (A_i-\mu_\phi)/\sigma_\phi$; flag $i$ if $S_i > T_\phi$
+  \State $S_i \gets (A_i-c_\phi)/s_\phi$; flag $i$ if $S_i > T_\phi$
   \State update risk and memory; $a_i \gets$ Eq.~(4)
 \EndFor
 \If{$\ge 50\%$ flagged \textbf{or} informative mass too low}
@@ -156,7 +156,7 @@ The assumption is exactly what a source-specific backdoor violates; we test that
 
 \textbf{Baselines and metrics.} FedAvg~\cite{mcmahan2017fedavg}, Krum and median/trimmed mean ($f=2$)~\cite{blanchard2017krum,yin2018median}, RFA~\cite{pillutla2022rfa} and Fed-ADH~\cite{pathak2026early}, plus an evaluator-only oracle that drops the true attackers (perfect detection). We report ASR, accuracy, macro-F1, per-class recall, and detection recall and honest false-alarm rate over client updates.
 
-\textbf{Protocol.} Design decisions used development seeds only. Confirmatory claims use fresh seeds with criteria fixed in advance (final-ASR reduction, exposure rounds, detection rate and timing, honest false alarms, and utility relative to FedAvg and the oracle); when a confirmation was not met we report it as such. All runs execute on one CPU.
+\textbf{Protocol.} Design decisions used development seeds only. Confirmatory claims use fresh seeds with criteria fixed in advance (final-ASR reduction, exposure rounds, detection rate and timing, honest false alarms, and utility relative to FedAvg and the oracle); when a confirmation was not met we report it as such. The main CICIoMT2024 runs (Table~\ref{tab:compare}, the official test) used the version before the hold rule, which stopped a run at the first invalid round; all of them completed 15 rounds without an invalid round, so the final method gives identical results there. All runs execute on one CPU.
 
 \section{Results}
 
