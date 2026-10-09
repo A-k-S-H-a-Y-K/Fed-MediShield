@@ -1,13 +1,18 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 \usepackage{cite}
-\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage[hidelinks]{hyperref}
 \graphicspath{{../figures/}{figures/}}
+\newtheorem{proposition}{Proposition}
+\DeclareMathOperator*{\kmax}{k\text{-}max}
+\DeclareMathOperator*{\med}{med}
 
 \begin{document}
 
@@ -37,73 +42,125 @@ federated learning, backdoor attack, intrusion detection, Internet of Medical Th
 \end{IEEEkeywords}
 
 \section{Introduction}
-IoMT devices such as infusion pumps, monitors and wearables expand the attack surface of hospital networks, and recent surveys identify adversarially robust and privacy-preserving IDSs as an open need~\cite{hassan2025survey}. Federated learning (FL)~\cite{mcmahan2017fedavg} lets several sites train one IDS without exchanging raw traffic, but it is vulnerable to poisoning: a participant can train on traffic carrying a trigger relabelled as benign, so that the global model lets triggered attacks through while behaving normally otherwise~\cite{bagdasaryan2020backdoor}. For an IDS, this targeted evasion is the most damaging outcome.
+IoMT devices such as infusion pumps, monitors and wearables expand the attack surface of hospital networks, and recent surveys identify adversarially robust and privacy-preserving IDSs as an open need~\cite{hassan2025survey}. Federated learning (FL)~\cite{mcmahan2017fedavg} lets several sites train one IDS without exchanging raw traffic, but it is vulnerable to poisoning: a participant can train on traffic carrying a trigger relabelled as benign, so that the global model lets triggered attacks through while behaving normally otherwise~\cite{bagdasaryan2020backdoor}. For an IDS, this targeted evasion is the most damaging outcome, because it disables detection exactly when the attacker chooses.
 
 Robust aggregation rules such as Krum~\cite{blanchard2017krum}, the coordinate-wise median and trimmed mean~\cite{yin2018median} and the geometric median (RFA)~\cite{pillutla2022rfa}, and detectors based on update distances or clustering~\cite{pathak2026early,bi2026hflmnd,zhang2022fldetector}, treat poisoned updates as geometric outliers. A backdoor client that poisons only part of its data, however, submits an update that is close to honest updates, while honest clients with skewed (non-IID) traffic can be far from the crowd. In our experiments, median, trimmed mean, RFA and the Hausdorff-distance detector Fed-ADH~\cite{pathak2026early} let the backdoor through ($\geq$97\% attack success), and Krum blocked it only by discarding most honest updates (macro-F1 $-$10 points).
 
 Fed-MediShield instead asks what each update does to the decision we want to protect. Its contributions are:
 \begin{itemize}
 \item a behaviour-probing score that measures how broadly an update shifts attack traffic towards the benign class, relative to peers and to the client's own known-clean profile, so that honest non-IID clients are not penalised;
-\item a bounded-influence aggregation with first-episode revocation and a hold rule, with $0 \le a_i \le p_i$ for every client;
+\item a bounded-influence aggregation with first-episode revocation and a hold rule, with $0 \le a_i \le p_i$ for every client, and an analysis of its influence bound, separation condition and cost;
 \item a pre-registered evaluation on CICIoMT2024~\cite{dadkhah2024ciciomt} (including its official test split) and ToN-IoT~\cite{moustafa2021ton}, against five baselines, sweeps and adaptive attacks, with failures reported.
 \end{itemize}
 
 \section{Related Work}
-\textbf{Backdoors in FL.} Bagdasaryan et al.~\cite{bagdasaryan2020backdoor} showed that a single participant can implant a backdoor; norm clipping limits but does not remove it~\cite{sun2019canyou}. DualVeil~\cite{zhang2026dualveil} makes backdoors persistent and inconspicuous, which motivates our persistence experiment.
+\textbf{Backdoors in FL.} Bagdasaryan et al.~\cite{bagdasaryan2020backdoor} showed that a single participant can implant a backdoor by scaling a poisoned update; norm clipping limits but does not remove it~\cite{sun2019canyou}. DualVeil~\cite{zhang2026dualveil} optimises backdoors to persist after the attack stops and to stay inconspicuous, which motivates our persistence experiment.
 
-\textbf{Robust aggregation and detection.} Krum~\cite{blanchard2017krum}, median and trimmed mean~\cite{yin2018median} and RFA~\cite{pillutla2022rfa} bound the influence of outlying updates. FLTrust~\cite{cao2021fltrust} scores clients against a server root dataset, FoolsGold~\cite{fung2020foolsgold} down-weights similar Sybils, and FLDetector~\cite{zhang2022fldetector} checks update consistency over time. In healthcare FL, Pathak et al.~\cite{pathak2026early} detect untargeted poisoning early with Hausdorff distances (Fed-ADH), and HFLMND~\cite{bi2026hflmnd} clusters similarity features with a historical suspicion score. These methods inspect update geometry; Fed-MediShield inspects the protected behaviour, using a trusted reference sample in the spirit of FLTrust's root data.
+\textbf{Robust aggregation and detection.} Krum~\cite{blanchard2017krum}, median and trimmed mean~\cite{yin2018median} and RFA~\cite{pillutla2022rfa} bound the influence of outlying updates. FLTrust~\cite{cao2021fltrust} scores clients against a server root dataset, FoolsGold~\cite{fung2020foolsgold} down-weights similar Sybils, and FLDetector~\cite{zhang2022fldetector} checks update consistency over time. In healthcare FL, Pathak et al.~\cite{pathak2026early} detect untargeted poisoning early with Hausdorff distances (Fed-ADH), and HFLMND~\cite{bi2026hflmnd} clusters similarity features with a historical suspicion score in hierarchical FL. These methods inspect update geometry; Fed-MediShield inspects the protected behaviour, using a trusted reference sample in the spirit of FLTrust's root data.
+
+\textbf{IoMT intrusion detection.} Survey work~\cite{hassan2025survey} reports high accuracy for centralised and federated IoMT IDSs but notes that adversarial robustness and dataset realism are under-studied. CICIoMT2024~\cite{dadkhah2024ciciomt} provides IoMT traffic with an official test split, and ToN-IoT~\cite{moustafa2021ton} provides heterogeneous IoT network attacks.
 
 \section{Threat Model and Problem}
-$N$ clients hold private traffic and train a $K$-class IDS by FedAvg-style rounds; client $i$ has nominal weight $p_i$ (its data share). A minority of clients is malicious (honest majority, as assumed in~\cite{bi2026hflmnd}). An attacker relabels a fraction of its attack rows to the benign class after applying a trigger $T$ to a few feature columns, trains normally otherwise, and participates every round unless stated otherwise. The attack success rate (ASR) is the share of triggered non-benign validation records classified as benign. The server sees model updates in plaintext, holds a small trusted reference sample (32 distinct records per class, removed from clients), and has known-clean training trajectories (e.g.\ from a vetted pilot phase) for calibration. It never sees attacker identities, trigger, poison masks or test data. The goal is to drive ASR to the undefended clean level while keeping accuracy, macro-F1 and rare-class recall equal to FedAvg.
+$N$ clients hold private traffic and train a $K$-class IDS by FedAvg-style rounds; client $i$ has nominal weight $p_i$ (its data share) and submits $w_i = w + \delta_i$. A minority of clients is malicious (honest majority, as assumed in~\cite{bi2026hflmnd}). An attacker relabels a fraction of its attack rows to the benign class $b$ after applying a trigger $T$ to a few feature columns, trains normally otherwise, and participates every round unless stated otherwise. The attack success rate (ASR) is the share of triggered non-benign validation records classified as benign. The server sees model updates in plaintext, holds a small trusted reference sample (32 distinct records per class, removed from clients), and has known-clean training trajectories (e.g.\ from a vetted pilot phase) for calibration. It never sees attacker identities, trigger, poison masks or test data. The goal is to drive ASR to the undefended clean level while keeping accuracy, macro-F1 and rare-class recall equal to FedAvg.
 
 \section{Fed-MediShield}
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=0.92\textwidth]{fig0_method_overview}
+\includegraphics[width=0.9\textwidth]{fig0_method_overview}
 \caption{Server pipeline of Fed-MediShield in each round.}
 \label{fig:overview}
 \end{figure*}
 
-Fig.~\ref{fig:overview} summarises one round.
+Fig.~\ref{fig:overview} and Algorithm~\ref{alg:round} summarise one round.
 
-\textbf{Probe measurement.} The reference sample is split into two folds. A fixed bank $\mathcal{Q}$ of 588 probes perturbs groups of standardised features (contiguous groups of width 1, 2 and 4 plus 16 random groups, at levels $\pm3$ and $\pm6$). For client model $w_i$, global model $w$, probe $q$, true source class $s \neq b$ and output class $c$,
+\subsection{Probe measurement}
+The reference sample is split into a discovery fold $\mathcal{R}^{(1)}$ and a confirmation fold $\mathcal{R}^{(2)}$. A fixed bank $\mathcal{Q}$ of 588 probes perturbs groups of standardised features: every contiguous group of width 1, 2 and 4 plus 16 random groups, each set to $\pm3$ or $\pm6$. For model $w$, probe $q$, source class $s$ and output class $c$,
 \begin{equation}
-E_i[q,s,c] = \Delta_{w_i}[q,s,c] - \Delta_{w}[q,s,c],
+\Delta_w^{(f)}[q,s,c] = \frac{1}{|\mathcal{R}^{(f)}_s|}\sum_{x \in \mathcal{R}^{(f)}_s} \big(P_w(c \mid q(x)) - P_w(c \mid x)\big),
 \end{equation}
-where $\Delta_w[q,s,c]$ is the mean change of $P_w(c \mid q(x)) - P_w(c \mid x)$ over reference records of class $s$. A trigger-based backdoor raises $E_i[q,s,b]$ for the benign class $b$ on probes that overlap the trigger.
+and the client effect is $E_i^{(f)}[q,s,c] = \Delta_{w_i}^{(f)}[q,s,c] - \Delta_{w}^{(f)}[q,s,c]$, i.e.\ how much more the client model moves class-$s$ traffic towards $c$ under probe $q$ than the current global model does. A trigger-based backdoor raises $E_i[q,s,b]$ on probes that overlap the trigger.
 
-\textbf{Breadth and specificity.} A trigger is input-agnostic, so it pushes many source classes towards $b$, whereas a legitimate local rule usually concerns one class. For each probe, the breadth statistic is the $k$-th largest value of $E_i[q,s,b]$ over source classes ($k=3$), minus the client's median over probes (specificity), which removes uniform shifts.
-
-\textbf{Peer comparison and client profiles.} Each client's statistic is compared with the leave-one-out median and MAD of its peers; a probe is selected on the first fold and confirmed on the second, which suppresses chance maxima over the 588 probes. Clients with genuinely unusual data would still stand out, so we count only the excess above the larger of the peer median and the client's own profile, i.e.\ the 0.90 quantile of its score on known-clean calibration trajectories. This removed the honest false alarms that otherwise locked out a client whose legitimate rule the global model never absorbed.
-
-\textbf{Calibration.} Alert thresholds are the 0.99 quantile plus a margin of the scores of known-clean trajectories, per training phase (rounds 1--3 and later), with a floor of 3. Calibration is validated by leave-one-seed-out transfer and by a live development gate on development seeds before any evaluation run.
-
-\textbf{Bounded influence.} A score above the threshold raises a client risk $r_i$; its aggregation coefficient is
+\subsection{Breadth and specificity}
+A trigger is input-agnostic: it pushes traffic of many source classes towards $b$. A legitimate local rule learned from skewed data usually concerns one boundary (one source class). The breadth statistic takes the $k$-th largest source effect ($k=3$) and subtracts the client's median over probes (specificity), which removes probe-agnostic shifts such as a changed class prior:
 \begin{equation}
-a_i = p_i\, e^{-r_i} \min\!\left(1, \frac{C}{\lVert \delta_i \rVert}\right), \qquad 0 \le a_i \le p_i,
+K_i^{(f)}[q] = \kmax_{s \neq b} E_i^{(f)}[q,s,b] - \med_{q' \in \mathcal{Q}} \kmax_{s \neq b} E_i^{(f)}[q',s,b].
+\end{equation}
+
+\subsection{Peer comparison and client profiles}
+Each client is compared with the leave-one-out median $m_{-i}[q]$ and scaled MAD $\sigma_{-i}[q]$ of its peers. Clients with genuinely unusual data still stand out from their peers, so only the excess above the larger of the peer median and the client's own profile $\pi_i[q]$ is counted, where $\pi_i[q]$ is the 0.90 quantile of $K_i$ on known-clean calibration trajectories:
+\begin{equation}
+Z_i^{(f)}[q] = \min\!\left(\frac{\big(K_i^{(f)}[q] - \max(m_{-i}[q], \pi_i[q])\big)_+}{\sigma_{-i}[q]}, \frac{\big(K_i^{(f)}[q]\big)_+}{\epsilon}\right),
+\end{equation}
+with an effect floor $\epsilon = 0.05$. One probe is selected on the discovery fold and confirmed on the other, which suppresses chance maxima over the 588 probes: $q^\star = \arg\max_q Z_i^{(1)}[q]$ and $A_i = \max(0, \min(Z_i^{(1)}[q^\star], Z_i^{(2)}[q^\star]))$. The profile removed honest false alarms that otherwise locked out a client whose legitimate rule the global model never absorbed.
+
+\subsection{Calibration}
+The score is standardised per training phase (rounds 1--3 and later), $S_i = (A_i - \mu_{\phi})/\sigma_{\phi}$, using known-clean trajectories. The alert threshold $T_\phi$ is the 0.99 quantile of clean scores plus a margin, with a floor of 3, and the penalty width $\omega_\phi$ is a robust spread of clean scores. Calibration is validated by leave-one-seed-out transfer and by a live development gate on development seeds before any evaluation run.
+
+\subsection{Bounded influence}
+A flagged client ($S_i > T_\phi$) receives severity $\sigma_i = \min(2, (S_i - T_\phi)/\omega_\phi)$; immediate risk is $\rho_i = \ln(100)\,\sigma_i^2$, so one penalty width cuts trust to 1\%. A bounded memory $\mu_i \le \ln 1.25$ grows with alerts and halves after each clean participation, so memory alone discounts a later update by at most 20\%. The coefficient is
+\begin{equation}
+a_i = p_i\, e^{-(\rho_i + \mu_i)} \min\!\left(1, \frac{C}{\lVert \delta_i \rVert}\right), \qquad 0 \le a_i \le p_i,
 \end{equation}
 with clip bound $C$ from clean update norms. The new model is $w + \sum_i a_i \delta_i$; the unassigned mass $1 - \sum_i a_i$ stays on the previous model, so there is no renormalisation that would amplify the remaining updates.
 
-\textbf{Revocation and hold rule.} The first poisoned round cannot be detected, so at a client's first detection episode the server subtracts its recent applied contributions (window of three rounds, at most $p_i$ per round). Later alerts attenuate the current update but do not revoke past honest work, which prevents oscillation under intermittent attacks. If half the clients are flagged or too little informative mass remains, the round is held (the global model is unchanged); three consecutive invalid rounds stop training.
+\subsection{Revocation and hold rule}
+The first poisoned round cannot be detected, so at a client's first detection episode the server subtracts its recent applied contributions (window of three rounds, at most $p_i$ per round, oldest first). Later alerts attenuate the current update but do not revoke past honest work, which prevents oscillation under intermittent attacks. If half the clients are flagged or too little informative mass remains, the round is held (the global model is unchanged and no client state is committed); three consecutive invalid rounds stop training.
 
-\textbf{Properties.} (i) Influence is bounded: for the attacker set $\mathcal{A}$, $\lVert \sum_{i \in \mathcal{A}} a_i \delta_i \rVert \le C \sum_{i \in \mathcal{A}} p_i e^{-r_i}$, which vanishes as attacker risks grow. (ii) A held round cannot introduce poison, since nothing is applied. (iii) Server cost is linear in the number of clients: one probe pass per submitted model.
+\begin{algorithm}[t]
+\caption{One Fed-MediShield server round}
+\label{alg:round}
+\begin{algorithmic}[1]
+\Require global $w$, submissions $\{w_i\}$, weights $\{p_i\}$, calibration $(T_\phi, \omega_\phi, \pi_i, C)$
+\For{each client $i$}
+  \State $E_i \gets$ probe effects of $w_i$ relative to $w$ on both folds
+  \State $K_i \gets$ breadth minus specificity (Eq.~2)
+\EndFor
+\For{each client $i$}
+  \State $Z_i \gets$ excess over $\max(m_{-i}, \pi_i)$ (Eq.~3); $A_i \gets$ discover/confirm
+  \State $S_i \gets (A_i-\mu_\phi)/\sigma_\phi$; flag $i$ if $S_i > T_\phi$
+  \State update risk and memory; $a_i \gets$ Eq.~(4)
+\EndFor
+\If{$\ge 50\%$ flagged \textbf{or} informative mass too low}
+  \State hold: return $w$ (stop after 3 consecutive holds)
+\EndIf
+\State $R \gets$ revoked mass of clients in their first detection episode
+\State \Return $w + \sum_i a_i \delta_i - R$
+\end{algorithmic}
+\end{algorithm}
+
+\section{Analysis}
+\begin{proposition}[Bounded influence]
+Let $\mathcal{A}$ be the attackers. In every round the attackers' contribution satisfies $\lVert \sum_{i \in \mathcal{A}} a_i \delta_i \rVert \le C \sum_{i \in \mathcal{A}} p_i e^{-(\rho_i+\mu_i)}$, and no client receives more than its nominal weight.
+\end{proposition}
+\begin{proof}
+By (4), $a_i \lVert \delta_i \rVert = p_i e^{-(\rho_i+\mu_i)} \min(\lVert \delta_i \rVert, C) \le C p_i e^{-(\rho_i+\mu_i)}$; apply the triangle inequality. Since $e^{-(\cdot)} \le 1$ and the clip factor is at most 1, $a_i \le p_i$; the residual $1-\sum_i a_i \ge 0$ is never redistributed.
+\end{proof}
+A flagged attacker at one penalty width keeps at most 1\% of its nominal influence, and a held round adds nothing, so a hold can never introduce poison.
+
+\begin{proposition}[Separation by breadth]
+Suppose that on probe $q$ an honest client's local rules move fewer than $k$ source classes towards $b$ by more than $\eta$, while a backdoor moves at least $k$ source classes by at least $\gamma > \eta$. Then before specificity and peer normalisation the honest breadth value is at most $\eta$ and the attacker's is at least $\gamma$.
+\end{proposition}
+\begin{proof}
+The $k$-th largest of the values $\{E[q,s,b]\}_{s \neq b}$ is at most $\eta$ when fewer than $k$ exceed $\eta$, and at least $\gamma$ when $k$ or more are at least $\gamma$.
+\end{proof}
+The assumption is exactly what a source-specific backdoor violates; we test that case empirically (Section~\ref{sec:limits}). Per round, probing costs $O(N\,|\mathcal{Q}|\,|\mathcal{R}|)$ forward passes and the decision $O(N^2 |\mathcal{Q}|)$ operations for leave-one-out statistics; clients do no extra work and communication is unchanged.
 
 \section{Experimental Setup}
-\textbf{Data.} CICIoMT2024~\cite{dadkhah2024ciciomt}: six classes (Benign, DDoS, DoS, Recon, MQTT, Spoofing) from one training file each, 45 features, a grouped 80/20 split that keeps identical feature vectors on one side, and the untouched official test files. ToN-IoT network data~\cite{moustafa2021ton}: ten classes (normal and nine attacks), identifiers (IP addresses and ports) and free-text fields removed, exact duplicates removed (one 15,344-row identical group otherwise dominated validation), 51 features.
+\textbf{Data.} CICIoMT2024~\cite{dadkhah2024ciciomt}: six classes (Benign, DDoS, DoS, Recon, MQTT, Spoofing) from one training file each, 45 features, a grouped 80/20 split that keeps identical feature vectors on one side, and the untouched official test files. ToN-IoT network data~\cite{moustafa2021ton}: ten classes (normal and nine attacks), identifiers (IP addresses and ports, which reveal attacker hosts) and free-text fields removed, exact duplicates removed (one 15,344-row identical group otherwise dominated validation), 51 features.
 
-\textbf{FL setup.} Eight clients with Dirichlet ($\alpha=0.5$) label skew, an MLP ($d$--128--64--$K$), AdamW (learning rate $10^{-3}$), two local epochs, batch 2048, 15 rounds, logit-adjusted cross-entropy ($\tau=0.5$)~\cite{menon2021logit}, which raised MQTT and Spoofing recall of the clean IDS.
+\textbf{FL setup.} Eight clients with Dirichlet ($\alpha=0.5$) label skew, an MLP ($d$--128--64--$K$), AdamW (learning rate $10^{-3}$), two local epochs, batch 2048, 15 rounds (accuracy converges by about round 10), logit-adjusted cross-entropy ($\tau=0.5$)~\cite{menon2021logit}, which raised MQTT and Spoofing recall of the clean IDS.
 
 \textbf{Attack.} Two of eight clients (25\%) poison 50\% of their attack rows from round 1. Triggers were selected before any attacked run so that clean models do not already map them to benign ($\leq$10\% per class): columns 5--8 set to 5 (CICIoMT2024) and four non-adjacent columns set to 5 (ToN-IoT).
 
 \textbf{Baselines and metrics.} FedAvg~\cite{mcmahan2017fedavg}, Krum and median/trimmed mean ($f=2$)~\cite{blanchard2017krum,yin2018median}, RFA~\cite{pillutla2022rfa} and Fed-ADH~\cite{pathak2026early}, plus an evaluator-only oracle that drops the true attackers (perfect detection). We report ASR, accuracy, macro-F1, per-class recall, and detection recall and honest false-alarm rate over client updates.
 
-\textbf{Protocol.} Design decisions used development seeds only. Confirmatory claims use fresh seeds with criteria fixed in advance; when a confirmation was not met we report it as such.
+\textbf{Protocol.} Design decisions used development seeds only. Confirmatory claims use fresh seeds with criteria fixed in advance (final-ASR reduction, exposure rounds, detection rate and timing, honest false alarms, and utility relative to FedAvg and the oracle); when a confirmation was not met we report it as such. All runs execute on one CPU.
 
 \section{Results}
 
 \subsection{Main result and comparison}
-On five fresh CICIoMT2024 seeds (pre-registered), Fed-MediShield lowered the final ASR from 98.96$\pm$1.97\% (FedAvg) to 0.29$\pm$0.32\%, detected 95.3\% of poisoned updates, and raised false alarms on 0.17\% of honest updates in clean runs; clean-run macro-F1 differed from FedAvg by $+0.18\pm0.40$ points, and attacked-run F1 matched the oracle ($+0.82\pm1.99$). Table~\ref{tab:compare} compares all methods. Only Fed-MediShield removed the backdoor with no utility loss; Krum removed it by excluding most honest updates (87.5\% of honest updates unselected in clean runs). On ToN-IoT the ranking was the same, with clean-run F1 identical to FedAvg and no honest update flagged. Fig.~\ref{fig:summary} shows that its attacked-run utility equals the oracle on both datasets.
+On five fresh CICIoMT2024 seeds (pre-registered), Fed-MediShield lowered the final ASR from 98.96$\pm$1.97\% (FedAvg) to 0.29$\pm$0.32\%, detected 95.3\% of poisoned updates, and raised false alarms on 0.17\% of honest updates in clean runs; clean-run macro-F1 differed from FedAvg by $+0.18\pm0.40$ points, and attacked-run F1 matched the oracle ($+0.82\pm1.99$). Table~\ref{tab:compare} compares all methods. Only Fed-MediShield removed the backdoor with no utility loss; Krum removed it by excluding most honest updates (87.5\% of honest updates unselected in clean runs), and Fed-ADH, designed for untargeted label flipping, flagged 11.7\% of poisoned updates while always excluding one client per round. On ToN-IoT the ranking was the same, with clean-run F1 identical to FedAvg and no honest update flagged. Fig.~\ref{fig:summary} shows that attacked-run utility equals the oracle on both datasets.
 
 \begin{table*}[t]
 \centering
@@ -127,22 +184,53 @@ Fed-ADH~\cite{pathak2026early} & 99.81$\pm$0.06 & 73.88$\pm$0.38 & 11.7 & 12.5 &
 \end{tabular}
 \end{table*}
 
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{fig11_two_dataset_summary}
+\caption{Five seeds per dataset: final ASR (left) and attacked-run macro-F1 relative to clean FedAvg (right). Oracle: true attackers removed (not a deployable defence).}
+\label{fig:summary}
+\end{figure*}
+
+\subsection{Why it works}
+Fig.~\ref{fig:rounds} shows the ASR per round: under FedAvg the backdoor reaches about 99\%, whereas Fed-MediShield removes it after the first round, when revocation subtracts the undetected first contribution. Fig.~\ref{fig:scores} shows the score distributions: on CICIoMT2024 honest and poisoned updates are separated by a wide margin, whereas on ToN-IoT poisoned scores are spread around the threshold, which explains the slower detection there. Fig.~\ref{fig:heat} shows the alerts per client and round: attackers are flagged in almost every round and honest clients stay below the threshold.
+
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig11_two_dataset_summary}
-\caption{Five seeds per dataset: final ASR (left) and attacked-run macro-F1 relative to clean FedAvg (right). Oracle: true attackers removed.}
-\label{fig:summary}
+\includegraphics[width=\columnwidth]{fig1_asr_per_round}
+\caption{ASR per round on CICIoMT2024, five fresh seeds (line: mean; band: range).}
+\label{fig:rounds}
 \end{figure}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig12_score_distributions}
+\caption{Suspicion score of honest and poisoned updates relative to the alert threshold (five seeds per dataset).}
+\label{fig:scores}
+\end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.78\textwidth]{fig10_detection_heatmaps}
+\caption{Suspicion score relative to the alert threshold for each client and round (\texttimes: flagged; red frame: attacker).}
+\label{fig:heat}
+\end{figure*}
+
 \subsection{Official test split}
-The frozen final models were evaluated once on the official CICIoMT2024 test files (pre-registered). ASR was 0.03$\pm$0.04\% with Fed-MediShield and 99.58$\pm$0.57\% with FedAvg, and both reached the same accuracy (65.3\%) and flagged 99.1\% of attack traffic as malicious. Accuracy is lower than on validation (85\%) for every method because 98\% of the official DoS test flows are labelled DDoS: both classes are ICMP floods, indistinguishable per flow in the six-file subset. With the two flood classes merged (a supplementary, post-hoc analysis) test accuracy is 98.2\% for both methods.
+The frozen final models were evaluated once on the official CICIoMT2024 test files (pre-registered). ASR was 0.03$\pm$0.04\% with Fed-MediShield and 99.58$\pm$0.57\% with FedAvg, and both reached the same accuracy (65.3\%) and flagged 99.1\% of attack traffic as malicious. Accuracy is lower than on validation (85\%) for every method because 98\% of the official DoS test flows are labelled DDoS (Fig.~\ref{fig:test}): both classes are ICMP floods, indistinguishable per flow in the six-file subset. With the two flood classes merged (a supplementary, post-hoc analysis) test accuracy is 98.2\% for both methods. The remaining weaknesses of the base IDS, MQTT and Spoofing confused with benign traffic, are identical with and without the defence.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig13_official_test_flood}
+\caption{Official CICIoMT2024 test split, Fed-MediShield under attack (five seeds pooled): six classes (left) and DoS+DDoS merged (right).}
+\label{fig:test}
+\end{figure}
 
 \subsection{Robustness}
-Table~\ref{tab:robust} summarises robustness tests of the final configuration (two development seeds for the delayed attack, three to five seeds otherwise). The backdoor was removed for all trigger types, attack schedules, poison rates and one to three attackers. With four of eight attackers (no honest majority) the hold rule paused training and then stopped it, which is the intended safe behaviour. In the persistence test the attack stopped after round 7: FedAvg kept the backdoor at about 96\% for eight further honest rounds, whereas Fed-MediShield kept it near zero and restored the former attackers' weight to 97\% once they behaved honestly. Fig.~\ref{fig:heat} shows where alerts are raised.
+Table~\ref{tab:robust} summarises robustness tests of the final configuration (two development seeds for the delayed attack, three to five seeds otherwise). The backdoor was removed for all trigger types, attack schedules, poison rates and one to three attackers. With four of eight attackers (no honest majority) the hold rule paused training and then stopped it, which is the intended safe behaviour. In the persistence test (Fig.~\ref{fig:persist}) the attack stopped after round 7: FedAvg kept the backdoor at about 96\% for eight further honest rounds, as DualVeil-style attacks exploit~\cite{zhang2026dualveil}, whereas Fed-MediShield kept it near zero and restored the former attackers' weight to 97\% once they behaved honestly.
 
 \begin{table}[t]
 \centering
-\caption{Robustness (final ASR, mean over seeds; FedAvg in brackets).}
+\caption{Robustness (final ASR; FedAvg under the same attack in brackets).}
 \label{tab:robust}
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{lcc}
@@ -156,25 +244,49 @@ Delayed attack (from round 8) & 0.02--0.03\% & (99.7--99.8\%) \\
 1 / 2 / 3 attackers (5 seeds) & 0.04 / 0.05 / 0.17\% & (79 / 99 / 99.9\%) \\
 Poison rate 0.2 / 0.35 / 0.8 & 0.07 / 0.05 / 0.09\% & (98 / 98 / 93\%) \\
 Persistence (round 15) & 0.03--0.05\% & (95--96\%) \\
-16 / 32 clients & 0.01--0.05 / 0.01--0.07\% & (97--100 / 96\%) \\
-Dirichlet $\alpha=1.0$ & 0.02--0.08\% & (99.8\%) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig10_detection_heatmaps}
-\caption{Suspicion score relative to the alert threshold for each client and round (\texttimes: flagged; red frame: attacker).}
-\label{fig:heat}
+\includegraphics[width=\columnwidth]{fig4_persistence}
+\caption{Backdoor persistence when the attack stops after round 7 (four seeds on which FedAvg learned the backdoor).}
+\label{fig:persist}
 \end{figure}
 
-\subsection{Ablation and cost}
-Removing breadth ($k=1$) left the backdoor at 99.8\%; removing client profiles raised honest false alarms to 6.7\% and stopped one run; removing revocation let ASR reach 2--4\% during training. A history-based channel was removed during development because it produced 11 of 19 honest false alarms and no detection. Breadth is the one sensitive setting ($k=2$ or $4$ failed), whereas calibration quantile, margin, alert floor, profile quantile, revocation window and clip multiplier did not change the outcome. Server time was 0.68\,s per round for eight clients (0.65\,s probe measurement) with no client-side or communication overhead.
+\subsection{Ablation, sensitivity, heterogeneity and scale}
+Table~\ref{tab:ablation} reports component ablations on development seeds and evaluations under other partitions. Breadth is essential: with $k=1$ the backdoor survived (99.8\%), and $k=2$ or $k=4$ also failed, so $k$ must not exceed the number of source classes the backdoor shifts. Client profiles prevent honest lock-out; revocation limits the exposure before detection. A history-based channel was removed during development because it produced 11 of 19 honest false alarms and no detection. The calibration quantile, margin, alert floor, profile quantile, revocation window and clip multiplier did not change the outcome. Fed-MediShield removed the backdoor at $\alpha=1.0$, with 16 and with 32 clients; with 32 clients small attackers were detected later. Server time was 0.68\,s per round for eight clients (0.65\,s probe measurement).
+
+\begin{table}[t]
+\centering
+\caption{Ablations (development seeds 43, 46) and other partitions (seeds 90--92): final ASR, detection rate and honest false-alarm rate.}
+\label{tab:ablation}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccc}
+\toprule
+Variant & ASR (\%) & Detect. (\%) & FPR (\%) \\
+\midrule
+Full method & 0.02--0.03 & 93--97 & 1.1--2.2 \\
+No breadth ($k=1$) & 99.8 & 17--37 & 0.0 \\
+Breadth $k=2$ / $k=4$ & 89--98 / 96--100 & 40--93 & 0--12 \\
+No client profile & 0.31 / stopped & 93 & 6.7 \\
+No revocation & 0.03--0.13 (max 4.0) & 93--97 & 0--1.1 \\
+\midrule
+Dirichlet $\alpha=1.0$ & 0.02--0.08 & 93 & 0--1.1 \\
+16 clients & 0.01--0.05 & 65--95 & 0.0 \\
+32 clients (descriptive) & 0.01--0.07 & 47--61 & $\leq$0.28 \\
+Dirichlet $\alpha=0.1$ & gate failed & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Discussion}
+Geometry-based rules fail here because a backdoor client that poisons half of its attack rows still learns the benign task normally: its update is not an outlier in norm, direction or Hausdorff distance, while honest clients with skewed label mixes are. Fed-ADH illustrates this trade-off: it always excludes one client, so it flags 12.5\% of honest updates, yet it caught only 11.7\% of poisoned updates. Probing the protected decision separates the two cases because the trigger changes the model's \emph{behaviour} on many source classes, whereas a skewed but honest client changes it on few. For deployment, the server needs a small labelled reference sample per class and clean calibration rounds; it adds about one second per round on a CPU and no client cost.
 
 \section{Limitations}
 \label{sec:limits}
-(i) On ToN-IoT and with 32 clients, attackers with little data were often flagged only after more than three poisoned rounds (one client holding 0.3\% of the data never), so the backdoor was present in early rounds (mean ASR over rounds 8\% on ToN-IoT) before being removed; the pre-registered gate on detection timing was not met, and these results are therefore descriptive. (ii) Under extreme heterogeneity ($\alpha=0.1$) one attacker held 46\% of the data and could not be excluded without destroying utility. (iii) A source-specific backdoor that flips only one or two classes partly evades the breadth statistic (detection 31--77\%), although such backdoors were also weak without defence in our tests. (iv) Excluding attackers removes their genuine data; the oracle shows this cost is unavoidable. (v) The server needs plaintext updates and a trusted reference sample, which conflicts with secure aggregation. (vi) We used a six-file subset of CICIoMT2024, an MLP, synthetic feature-space triggers and up to 32 clients.
+(i) On ToN-IoT and with 32 clients, attackers with little data were often flagged only after more than three poisoned rounds (one client holding 0.3\% of the data never), so the backdoor was present in early rounds (mean ASR over rounds 8\% on ToN-IoT) before being removed; the pre-registered gate on detection timing was not met, and these results are therefore descriptive. (ii) Under extreme heterogeneity ($\alpha=0.1$) one attacker held 46\% of the data and could not be excluded without destroying utility. (iii) A source-specific backdoor that flips only one or two classes partly evades the breadth statistic (detection 31--77\%), although such backdoors were also weak without defence in our tests. (iv) Excluding attackers removes their genuine data; the oracle shows this cost is unavoidable for exclusion-based defences. (v) The server needs plaintext updates and a trusted reference sample, which conflicts with secure aggregation. (vi) We used a six-file subset of CICIoMT2024, an MLP, synthetic feature-space triggers, 15 rounds and up to 32 clients.
 
 \section{Conclusion}
 Fed-MediShield protects a federated IoMT IDS by probing the decision an attacker wants to change. Across pre-registered experiments it removed backdoors while keeping utility equal to FedAvg and to perfect detection, and it was the only method among FedAvg and five robust baselines to do both. Future work will address faster detection of small attackers, source-specific backdoors, adaptive attackers that optimise against the score, compatibility with secure aggregation, and the full CICIoMT2024 dataset.
