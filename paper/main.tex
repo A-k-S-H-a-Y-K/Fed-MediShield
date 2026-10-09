@@ -66,7 +66,7 @@ $N$ clients hold private traffic and train a $K$-class IDS by FedAvg-style round
 
 \section{Fed-MediShield}
 
-\begin{figure*}[t]
+\begin{figure*}[!t]
 \centering
 \includegraphics[width=0.9\textwidth]{fig0_method_overview}
 \caption{Server pipeline of Fed-MediShield in each round.}
@@ -163,7 +163,7 @@ The assumption is exactly what a source-specific backdoor violates; we test that
 \subsection{Main result and comparison}
 On five fresh CICIoMT2024 seeds (pre-registered), Fed-MediShield lowered the final ASR from 98.96$\pm$1.97\% (FedAvg) to 0.29$\pm$0.32\%, detected 95.3\% of poisoned updates, and raised false alarms on 0.17\% of honest updates in clean runs; clean-run macro-F1 differed from FedAvg by $+0.18\pm0.40$ points, and attacked-run F1 matched the oracle ($+0.82\pm1.99$). Table~\ref{tab:compare} compares all methods. Only Fed-MediShield removed the backdoor with no utility loss; Krum removed it by excluding most honest updates (87.5\% of honest updates unselected in clean runs), and Fed-ADH, designed for untargeted label flipping, flagged 11.7\% of poisoned updates while always excluding one client per round. On ToN-IoT the ranking was the same, with clean-run F1 identical to FedAvg and no honest update flagged. Fig.~\ref{fig:summary} shows that attacked-run utility equals the oracle on both datasets.
 
-\begin{table*}[t]
+\begin{table*}[!t]
 \centering
 \caption{Comparison under the same attack (mean $\pm$ SD over seeds). CICIoMT2024: four conclusive seeds of 63--67 (FedAvg learned the backdoor); ToN-IoT: seeds 93--97 (descriptive, see Sec.~\ref{sec:limits}). Recall: share of poisoned updates flagged (attacked runs); FPR: share of honest updates flagged in clean runs; only for methods that flag clients.}
 \label{tab:compare}
@@ -185,7 +185,7 @@ Fed-ADH~\cite{pathak2026early} & 99.81$\pm$0.06 & 73.88$\pm$0.38 & 11.7 & 12.5 &
 \end{tabular}
 \end{table*}
 
-\begin{figure*}[t]
+\begin{figure*}[!t]
 \centering
 \includegraphics[width=0.8\textwidth]{fig11_two_dataset_summary}
 \caption{Five seeds per dataset: final ASR (left) and attacked-run macro-F1 relative to clean FedAvg (right). Oracle: true attackers removed (not a deployable defence).}
@@ -195,21 +195,21 @@ Fed-ADH~\cite{pathak2026early} & 99.81$\pm$0.06 & 73.88$\pm$0.38 & 11.7 & 12.5 &
 \subsection{Why it works}
 Fig.~\ref{fig:rounds} shows the ASR per round: under FedAvg the backdoor reaches about 99\%, whereas Fed-MediShield removes it after the first round, when revocation subtracts the undetected first contribution. Fig.~\ref{fig:scores} shows the score distributions: on CICIoMT2024 honest and poisoned updates are separated by a wide margin, whereas on ToN-IoT poisoned scores are spread around the threshold, which explains the slower detection there. Fig.~\ref{fig:heat} shows the alerts per client and round: attackers are flagged in almost every round and honest clients stay below the threshold.
 
-\begin{figure}[t]
+\begin{figure}[!t]
 \centering
 \includegraphics[width=\columnwidth]{fig1_asr_per_round}
 \caption{ASR per round on CICIoMT2024, five fresh seeds (line: mean; band: range).}
 \label{fig:rounds}
 \end{figure}
 
-\begin{figure*}[t]
+\begin{figure*}[!t]
 \centering
 \includegraphics[width=0.78\textwidth]{fig12_score_distributions}
 \caption{Suspicion score of honest and poisoned updates relative to the alert threshold (five seeds per dataset).}
 \label{fig:scores}
 \end{figure*}
 
-\begin{figure*}[t]
+\begin{figure*}[!t]
 \centering
 \includegraphics[width=0.78\textwidth]{fig10_detection_heatmaps}
 \caption{Suspicion score relative to the alert threshold for each client and round (\texttimes: flagged; red frame: attacker).}
@@ -219,7 +219,7 @@ Fig.~\ref{fig:rounds} shows the ASR per round: under FedAvg the backdoor reaches
 \subsection{Official test split}
 The frozen final models were evaluated once on the official CICIoMT2024 test files (pre-registered). ASR was 0.03$\pm$0.04\% with Fed-MediShield and 99.58$\pm$0.57\% with FedAvg, and both reached the same accuracy (65.3\%) and flagged 99.1\% of attack traffic as malicious. Accuracy is lower than on validation (85\%) for every method because 98\% of the official DoS test flows are labelled DDoS (Fig.~\ref{fig:test}): both classes are ICMP floods, indistinguishable per flow in the six-file subset. With the two flood classes merged (a supplementary, post-hoc analysis) test accuracy is 98.2\% for both methods. The remaining weaknesses of the base IDS, MQTT and Spoofing confused with benign traffic, are identical with and without the defence.
 
-\begin{figure*}[t]
+\begin{figure*}[!t]
 \centering
 \includegraphics[width=0.78\textwidth]{fig13_official_test_flood}
 \caption{Official CICIoMT2024 test split, Fed-MediShield under attack (five seeds pooled): six classes (left) and DoS+DDoS merged (right).}
@@ -229,7 +229,7 @@ The frozen final models were evaluated once on the official CICIoMT2024 test fil
 \subsection{Robustness}
 Table~\ref{tab:robust} summarises robustness tests of the final configuration (two development seeds for the delayed attack, three to five seeds otherwise). The backdoor was removed for all trigger types, attack schedules, poison rates and one to three attackers. With four of eight attackers (no honest majority) the hold rule paused training and then stopped it, which is the intended safe behaviour. In the persistence test (Fig.~\ref{fig:persist}) the attack stopped after round 7: FedAvg kept the backdoor at about 96\% for eight further honest rounds, as DualVeil-style attacks exploit~\cite{zhang2026dualveil}, whereas Fed-MediShield kept it near zero and restored the former attackers' weight to 97\% once they behaved honestly.
 
-\begin{table}[t]
+\begin{table}[!t]
 \centering
 \caption{Robustness (final ASR; FedAvg under the same attack in brackets).}
 \label{tab:robust}
@@ -249,7 +249,7 @@ Persistence (round 15) & 0.03--0.05\% & (95--96\%) \\
 \end{tabular}
 \end{table}
 
-\begin{figure}[t]
+\begin{figure}[!t]
 \centering
 \includegraphics[width=\columnwidth]{fig4_persistence}
 \caption{Backdoor persistence when the attack stops after round 7 (four seeds on which FedAvg learned the backdoor).}
@@ -259,7 +259,7 @@ Persistence (round 15) & 0.03--0.05\% & (95--96\%) \\
 \subsection{Ablation, sensitivity, heterogeneity and scale}
 Table~\ref{tab:ablation} reports component ablations on development seeds and evaluations under other partitions. Breadth is essential: with $k=1$ the backdoor survived (99.8\%), and $k=2$ or $k=4$ also failed, so $k$ must not exceed the number of source classes the backdoor shifts. Client profiles prevent honest lock-out; revocation limits the exposure before detection. A history-based channel was removed during development because it produced 11 of 19 honest false alarms and no detection. The calibration quantile, margin, alert floor, profile quantile, revocation window and clip multiplier did not change the outcome. Fed-MediShield removed the backdoor at $\alpha=1.0$, with 16 and with 32 clients; with 32 clients small attackers were detected later. Server time was 0.68\,s per round for eight clients (0.65\,s probe measurement).
 
-\begin{table}[t]
+\begin{table}[!t]
 \centering
 \caption{Ablations (development seeds 43, 46) and other partitions (seeds 90--92): final ASR, detection rate and honest false-alarm rate.}
 \label{tab:ablation}
