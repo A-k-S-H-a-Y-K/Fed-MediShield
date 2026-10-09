@@ -8,7 +8,14 @@
 \usepackage{xcolor}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{placeins}
 \usepackage[hidelinks]{hyperref}
+% let more of each page hold figures so they stay near their text
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\textfraction}{0.07}
+\renewcommand{\floatpagefraction}{0.8}
+\renewcommand{\dblfloatpagefraction}{0.8}
 \graphicspath{{../figures/}{figures/}}
 \newtheorem{proposition}{Proposition}
 \DeclareMathOperator*{\kmax}{k\text{-}max}
@@ -18,11 +25,11 @@
 
 \title{Fed-MediShield: Behaviour-Probing Defence Against Backdoor Attacks in Federated Intrusion Detection for the Internet of Medical Things}
 
-\author{\IEEEauthorblockN{Author Name}
-\IEEEauthorblockA{\textit{Department} \\
-\textit{Institution}\\
-City, Country \\
-email}
+\author{\IEEEauthorblockN{Akshay K}
+\IEEEauthorblockA{\textit{Artificial Intelligence} \\
+\textit{Indian Institute of Technology Patna}\\
+Patna, India \\
+akshay\_2511ai35@iitp.ac.in}
 }
 
 \maketitle
@@ -285,9 +292,7 @@ Geometry-based rules fail here because a backdoor client that poisons half of it
 \section{Conclusion}
 Fed-MediShield protects a federated IoMT IDS by probing the decision an attacker wants to change. Across pre-registered experiments it removed backdoors while keeping utility equal to FedAvg and to perfect detection, and it was the only method among FedAvg and five robust baselines to do both. Future work will address faster detection of small attackers, source-specific backdoors, adaptive attackers that optimise against the score, compatibility with secure aggregation, and the full CICIoMT2024 dataset.
 
-\section*{Code Availability}
-Code, protocols and result tables will be released at [repository and DOI to be added].
-
+\FloatBarrier
 \begin{thebibliography}{99}
 \bibitem{hassan2025survey} S.~R. Hassan, M.~U. Tanveer, S.~Prajapat, and M.~Shabaz, ``A comprehensive survey on intrusion detection in internet of medical things: Datasets, federated learning, blockchain, and future research directions,'' \emph{ICT Express}, vol.~11, pp. 1291--1310, 2025.
 \bibitem{mcmahan2017fedavg} B.~McMahan, E.~Moore, D.~Ramage, S.~Hampson, and B.~A. y~Arcas, ``Communication-efficient learning of deep networks from decentralized data,'' in \emph{Proc. Int. Conf. Artificial Intelligence and Statistics (AISTATS)}, 2017, pp. 1273--1282.
