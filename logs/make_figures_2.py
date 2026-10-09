@@ -124,7 +124,7 @@ for ax, (title, path) in zip(axes, (("CICIoMT2024, seed 71", LOGS / "phase2e_med
 axes[0].set_ylabel("Client")
 bar = fig.colorbar(image, ax=axes, fraction=0.03, pad=0.02)
 bar.set_label("Suspicion score / alert threshold (capped at 3)", fontsize=8)
-fig.suptitle("Where MediShield raises alerts (× = flagged; red outline = attacker)", fontsize=9, color=INK, x=0.02, ha="left", y=1.06)
+fig.suptitle("Where Fed-MediShield raises alerts (× = flagged; red outline = attacker)", fontsize=9, color=INK, x=0.02, ha="left", y=1.06)
 fig.savefig(OUT / "fig10_detection_heatmaps.png", dpi=300, bbox_inches="tight")
 fig.savefig(OUT / "fig10_detection_heatmaps.pdf", bbox_inches="tight")
 plt.close(fig)
