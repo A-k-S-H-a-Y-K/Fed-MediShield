@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "Fed-MediShield: Behaviour-Probing Defence Against Backdoor Attacks in Federated Intrusion Detection for the Internet of Medical Things"
+authors:
+  - family-names: "K"
+    given-names: "Akshay"
+    affiliation: "Indian Institute of Technology Patna"
+license: MIT
+version: "bsc_7"
+date-released: "2026-10-10"
+keywords:
+  - federated learning
+  - backdoor attack
+  - intrusion detection
+  - Internet of Medical Things
+  - robust aggregation

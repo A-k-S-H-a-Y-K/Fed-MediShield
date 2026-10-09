@@ -1,7 +1,8 @@
-"""Fed-MediShield research candidate medishield_bsc_7 (protected-evasion contrast, known-clean client
-profiles, bounded first-episode revocation, held rounds).
+"""Fed-MediShield medishield_bsc_7: the final method of the paper (protected-evasion contrast,
+known-clean client profiles, bounded first-episode revocation, held rounds).
 
-Replace ONLY src/medishield_candidate.py. Data loading, reference reservation,
+The file keeps its development name because the pre-registrations and run records refer to it.
+Data loading, reference reservation,
 partition, StableMLP, AdamW local training, poisoning and validation metrics are
 taken from the existing paired runner src/train_defended.py and verified by AST
 fingerprints. The legacy classes in defenses.py are never instantiated here.
@@ -49,12 +50,13 @@ revoked or committed to client state - and the run stops only after max_consecut
 consecutive invalid rounds. It targets the documented cold-start leak (seed 47: detection at the
 3rd poisoned participation) and is a first-order approximation.
 
-STATUS: research candidate. Not robust by guarantee, not shown superior, not
-publication-ready. Thresholds are empirical quantiles of dependent
-observations, not false-positive bounds. Breadth assumes source-agnostic
-(all-to-one) backdoors; the defender probe bank contains contiguous feature
-groups and +/-3/+/-6 replacement levels that overlap the current synthetic
-trigger family (columns 0-3, value 5). This is disclosed, not trigger-agnostic.
+STATUS: research code for the paper. Not robust by guarantee. Thresholds are
+empirical quantiles of dependent observations, not false-positive bounds.
+Breadth assumes source-agnostic (all-to-one) backdoors; the defender probe bank
+contains contiguous feature groups and +/-3/+/-6 replacement levels that overlap
+the synthetic trigger family used in the experiments (e.g. columns 5-8, value 5;
+a trigger outside the bank is tested separately). This is disclosed, not
+trigger-agnostic.
 """
 from __future__ import annotations
 

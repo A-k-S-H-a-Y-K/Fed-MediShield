@@ -2,6 +2,11 @@
 # Raw data, checkpoints, captures, measurements and per-run folders stay local (archived separately).
 /*
 !/.gitignore
+!/README.md
+!/LICENSE
+!/CITATION.cff
+!/requirements.txt
+!/archive/
 !/src/
 !/figures/
 !/project_info/
