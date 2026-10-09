@@ -1,0 +1,17 @@
+{
+  "title": "One-time evaluation of the frozen final models on the official CICIoMT2024 test files",
+  "written": "2026-10-09, before any official test file was read by any code in this project",
+  "test_files": ["Benign_test.pcap.csv", "TCP_IP-DDoS-ICMP1_test.pcap.csv", "TCP_IP-DoS-ICMP_test.pcap.csv",
+                 "Recon-OS_Scan_test.pcap.csv", "MQTT-Malformed_Data_test.pcap.csv", "ARP_Spoofing_test.pcap.csv"],
+  "class_mapping": "same six classes as the training subset (Benign 0, DDoS 1, DoS 2, Recon 3, MQTT 4, Spoofing 5); the DoS test file is named TCP_IP-DoS-ICMP (the training file TCP_IP-DoS-ICMP1)",
+  "preprocessing": "identical column selection to data/processed_grouped/prepare_federated_source.py (same 45 features in feature_names.json order), rows with non-finite values dropped and counted, the saved training scaler data/processed_grouped/scaler.pkl applied (never refit), float32",
+  "models": {
+    "main_confirmation": "final checkpoints of Phase 2e (seeds 71-75): MediShield clean/attacked (logs/phase2e_medishield), FedAvg clean/attacked (logs/phase2e_fedavg)",
+    "comparison": "final checkpoints on seeds 63-67: MediShield bsc_6 clean/attacked (logs/table_bsc6_medishield), FedAvg (logs/phase2d_fedavg), Krum, median, trimmed mean (logs/phase2d_baselines), RFA, Fed-ADH (logs/phase2d_baselines2)",
+    "not_available": "oracle runs did not save final models; they are not evaluated"
+  },
+  "metrics": "train_defended.evaluate() unchanged: accuracy, macro precision/recall/F1, per-class recall, IDS FPR, triggered->Benign rate (ASR for attacked runs) with each run's own trigger settings",
+  "also_reported": ["validation value of the same metric (final round) next to the test value", "number of official-test feature vectors identical to a training vector (float32 after scaling)"],
+  "rule": "Evaluated once. No model, threshold, setting or reported subset changes after test results are seen; any disagreement with validation is reported as is.",
+  "script": "logs/evaluate_official_test.py"
+}

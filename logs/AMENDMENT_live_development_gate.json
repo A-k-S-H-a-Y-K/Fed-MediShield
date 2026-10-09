@@ -1,0 +1,18 @@
+{
+  "title": "Amendment: live development gate for the selected Phase 2b attack",
+  "written": "2026-10-05, after the replay gate failed and before any live filter run on seed 46",
+  "what_failed": "logs/bsc3_logit_calD replay gate on the seed-46 FedAvg shadow capture (attackers 2 and 6 = 38.5% nominal weight): poisoned retention 28.29% > 20%; unpoisoned alert FPR 5.56% > 5%. Detection 80%, first alert at the 2nd poisoned participation. This failure stands and is reported.",
+  "why_an_additional_live_check": "The replay scores submissions against a FedAvg global that is backdoored from round 1 (93.5% -> 99.8%). The score measures change relative to the current global, so the attackers' measured effect shrinks as the global saturates (client 2: 0.68 -> 0.26). operations.md section 2.15 already states that replay cannot stand in for a filtered trajectory. Whether a live filtered run behaves differently is the open question; it may not.",
+  "procedure": "One live filter run, seed 46, attacked condition, identical attack (poison 0.5, malicious ratio 0.25 -> attackers 2 and 6, trigger columns 5-8 value 5), identical loss (logit, tau 0.5). Source b0f8b2c4... (bb734a9a... plus only the --development-gate-run flag and its verdict function). Calibration refitted as logs/bsc3_logit_calE from the SAME controls, capture and cached measurements as calD (no training, no inference); its phases must equal calD's, which is checked before the run is interpreted.",
+  "criteria_unchanged_from_the_replay_gate": {
+    "detection_rate_min_percent": 70.0,
+    "poisoned_retention_max_percent": 20.0,
+    "poisoned_retention_basis": "applied coefficient BEFORE revocation (same basis as the replay's proposed coefficient); net-after-revocation reported separately",
+    "first_detection_latest_poisoned_participation": 3,
+    "unpoisoned_alert_FPR_max_percent": 5.0,
+    "detector_stop": "any validity stop is a failure"
+  },
+  "reported_not_gated": "Final and per-round triggered->Benign rate against the matched FedAvg trajectory of the same seed and attack (logs/bsc3_logit_shadow46_step2).",
+  "decision": "Phase 2b proceeds only if every criterion holds. If it fails, Phase 2b with this attack does not start; the result is recorded, and neither the criteria nor the attack is changed to obtain a pass.",
+  "status_of_seed_46": "Development seed; never used as Phase 2b evaluation evidence."
+}

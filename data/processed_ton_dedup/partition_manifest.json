@@ -1,0 +1,374 @@
+{
+  "schema_version": "ton_iot_network_grouped_v1",
+  "conflicting_label_policy": "preserve_within_split",
+  "scope": "ToN-IoT train_test_network.csv; grouped 80/20 split; no separate official test set used.",
+  "official_test_loaded": false,
+  "scaler_fit_on_final_training_only": true,
+  "split_method": "First fixed seeded fold of StratifiedGroupKFold(5); monotone grouping of float32 collisions.",
+  "row_duplicates_retained": false,
+  "deduplication": {
+    "rows_before": 211043,
+    "rows_after": 93635,
+    "removed_per_class": {
+      "Normal": 26370,
+      "Backdoor": 18034,
+      "DDoS": 8038,
+      "DoS": 13552,
+      "Injection": 151,
+      "MITM": 4,
+      "Password": 4752,
+      "Ransomware": 19740,
+      "Scanning": 15507,
+      "XSS": 11260
+    }
+  },
+  "feature_policy": {
+    "identifiers_dropped": [
+      "src_ip",
+      "dst_ip",
+      "src_port",
+      "dst_port"
+    ],
+    "free_text_dropped": [
+      "dns_query",
+      "ssl_subject",
+      "ssl_issuer",
+      "http_uri",
+      "http_user_agent",
+      "weird_addl"
+    ],
+    "near_constant_dropped": [
+      "ssl_version",
+      "ssl_cipher",
+      "ssl_resumed",
+      "ssl_established",
+      "http_trans_depth",
+      "http_method",
+      "http_version",
+      "http_orig_mime_types",
+      "http_resp_mime_types",
+      "weird_name",
+      "weird_notice"
+    ],
+    "absent_max_share": 0.995,
+    "numeric_log1p_then_standardized": [
+      "duration",
+      "src_bytes",
+      "dst_bytes",
+      "missed_bytes",
+      "src_pkts",
+      "src_ip_bytes",
+      "dst_pkts",
+      "dst_ip_bytes",
+      "dns_qclass",
+      "dns_qtype",
+      "dns_rcode",
+      "http_request_body_len",
+      "http_response_body_len",
+      "http_status_code"
+    ],
+    "one_hot": [
+      "proto",
+      "service",
+      "conn_state",
+      "dns_AA",
+      "dns_RD",
+      "dns_RA",
+      "dns_rejected"
+    ]
+  },
+  "raw_conflicting_groups": 169,
+  "train_conflicting_float32_groups": 136,
+  "validation_conflicting_float32_groups": 33,
+  "settings": {
+    "raw": "data/raw_ton/train_test_network.csv",
+    "out": "data\\processed_ton_dedup",
+    "classes": [
+      "normal",
+      "backdoor",
+      "ddos",
+      "dos",
+      "injection",
+      "mitm",
+      "password",
+      "ransomware",
+      "scanning",
+      "xss"
+    ],
+    "seed": 42,
+    "num_clients": 8,
+    "alpha": 0.5,
+    "max_passes": 12,
+    "dedup": true
+  },
+  "source_file": {
+    "file": "data\\raw_ton\\train_test_network.csv",
+    "sha256": "26ddc513552de36de6428b2e578efaed2b57504c716dfba847cc0109a64e1974",
+    "rows_used": 93635
+  },
+  "classes": [
+    "Normal",
+    "Backdoor",
+    "DDoS",
+    "DoS",
+    "Injection",
+    "MITM",
+    "Password",
+    "Ransomware",
+    "Scanning",
+    "XSS"
+  ],
+  "features": [
+    "duration",
+    "src_bytes",
+    "dst_bytes",
+    "missed_bytes",
+    "src_pkts",
+    "src_ip_bytes",
+    "dst_pkts",
+    "dst_ip_bytes",
+    "dns_qclass",
+    "dns_qtype",
+    "dns_rcode",
+    "http_request_body_len",
+    "http_response_body_len",
+    "http_status_code",
+    "proto=icmp",
+    "proto=tcp",
+    "proto=udp",
+    "service=-",
+    "service=dce_rpc",
+    "service=dns",
+    "service=ftp",
+    "service=gssapi",
+    "service=http",
+    "service=smb",
+    "service=smb;gssapi",
+    "service=ssl",
+    "conn_state=OTH",
+    "conn_state=REJ",
+    "conn_state=RSTO",
+    "conn_state=RSTOS0",
+    "conn_state=RSTR",
+    "conn_state=RSTRH",
+    "conn_state=S0",
+    "conn_state=S1",
+    "conn_state=S2",
+    "conn_state=S3",
+    "conn_state=SF",
+    "conn_state=SH",
+    "conn_state=SHR",
+    "dns_AA=-",
+    "dns_AA=F",
+    "dns_AA=T",
+    "dns_RD=-",
+    "dns_RD=F",
+    "dns_RD=T",
+    "dns_RA=-",
+    "dns_RA=F",
+    "dns_RA=T",
+    "dns_rejected=-",
+    "dns_rejected=F",
+    "dns_rejected=T"
+  ],
+  "passes": [
+    {
+      "pass": 1,
+      "groups": 93427,
+      "train_rows": 74907,
+      "validation_rows": 18728,
+      "shared_float32_fingerprints": 28
+    },
+    {
+      "pass": 2,
+      "groups": 93339,
+      "train_rows": 74907,
+      "validation_rows": 18728,
+      "shared_float32_fingerprints": 9
+    },
+    {
+      "pass": 3,
+      "groups": 93312,
+      "train_rows": 74908,
+      "validation_rows": 18727,
+      "shared_float32_fingerprints": 10
+    },
+    {
+      "pass": 4,
+      "groups": 93288,
+      "train_rows": 74908,
+      "validation_rows": 18727,
+      "shared_float32_fingerprints": 6
+    },
+    {
+      "pass": 5,
+      "groups": 93278,
+      "train_rows": 74907,
+      "validation_rows": 18728,
+      "shared_float32_fingerprints": 2
+    },
+    {
+      "pass": 6,
+      "groups": 93274,
+      "train_rows": 74908,
+      "validation_rows": 18727,
+      "shared_float32_fingerprints": 0
+    }
+  ],
+  "train_rows": 74908,
+  "validation_rows": 18727,
+  "class_counts": {
+    "train": [
+      18904,
+      1572,
+      9569,
+      5159,
+      15879,
+      831,
+      12199,
+      208,
+      3595,
+      6992
+    ],
+    "validation": [
+      4726,
+      394,
+      2393,
+      1289,
+      3970,
+      208,
+      3049,
+      52,
+      898,
+      1748
+    ]
+  },
+  "clients": {
+    "0": {
+      "rows": 18620,
+      "class_counts": [
+        650,
+        30,
+        69,
+        52,
+        7353,
+        161,
+        5441,
+        2,
+        1955,
+        2907
+      ]
+    },
+    "1": {
+      "rows": 9227,
+      "class_counts": [
+        4843,
+        712,
+        19,
+        2217,
+        1007,
+        40,
+        103,
+        0,
+        238,
+        48
+      ]
+    },
+    "2": {
+      "rows": 7565,
+      "class_counts": [
+        4595,
+        117,
+        1131,
+        257,
+        64,
+        455,
+        297,
+        49,
+        30,
+        570
+      ]
+    },
+    "3": {
+      "rows": 5505,
+      "class_counts": [
+        493,
+        159,
+        416,
+        276,
+        1457,
+        23,
+        2447,
+        20,
+        161,
+        53
+      ]
+    },
+    "4": {
+      "rows": 9471,
+      "class_counts": [
+        10,
+        73,
+        3725,
+        34,
+        2122,
+        12,
+        606,
+        9,
+        614,
+        2266
+      ]
+    },
+    "5": {
+      "rows": 8080,
+      "class_counts": [
+        1624,
+        240,
+        1369,
+        1999,
+        152,
+        25,
+        2325,
+        78,
+        191,
+        77
+      ]
+    },
+    "6": {
+      "rows": 11501,
+      "class_counts": [
+        4186,
+        240,
+        2810,
+        144,
+        3684,
+        23,
+        1,
+        14,
+        139,
+        260
+      ]
+    },
+    "7": {
+      "rows": 4939,
+      "class_counts": [
+        2503,
+        1,
+        30,
+        180,
+        40,
+        92,
+        979,
+        36,
+        267,
+        811
+      ]
+    }
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.1",
+    "torch": "2.14.0+cpu"
+  }
+}

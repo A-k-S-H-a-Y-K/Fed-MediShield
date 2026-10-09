@@ -1,0 +1,19 @@
+{
+  "title": "Stage 3b (bsc_6): third trigger type, malicious-ratio sweep and poison-rate sweep",
+  "written": "2026-10-07, before any run on seeds 79-81",
+  "detector": "Frozen bsc_6 (history off), calibration logs/bsc6_calN, authorized by logs/bsc6_devgate with the declared --attack-variant flag. Source and train_defended.py hashes are recorded per run; train_defended.py/defenses.py changed after Phase 2e only by adding the RFA and Fed-ADH baselines (aggregate_updates and new functions; no fingerprinted protocol function changed).",
+  "seeds": {"excluded": "42-78", "evaluation": [79, 80, 81]},
+  "common": "--loss-adjustment logit --logit-tau 0.5, 15 rounds, 8 clients, target Benign, attacked condition only, matched FedAvg per setting and seed",
+  "A_third_trigger_type": {
+    "setting": "--trigger blended --blend 0.2 --trigger-value 5 --trigger-features 5 6 7 8 --poison-rate 0.5 --malicious-ratio 0.25",
+    "validity_check_before_data": "41 clean models: worst-case clean triggered->Benign rate per attack class <= 4.1% (eligible <= 10%); blend 0.2 is the code default, not tuned",
+    "criteria": "identical to PREREGISTRATION_stage3_variants.json per_seed_criteria and decision rule (V4)"
+  },
+  "B_malicious_ratio_sweep": {"levels": [0.125, 0.25, 0.375, 0.5], "attackers_of_8": [1, 2, 3, 4],
+                              "fixed": "constant trigger columns 5-8 value 5, poison rate 0.5",
+                              "known_limit": "0.5 equals the flagged-fraction stop rule (0.5): a stop is expected once all four attackers are flagged; reported, not redesigned"},
+  "C_poison_rate_sweep": {"levels": [0.2, 0.35, 0.5, 0.8], "fixed": "constant trigger columns 5-8 value 5, malicious ratio 0.25 (the 0.5 level is shared with sweep B)"},
+  "sweep_reporting": "Descriptive sensitivity curves, not pass/fail: per level mean +/- SD over seeds of final ASR (MediShield and FedAvg), max ASR in rounds 2-15, detection rate, first detection, honest alert FPR, final accuracy and macro-F1, detector stops. Levels where FedAvg's final ASR < 50% are marked 'attack not learned'.",
+  "evaluation_script": "logs/evaluate_stage3b.py",
+  "rule": "No change to settings, levels or criteria after data are seen."
+}

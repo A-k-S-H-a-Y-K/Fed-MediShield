@@ -1,0 +1,27 @@
+{
+  "title": "Dataset 2 (ToN-IoT network, deduplicated): pre-registered confirmation of Fed-MediShield bsc_7",
+  "written": "2026-10-09, after the clean calibration controls and the trigger selection, before any attacked ToN-IoT run",
+  "data": {"path": "data/processed_ton_dedup/federated_data.pt", "sha256": "9a27c29519f10ff7ed2e74a6cdaa7bf9ba26f5879b264a42a3d84d83e3a9697b",
+           "classes": ["Normal", "Backdoor", "DDoS", "DoS", "Injection", "MITM", "Password", "Ransomware", "Scanning", "XSS"],
+           "preparation": "data/prepare_ton_iot.py --dedup (addendum A29); 51 features; grouped 80/20 split; 8 clients, Dirichlet alpha 0.5, seed 42"},
+  "detector": "bsc_7 exactly as on CICIoMT (history off, client profiles, breadth k = 3, first-episode revocation, held rounds); no setting re-tuned for ToN-IoT.",
+  "frozen_sources_sha256": {"src/medishield_candidate.py": "eafc235024c17fe8dcc38c19a3a14200b4cd7f8be87f08d7565cf280d68ddbd1",
+                            "src/train_defended.py": "b91858fa9a11059996e6abbb2d83add4c65d1751e93039f5538552346ab1d6c6",
+                            "src/defenses.py": "69d8ddd9a2f80cd48eda86a85423ccb8104dcc0a4cad3c33b4df47a148c5426a"},
+  "clean_model_check": "Clean controls (logs/tond_cal): validation accuracy 81.1-84.9%, macro-F1 65.1-66.6%; LOSO clean FPR 0/0/0%.",
+  "trigger": {"columns": [7, 17, 23, 50], "features": ["dst_ip_bytes", "service=-", "service=smb", "dns_rejected=T"], "value": 5.0,
+              "selection": "logs/select_trigger_ton.py (rule 2 of the CICIoMT selection; candidate set widened to non-contiguous sets after 0/96 contiguous candidates were eligible, before any attacked run); worst conditional clean triggered->Normal rate 0.0%, unconditional 0.54%"},
+  "attack": "target Normal (class 0), --poison-rate 0.5 --malicious-ratio 0.25 (2 attackers of 8), constant trigger above, every round from round 1, --loss-adjustment logit --logit-tau 0.5, 15 rounds",
+  "procedure": [
+    "1 shadow (no filtering) attacked runs on development seeds 43 and 46 with calibration logs/tond_cal (captures the development attack)",
+    "2 recalibrate logs/tond_cal2 from the clean controls and both shadow captures (no training, no inference)",
+    "3 live development gate on seeds 43 and 46 (criteria of AMENDMENT_live_development_gate.json); if it fails, steps 4-5 do not start and the failure is reported",
+    "4 confirmation seeds 93-97: MediShield clean + attacked (--live-gate-dir logs/tond_devgate), FedAvg clean + attacked, oracle residual",
+    "5 baselines Krum, median, trimmed mean (f = 2), RFA, Fed-ADH on the same seeds (descriptive)"
+  ],
+  "seeds": {"development": [43, 46], "evaluation": [93, 94, 95, 96, 97]},
+  "per_seed_criteria": "identical to PREREGISTRATION_phase2d_bsc5_histoff.json per_seed_criteria (final-ASR reduction, exposure, detection, first detection, honest FPR in attacked and clean runs, clean F1 and worst-class recall vs FedAvg, attacked F1 vs oracle); inconclusive if FedAvg attacked final ASR < 50% or the oracle run is missing; a stop after 3 consecutive invalid rounds fails",
+  "decision_rule": "SUPPORTED only if every conclusive seed passes every criterion AND at least four of five seeds are conclusive.",
+  "evaluation_script": "logs/evaluate_ton.py",
+  "rule": "No setting, threshold, seed or criterion changes after any attacked ToN-IoT data are seen."
+}

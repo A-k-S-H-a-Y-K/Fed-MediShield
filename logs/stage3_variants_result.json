@@ -1,0 +1,185 @@
+{
+  "V1_out_of_bank_trigger": {
+    "verdict": "NOT SUPPORTED",
+    "seeds": [
+      {
+        "Variant": "V1_out_of_bank_trigger",
+        "Seed": 68,
+        "Integrity": true,
+        "Final_ASR": 0.0666755567408987,
+        "FedAvg_Final_ASR": 98.41756678668268,
+        "Final_ASR_Reduction_pp": 98.35089122994178,
+        "Exposure_Rounds": [],
+        "Max_ASR_Rounds_2_15": 2.0136018135751432,
+        "Detection_Rate": 93.33333333333333,
+        "First_Detection": {
+          "1": 3,
+          "4": 1
+        },
+        "Honest_FPR": 4.444444444444445,
+        "Attacked_F1": 68.42218836979451,
+        "FedAvg_Attacked_F1": 73.47019473835738,
+        "F1_vs_FedAvg_Attacked_pp": -5.048006368562866,
+        "Attackers": [
+          1,
+          4
+        ],
+        "Status": "FAIL",
+        "Failed": "F1"
+      },
+      {
+        "Variant": "V1_out_of_bank_trigger",
+        "Seed": 69,
+        "Integrity": true,
+        "Final_ASR": 0.0370419759671659,
+        "FedAvg_Final_ASR": 99.035426945815,
+        "Final_ASR_Reduction_pp": 98.99838496984783,
+        "Exposure_Rounds": [],
+        "Max_ASR_Rounds_2_15": 0.4785823294957846,
+        "Detection_Rate": 90.0,
+        "First_Detection": {
+          "1": 4,
+          "5": 1
+        },
+        "Honest_FPR": 1.1111111111111112,
+        "Attacked_F1": 72.77622994136598,
+        "FedAvg_Attacked_F1": 73.56105994759187,
+        "F1_vs_FedAvg_Attacked_pp": -0.7848300062258886,
+        "Attackers": [
+          1,
+          5
+        ],
+        "Status": "FAIL",
+        "Failed": "first_detection"
+      },
+      {
+        "Variant": "V1_out_of_bank_trigger",
+        "Seed": 70,
+        "Integrity": true,
+        "Final_ASR": 0.127424397327051,
+        "FedAvg_Final_ASR": 97.3255693351706,
+        "Final_ASR_Reduction_pp": 97.19814493784355,
+        "Exposure_Rounds": [],
+        "Max_ASR_Rounds_2_15": 1.9602613681824244,
+        "Detection_Rate": 90.0,
+        "First_Detection": {
+          "2": 2,
+          "7": 3
+        },
+        "Honest_FPR": 2.2222222222222223,
+        "Attacked_F1": 72.07797772960586,
+        "FedAvg_Attacked_F1": 73.78856657384674,
+        "F1_vs_FedAvg_Attacked_pp": -1.710588844240874,
+        "Attackers": [
+          2,
+          7
+        ],
+        "Status": "PASS",
+        "Failed": ""
+      }
+    ]
+  },
+  "V2_intermittent": {
+    "verdict": "NOT SUPPORTED",
+    "seeds": [
+      {
+        "Variant": "V2_intermittent",
+        "Seed": 68,
+        "Integrity": true,
+        "Final_ASR": 0.0311152598124194,
+        "FedAvg_Final_ASR": 97.91527759256788,
+        "Final_ASR_Reduction_pp": 97.88416233275545,
+        "Exposure_Rounds": [],
+        "Max_ASR_Rounds_2_15": 1.5246477308085522,
+        "Detection_Rate": 93.75,
+        "First_Detection": {
+          "1": 2,
+          "4": 1
+        },
+        "Honest_FPR": 0.9615384615384616,
+        "Attacked_F1": 65.88716058469018,
+        "FedAvg_Attacked_F1": 73.95513341238392,
+        "F1_vs_FedAvg_Attacked_pp": -8.067972827693737,
+        "Attackers": [
+          1,
+          4
+        ],
+        "Status": "FAIL",
+        "Failed": "F1"
+      },
+      {
+        "Variant": "V2_intermittent",
+        "Seed": 69,
+        "Integrity": true,
+        "Final_ASR": 0.0681572357795854,
+        "FedAvg_Final_ASR": 99.46955890415018,
+        "Final_ASR_Reduction_pp": 99.4014016683706,
+        "Exposure_Rounds": [],
+        "Max_ASR_Rounds_2_15": 0.9467929057207628,
+        "Detection_Rate": 93.75,
+        "First_Detection": {
+          "1": 2,
+          "5": 1
+        },
+        "Honest_FPR": 1.9230769230769231,
+        "Attacked_F1": 66.3339186944535,
+        "FedAvg_Attacked_F1": 73.69535875074747,
+        "F1_vs_FedAvg_Attacked_pp": -7.361440056293972,
+        "Attackers": [
+          1,
+          5
+        ],
+        "Status": "FAIL",
+        "Failed": "F1"
+      },
+      {
+        "Variant": "V2_intermittent",
+        "Seed": 70,
+        "Integrity": true,
+        "Final_ASR": 0.1674297313715902,
+        "FedAvg_Final_ASR": 95.78462313493652,
+        "Final_ASR_Reduction_pp": 95.61719340356494,
+        "Exposure_Rounds": [],
+        "Max_ASR_Rounds_2_15": 0.620823517209702,
+        "Detection_Rate": 93.75,
+        "First_Detection": {
+          "2": 1,
+          "7": 2
+        },
+        "Honest_FPR": 1.9230769230769231,
+        "Attacked_F1": 67.63219733960781,
+        "FedAvg_Attacked_F1": 73.78779810822887,
+        "F1_vs_FedAvg_Attacked_pp": -6.155600768621056,
+        "Attackers": [
+          2,
+          7
+        ],
+        "Status": "FAIL",
+        "Failed": "F1"
+      }
+    ]
+  },
+  "V3_three_attackers": {
+    "verdict": "INCOMPLETE",
+    "seeds": [
+      {
+        "Variant": "V3_three_attackers",
+        "Seed": 68,
+        "Status": "FAIL",
+        "Failed": "detector stop"
+      },
+      {
+        "Variant": "V3_three_attackers",
+        "Seed": 69,
+        "Status": "NOT_RUN",
+        "Failed": "missing run"
+      },
+      {
+        "Variant": "V3_three_attackers",
+        "Seed": 70,
+        "Status": "NOT_RUN",
+        "Failed": "missing run"
+      }
+    ]
+  }
+}

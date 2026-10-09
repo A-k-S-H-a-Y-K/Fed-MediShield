@@ -1,0 +1,111 @@
+{
+  "models": 41,
+  "candidates": 200,
+  "eligible": 7,
+  "selected": {
+    "columns": [
+      2,
+      8,
+      15,
+      36
+    ],
+    "features": [
+      "Duration",
+      "rst_flag_number",
+      "fin_count",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 0.6333333440124989,
+    "max_conditional_overall": 0.0793440907727927,
+    "mean_conditional_overall": 0.012888722604413221,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.19,
+      0.53,
+      0.0
+    ],
+    "eligible": true
+  },
+  "next_three": [
+    {
+      "columns": [
+        7,
+        10,
+        15,
+        33
+      ],
+      "features": [
+        "syn_flag_number",
+        "ack_flag_number",
+        "fin_count",
+        "Min"
+      ],
+      "value": 4.5,
+      "max_overall": 6.549999862909317,
+      "max_conditional_overall": 0.5818566307425499,
+      "mean_conditional_overall": 0.09306420802093315,
+      "max_conditional_per_class": [
+        0.0,
+        0.0,
+        0.09,
+        4.09,
+        3.05
+      ],
+      "eligible": true
+    },
+    {
+      "columns": [
+        8,
+        24,
+        27,
+        40
+      ],
+      "features": [
+        "rst_flag_number",
+        "TCP",
+        "ARP",
+        "Magnitue"
+      ],
+      "value": 4.5,
+      "max_overall": 6.983333081007004,
+      "max_conditional_overall": 0.8530545048415661,
+      "mean_conditional_overall": 0.12802194226135657,
+      "max_conditional_per_class": [
+        0.0,
+        0.0,
+        0.0,
+        3.01,
+        7.18
+      ],
+      "eligible": true
+    },
+    {
+      "columns": [
+        2,
+        7,
+        23,
+        42
+      ],
+      "features": [
+        "Duration",
+        "syn_flag_number",
+        "IRC",
+        "Covariance"
+      ],
+      "value": 4.5,
+      "max_overall": 1.9500000402331352,
+      "max_conditional_overall": 0.993723887950182,
+      "mean_conditional_overall": 0.11468735415624773,
+      "max_conditional_per_class": [
+        0.0,
+        0.0,
+        0.0,
+        6.58,
+        3.21
+      ],
+      "eligible": true
+    }
+  ]
+}

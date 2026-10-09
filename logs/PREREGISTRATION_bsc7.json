@@ -1,0 +1,20 @@
+{
+  "title": "bsc_7 (held rounds): live gate, Phase 2f confirmation and stop-limited sweep levels",
+  "written": "2026-10-07, before calibration O and before any bsc_7 run",
+  "change": "A filtering round that breaks a validity bound (flagged fraction >= 0.5 or informative mass < 0.25) is HELD: the global model is left unchanged, nothing is applied, revoked or committed to client state; the run stops only when a third consecutive round is invalid (max_consecutive_holds = 2). Motivated by addendum A19: the confirmed bsc_6 configuration stopped on fresh seed 79 at round 2 (two honest early-round false alarms plus two attackers = 4/8). --hold-policy stop reproduces bsc_6.",
+  "equivalence_argument": "Thresholds, profiles and clip bounds are fitted without the hold policy, and a held round only replaces what bsc_6 did at a stop. Hence every bsc_6 run that completed without a stop is unchanged under bsc_7; only previously stopped runs can differ. This is verified on the live gate (calibration O's phases, clip bounds and profiles must equal calibration N's; the gate runs must match logs/bsc6_devgate round by round).",
+  "frozen_sources_sha256": {"src/medishield_candidate.py": "af8ee5f27a23250f3141b23fe7696e0eceae5a5e0a2fc87522e4bca3cfbbeb1e",
+                            "src/train_defended.py": "3b2bf68c59344948ae311bacd929b04418a3c8ce32a5bcd61d4d14494d1f3a58",
+                            "src/defenses.py": "69d8ddd9a2f80cd48eda86a85423ccb8104dcc0a4cad3c33b4df47a148c5426a"},
+  "calibration": "logs/bsc7_calO, refit from the same controls/captures/cached measurements as calibration N (no training, no inference). All bsc_7 runs below must use a calibration with its detector core digest.",
+  "step_1_live_gate": {"what": "--development-gate-run, immediate attack (Phase 2d attack), development seeds 43 and 46, output logs/bsc7_devgate",
+                       "criteria": "unchanged (AMENDMENT_live_development_gate.json)", "if_failed": "nothing below starts"},
+  "step_2_phase_2f": {"seeds": [82, 83, 84, 85, 86],
+                      "runs": "MediShield clean+attacked (--live-gate-dir logs/bsc7_devgate), FedAvg clean+attacked, oracle residual; Phase 2d attack",
+                      "criteria": "identical to PREREGISTRATION_phase2d_bsc5_histoff.json per_seed_criteria and decision rule; a run stopped after 3 consecutive invalid rounds fails",
+                      "additionally_reported": "held rounds per run",
+                      "evaluation_script": "logs/evaluate_phase2f.py"},
+  "step_3_sweep_levels_rerun": {"what": "malicious ratio 0.25 and 0.5 on seeds 79-81 with bsc_7 (same settings as Stage 3b), outputs logs/stage3c_ratio_0p25_* and logs/stage3c_ratio_0p5_*; descriptive, compared with the bsc_6 sweep; these seeds were already seen, so this is not confirmatory"},
+  "seed_roles": {"excluded": "42-81", "phase_2f": [82, 83, 84, 85, 86]},
+  "rule": "Earlier verdicts stay on record unchanged. No setting, threshold or criterion changes after any bsc_7 data are seen."
+}

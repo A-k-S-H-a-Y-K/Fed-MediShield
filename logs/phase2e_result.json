@@ -1,0 +1,298 @@
+{
+  "preregistration": "PREREGISTRATION_bsc6.json step 3 (criteria of phase 2d)",
+  "supported": true,
+  "conclusive_seeds": 5,
+  "per_seed": [
+    {
+      "Seed": 71,
+      "Integrity": true,
+      "FedAvg_Final_ASR": 99.8325702686284,
+      "Final_ASR": 0.810478434161592,
+      "FedAvg_Mean_ASR": 80.13028897680185,
+      "Mean_ASR": 1.0359899838496984,
+      "Exposure_Rounds": [],
+      "Post_Exposure_Mean_Excess_pp": 0.295224548458313,
+      "All_Round_Mean_Excess_pp": 0.3657771653504419,
+      "Final_Excess_pp": 0.33485946274318074,
+      "Detection_Rate": 100.0,
+      "First_Detection": {
+        "3": 1,
+        "5": 1
+      },
+      "Attacked_Unpoisoned_FPR": 0.0,
+      "Clean_Update_FPR": 0.0,
+      "Clean_F1": 73.56049735524394,
+      "FedAvg_Clean_F1": 73.56049735524394,
+      "Clean_F1_Diff_pp": 0.0,
+      "Attacked_F1_vs_FedAvg_Clean_pp": -0.937431979643776,
+      "Worst_Recall_Diff_pp": 0.0,
+      "Worst_Recall_Class": "Benign",
+      "Clean_Accuracy": 84.99217261736358,
+      "Attacked_Accuracy": 84.27544842414983,
+      "FedAvg_Clean_Accuracy": 84.99217261736358,
+      "Min_Attacked_Accuracy_Over_Rounds": 76.20475678530339,
+      "Mean_ASR_Reduction_pp": 79.09429899295215,
+      "Oracle_F1": 72.74824240812121,
+      "Attacked_F1_vs_Oracle_pp": -0.1251770325210515,
+      "Oracle_F1_vs_FedAvg_Clean_pp": -0.8122549471227245,
+      "Final_ASR_Reduction_pp": 99.0220918344668,
+      "Status": "PASS",
+      "Failed": ""
+    },
+    {
+      "Seed": 72,
+      "Integrity": true,
+      "FedAvg_Final_ASR": 99.8666488865182,
+      "Final_ASR": 0.1140892859788712,
+      "FedAvg_Mean_ASR": 98.79954364285611,
+      "Mean_ASR": 6.665876437846034,
+      "Exposure_Rounds": [
+        1
+      ],
+      "Post_Exposure_Mean_Excess_pp": -0.02259560533997126,
+      "All_Round_Mean_Excess_pp": 6.049004064739495,
+      "Final_Excess_pp": -0.0666755567408988,
+      "Detection_Rate": 96.66666666666667,
+      "First_Detection": {
+        "4": 1,
+        "6": 2
+      },
+      "Attacked_Unpoisoned_FPR": 0.0,
+      "Clean_Update_FPR": 0.0,
+      "Clean_F1": 73.95779433424238,
+      "FedAvg_Clean_F1": 73.95779433424238,
+      "Clean_F1_Diff_pp": 0.0,
+      "Attacked_F1_vs_FedAvg_Clean_pp": 0.08300158694476067,
+      "Worst_Recall_Diff_pp": 0.0,
+      "Worst_Recall_Class": "Benign",
+      "Clean_Accuracy": 85.27226088760634,
+      "Attacked_Accuracy": 84.61117712518154,
+      "FedAvg_Clean_Accuracy": 85.27226088760634,
+      "Min_Attacked_Accuracy_Over_Rounds": 67.95865633074936,
+      "Mean_ASR_Reduction_pp": 92.13366720501007,
+      "Oracle_F1": 74.34613870383806,
+      "Attacked_F1_vs_Oracle_pp": -0.30534278265092496,
+      "Oracle_F1_vs_FedAvg_Clean_pp": 0.38834436959568563,
+      "Final_ASR_Reduction_pp": 99.75255960053933,
+      "Status": "PASS",
+      "Failed": ""
+    },
+    {
+      "Seed": 73,
+      "Integrity": true,
+      "FedAvg_Final_ASR": 99.8340519476671,
+      "Final_ASR": 0.1333511134817975,
+      "FedAvg_Mean_ASR": 79.40367357622993,
+      "Mean_ASR": 0.5299472028369214,
+      "Exposure_Rounds": [],
+      "Post_Exposure_Mean_Excess_pp": 0.08914768882764613,
+      "All_Round_Mean_Excess_pp": 0.3030527527127073,
+      "Final_Excess_pp": 0.05630380347009231,
+      "Detection_Rate": 100.0,
+      "First_Detection": {
+        "3": 1,
+        "4": 1
+      },
+      "Attacked_Unpoisoned_FPR": 0.0,
+      "Clean_Update_FPR": 0.0,
+      "Clean_F1": 74.1370861269452,
+      "FedAvg_Clean_F1": 74.1370861269452,
+      "Clean_F1_Diff_pp": 0.0,
+      "Attacked_F1_vs_FedAvg_Clean_pp": -0.8985661079193932,
+      "Worst_Recall_Diff_pp": 0.0,
+      "Worst_Recall_Class": "Benign",
+      "Clean_Accuracy": 85.29300816688357,
+      "Attacked_Accuracy": 85.15343556083667,
+      "FedAvg_Clean_Accuracy": 85.29300816688357,
+      "Min_Attacked_Accuracy_Over_Rounds": 78.53411041324809,
+      "Mean_ASR_Reduction_pp": 78.87372637339301,
+      "Oracle_F1": 73.10567709106022,
+      "Attacked_F1_vs_Oracle_pp": 0.13284292796559782,
+      "Oracle_F1_vs_FedAvg_Clean_pp": -1.031409035884991,
+      "Final_ASR_Reduction_pp": 99.70070083418531,
+      "Status": "PASS",
+      "Failed": ""
+    },
+    {
+      "Seed": 74,
+      "Integrity": true,
+      "FedAvg_Final_ASR": 95.44680031411596,
+      "Final_ASR": 0.0237068646189862,
+      "FedAvg_Mean_ASR": 53.53671847604372,
+      "Mean_ASR": 0.3672588443891283,
+      "Exposure_Rounds": [],
+      "Post_Exposure_Mean_Excess_pp": -0.004074617356388275,
+      "All_Round_Mean_Excess_pp": 0.15340316980535681,
+      "Final_Excess_pp": -0.0444503711605992,
+      "Detection_Rate": 90.0,
+      "First_Detection": {
+        "1": 2,
+        "7": 3
+      },
+      "Attacked_Unpoisoned_FPR": 1.1111111111111112,
+      "Clean_Update_FPR": 0.0,
+      "Clean_F1": 74.1134977967449,
+      "FedAvg_Clean_F1": 74.1134977967449,
+      "Clean_F1_Diff_pp": 0.0,
+      "Attacked_F1_vs_FedAvg_Clean_pp": -0.49340807483989124,
+      "Worst_Recall_Diff_pp": 0.0,
+      "Worst_Recall_Class": "Benign",
+      "Clean_Accuracy": 85.2948942831815,
+      "Attacked_Accuracy": 85.15060638638978,
+      "FedAvg_Clean_Accuracy": 85.2948942831815,
+      "Min_Attacked_Accuracy_Over_Rounds": 71.33951979479055,
+      "Mean_ASR_Reduction_pp": 53.16945963165459,
+      "Oracle_F1": 69.25613428793699,
+      "Attacked_F1_vs_Oracle_pp": 4.363955433968016,
+      "Oracle_F1_vs_FedAvg_Clean_pp": -4.857363508807907,
+      "Final_ASR_Reduction_pp": 95.42309344949697,
+      "Status": "PASS",
+      "Failed": ""
+    },
+    {
+      "Seed": 75,
+      "Integrity": true,
+      "FedAvg_Final_ASR": 99.83849698478316,
+      "Final_ASR": 0.3644930435169133,
+      "FedAvg_Mean_ASR": 84.28837425236947,
+      "Mean_ASR": 5.810651296716107,
+      "Exposure_Rounds": [
+        1
+      ],
+      "Post_Exposure_Mean_Excess_pp": -0.07828204254394416,
+      "All_Round_Mean_Excess_pp": 5.2360561655134275,
+      "Final_Excess_pp": 0.1896549169518899,
+      "Detection_Rate": 90.0,
+      "First_Detection": {
+        "3": 3,
+        "6": 2
+      },
+      "Attacked_Unpoisoned_FPR": 0.0,
+      "Clean_Update_FPR": 0.8333333333333334,
+      "Clean_F1": 74.52154799130311,
+      "FedAvg_Clean_F1": 73.61904884186345,
+      "Clean_F1_Diff_pp": 0.902499149439663,
+      "Attacked_F1_vs_FedAvg_Clean_pp": 1.055580663857242,
+      "Worst_Recall_Diff_pp": -3.224634861338103,
+      "Worst_Recall_Class": "Benign",
+      "Clean_Accuracy": 84.56496727588222,
+      "Attacked_Accuracy": 85.0761047926215,
+      "FedAvg_Clean_Accuracy": 84.95727946585187,
+      "Min_Attacked_Accuracy_Over_Rounds": 69.11673173767895,
+      "Mean_ASR_Reduction_pp": 78.47772295565336,
+      "Oracle_F1": 74.66277180666054,
+      "Attacked_F1_vs_Oracle_pp": 0.011857699060144,
+      "Oracle_F1_vs_FedAvg_Clean_pp": 1.043722964797098,
+      "Final_ASR_Reduction_pp": 99.47400394126625,
+      "Status": "PASS",
+      "Failed": ""
+    }
+  ],
+  "mean_and_sample_sd": {
+    "Final_ASR": {
+      "mean": 0.2892237483516321,
+      "sample_sd": 0.31734818734021253,
+      "n": 5
+    },
+    "FedAvg_Final_ASR": {
+      "mean": 98.96371368034258,
+      "sample_sd": 1.9660631928043404,
+      "n": 5
+    },
+    "Mean_ASR": {
+      "mean": 2.881944753127578,
+      "sample_sd": 3.0886302675893096,
+      "n": 5
+    },
+    "FedAvg_Mean_ASR": {
+      "mean": 79.23171978486022,
+      "sample_sd": 16.351907930731578,
+      "n": 5
+    },
+    "Mean_ASR_Reduction_pp": {
+      "mean": 76.34977503173263,
+      "sample_sd": 14.185284441106916,
+      "n": 5
+    },
+    "Post_Exposure_Mean_Excess_pp": {
+      "mean": 0.05588399440913109,
+      "sample_sd": 0.14675232736847757,
+      "n": 5
+    },
+    "All_Round_Mean_Excess_pp": {
+      "mean": 2.4214586636242856,
+      "sample_sd": 2.9554437265648215,
+      "n": 5
+    },
+    "Final_Excess_pp": {
+      "mean": 0.09393845105273299,
+      "sample_sd": 0.16850019883517123,
+      "n": 5
+    },
+    "Detection_Rate": {
+      "mean": 95.33333333333334,
+      "sample_sd": 5.055250296034367,
+      "n": 5
+    },
+    "Attacked_Unpoisoned_FPR": {
+      "mean": 0.22222222222222224,
+      "sample_sd": 0.4969039949999533,
+      "n": 5
+    },
+    "Clean_Update_FPR": {
+      "mean": 0.16666666666666669,
+      "sample_sd": 0.372677996249965,
+      "n": 5
+    },
+    "Clean_F1_Diff_pp": {
+      "mean": 0.18049982988793262,
+      "sample_sd": 0.4036098895565656,
+      "n": 5
+    },
+    "Attacked_F1_vs_FedAvg_Clean_pp": {
+      "mean": -0.23816478232021154,
+      "sample_sd": 0.8317419640029501,
+      "n": 5
+    },
+    "Worst_Recall_Diff_pp": {
+      "mean": -0.6449269722676206,
+      "sample_sd": 1.4421005505135214,
+      "n": 5
+    },
+    "Attacked_F1_vs_Oracle_pp": {
+      "mean": 0.8156272491643562,
+      "sample_sd": 1.990261247593338,
+      "n": 5
+    },
+    "Final_ASR_Reduction_pp": {
+      "mean": 98.67448993199093,
+      "sample_sd": 1.840310561157618,
+      "n": 5
+    },
+    "Oracle_F1_vs_FedAvg_Clean_pp": {
+      "mean": -1.053792031484568,
+      "sample_sd": 2.2915782609191457,
+      "n": 5
+    },
+    "Clean_Accuracy": {
+      "mean": 85.08346064618345,
+      "sample_sd": 0.3167920282690494,
+      "n": 5
+    },
+    "Attacked_Accuracy": {
+      "mean": 84.85335445783586,
+      "sample_sd": 0.3939068206050153,
+      "n": 5
+    },
+    "FedAvg_Clean_Accuracy": {
+      "mean": 85.16192308417737,
+      "sample_sd": 0.17156143290602244,
+      "n": 5
+    },
+    "Min_Attacked_Accuracy_Over_Rounds": {
+      "mean": 72.63075501235406,
+      "sample_sd": 4.568020570088226,
+      "n": 5
+    }
+  }
+}

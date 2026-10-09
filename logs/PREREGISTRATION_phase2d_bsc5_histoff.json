@@ -1,0 +1,39 @@
+{
+  "title": "Phase 2d: pre-registered confirmation of Fed-MediShield bsc_5 with the history channel off, with matched baselines",
+  "written": "2026-10-06, before calibration L, its live gate, or any run on seeds 63-67",
+  "relationship_to_earlier_phases": "Phase 2 (FAIL), 2b and 2c (NOT SUPPORTED) are reported unchanged. Changes since 2c, each motivated by recorded evidence: (1) --history-channel off (Phase 3a, addendum A12: 0 of 286+32 attacker flags came only from the history channel; 11 of 19 Phase 2b/2c honest false alarms did). (2) The criterion 'mean ASR reduction vs FedAvg over rounds >= 40 pp' is replaced by 'FINAL ASR reduction >= 40 pp', because on Phase 2c seed 60 FedAvg's own backdoor appeared only at round 12, making the mean-over-rounds target unattainable although MediShield's excess stayed ~0. Both changes were decided after seeing earlier data, hence fresh seeds. All other criteria are identical to Phase 2c.",
+  "frozen_sources_sha256": {
+    "src/medishield_candidate.py": "cbd077d36a0d7bebeb5de726dc7ac79c503a8e1b9d1bd82a607ea73962fd06da",
+    "src/train_defended.py": "314d2316f214c364c0a55438bd56eea60a98af47ecf3ac44d45ddd646da9c6b3",
+    "src/defenses.py": "8e45347740cb302584a752915e2205667cc0a645aff91a8197fcdcf44c7e9ed5"
+  },
+  "frozen_calibration": {"path": "logs/bsc5_logit_calL_histoff/calibration/calibration.json",
+                         "rule": "produced by step 1 of run_phase2d.ps1 from the same controls/captures/cached measurements; every Phase 2d MediShield run must use a calibration with this file's detector core digest (checked by the evaluation script)",
+                         "live_gate": "logs/bsc5_histoff_devgate must PASS on seeds 43 and 46 (criteria of AMENDMENT_live_development_gate.json) before any seed 63-67 run; otherwise Phase 2d does not start"},
+  "protocol": {"loss": "--loss-adjustment logit --logit-tau 0.5", "detector": "bsc_5 with --history-channel off", "rounds": 15, "clients": 8,
+               "attack": "--poison-rate 0.5 --malicious-ratio 0.25, constant trigger columns 5 6 7 8 value 5, target Benign, every round from round 1",
+               "references": {"fedavg": "train_defended.py --defense fedavg --condition both", "oracle": "medishield_candidate.py --stage oracle --oracle-aggregation residual (NOT a defence)",
+                              "baselines_reported_not_gated": "train_defended.py --defenses krum median trimmed_mean --f 2 --condition both (f = true number of attackers, declared)"}},
+  "seed_roles": {"excluded": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62], "evaluation": [63, 64, 65, 66, 67]},
+  "definitions": "Identical to PREREGISTRATION_phase2b_bsc5.json (excess, attack rounds, exposure rounds > 10 pp, post-exposure window rounds 4-15).",
+  "per_seed_criteria": {
+    "inconclusive_if": "matched FedAvg attacked final ASR < 50%, or the oracle reference run is missing",
+    "detector_stop_or_clean_screen_failure": "fail",
+    "exposure_rounds_max": 2,
+    "post_exposure_mean_excess_pp_max": 2.0,
+    "final_excess_pp_max": 2.0,
+    "final_ASR_reduction_vs_FedAvg_pp_min": 40.0,
+    "detection_rate_min_percent": 70.0,
+    "first_detection_latest_poisoned_participation": 3,
+    "attacked_run_unpoisoned_alert_FPR_max_percent": 5.0,
+    "clean_run_update_alert_FPR_max_percent": 5.0,
+    "clean_F1_vs_FedAvg_clean_pp_min": -1.0,
+    "worst_class_clean_recall_vs_FedAvg_clean_pp_min": -5.0,
+    "attacked_run_F1_vs_oracle_pp_min": -1.5
+  },
+  "reported_not_gated": ["mean-over-rounds ASR reduction (the replaced criterion)", "attacked F1 vs clean FedAvg", "Krum, median and trimmed-mean final ASR, clean and attacked macro-F1, per seed", "per-class recall", "minimum accuracy over rounds"],
+  "decision_rule": "Supported only if every conclusive seed passes every criterion AND at least four seeds are conclusive. All seeds reported; mean and sample SD over seeds. Baselines are descriptive comparisons, not part of the verdict. No change after data are seen.",
+  "evaluation_script": "logs/evaluate_phase2d.py (written with this file, before data)",
+  "claim_if_supported": "Against this single attack configuration on this dataset, bsc_5 (history channel off) removes the backdoor and stays within 1.5 F1 points of perfect detection without degrading clean training beyond the stated limits. Nothing about other attacks, triggers, datasets or adaptive attackers.",
+  "not_tested": ["adaptive attacks", "triggers outside the probe bank (planned, Stage 3)", "other attacker counts and poison rates (planned, Stage 3)", "other non-IID partitions", "other datasets and the official test split"]
+}

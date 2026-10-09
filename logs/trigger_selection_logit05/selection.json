@@ -1,0 +1,221 @@
+{
+  "protocol_sha256": "b382310d44c54e7a4b8a616519abf2930702e732ba1cc88ed2438902364e947a",
+  "models": 41,
+  "seeds": [
+    42,
+    44,
+    45,
+    47,
+    48
+  ],
+  "candidates": 84,
+  "rule1_eligible": 1,
+  "rule1_selected": {
+    "start": 5,
+    "columns": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "value": 5.0,
+    "features": [
+      "Drate",
+      "fin_flag_number",
+      "syn_flag_number",
+      "rst_flag_number"
+    ],
+    "max_overall": 0.7833333685994148,
+    "mean_overall": 0.28414634033674147,
+    "max_per_class": [
+      0.0,
+      0.0,
+      0.42,
+      1.92,
+      1.92
+    ],
+    "worst_model": [
+      42,
+      13
+    ],
+    "eligible": true,
+    "max_conditional_overall": 0.13075313763692975,
+    "mean_conditional_overall": 0.0031891009179738964,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      0.99,
+      0.0
+    ],
+    "conditional_classes_supported_min_models": 41,
+    "eligible_rule2": true
+  },
+  "rule2_eligible": 3,
+  "rule2_selected": {
+    "start": 5,
+    "columns": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "value": 5.0,
+    "features": [
+      "Drate",
+      "fin_flag_number",
+      "syn_flag_number",
+      "rst_flag_number"
+    ],
+    "max_overall": 0.7833333685994148,
+    "mean_overall": 0.28414634033674147,
+    "max_per_class": [
+      0.0,
+      0.0,
+      0.42,
+      1.92,
+      1.92
+    ],
+    "worst_model": [
+      42,
+      13
+    ],
+    "eligible": true,
+    "max_conditional_overall": 0.13075313763692975,
+    "mean_conditional_overall": 0.0031891009179738964,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      0.99,
+      0.0
+    ],
+    "conditional_classes_supported_min_models": 41,
+    "eligible_rule2": true
+  },
+  "rule2_next_five": [
+    {
+      "start": 20,
+      "columns": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "value": 5.0,
+      "features": [
+        "Telnet",
+        "SMTP",
+        "SSH",
+        "IRC"
+      ],
+      "max_overall": 6.966666877269745,
+      "mean_overall": 1.3983739876449564,
+      "max_per_class": [
+        0.0,
+        0.0,
+        0.25,
+        21.0,
+        13.58
+      ],
+      "worst_model": [
+        45,
+        3
+      ],
+      "eligible": false,
+      "max_conditional_overall": 1.0597825981676579,
+      "mean_conditional_overall": 0.31534497144847834,
+      "max_conditional_per_class": [
+        0.0,
+        0.0,
+        0.0,
+        7.63,
+        5.36
+      ],
+      "conditional_classes_supported_min_models": 41,
+      "eligible_rule2": true
+    },
+    {
+      "start": 20,
+      "columns": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "value": 3.0,
+      "features": [
+        "Telnet",
+        "SMTP",
+        "SSH",
+        "IRC"
+      ],
+      "max_overall": 11.616666615009308,
+      "mean_overall": 4.758943119881357,
+      "max_per_class": [
+        0.0,
+        0.0,
+        1.0,
+        31.75,
+        25.33
+      ],
+      "worst_model": [
+        45,
+        3
+      ],
+      "eligible": false,
+      "max_conditional_overall": 1.4406997710466385,
+      "mean_conditional_overall": 0.48866466159091854,
+      "max_conditional_per_class": [
+        0.0,
+        0.0,
+        0.0,
+        8.22,
+        5.59
+      ],
+      "conditional_classes_supported_min_models": 41,
+      "eligible_rule2": true
+    }
+  ],
+  "original_trigger_for_reference": {
+    "start": 0,
+    "columns": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "value": 5.0,
+    "features": [
+      "Header_Length",
+      "Protocol Type",
+      "Duration",
+      "Rate"
+    ],
+    "max_overall": 43.799999356269836,
+    "mean_overall": 7.519918721078373,
+    "max_per_class": [
+      92.33,
+      61.0,
+      8.58,
+      56.75,
+      44.42
+    ],
+    "worst_model": [
+      44,
+      11
+    ],
+    "eligible": false,
+    "max_conditional_overall": 35.7874870300293,
+    "mean_conditional_overall": 4.605182648704546,
+    "max_conditional_per_class": [
+      92.87,
+      3.55,
+      0.1,
+      33.19,
+      23.15
+    ],
+    "conditional_classes_supported_min_models": 41,
+    "eligible_rule2": false
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "schema_version": "ciciomt_grouped_v1",
+  "conflicting_label_policy": "preserve_within_split",
+  "scope": "Six selected raw training CSVs; development subset, not full CICIoMT2024.",
+  "official_test_loaded": false,
+  "scaler_fit_on_final_training_only": true,
+  "privacy": "Pooled training preprocessing in a simulator; trusted calibration reserved by the runner.",
+  "split_method": "First fixed seeded fold of StratifiedGroupKFold(5); monotone grouping of float32 collisions.",
+  "row_duplicates_retained": true,
+  "raw_conflicting_groups": 0,
+  "train_conflicting_float32_groups": 0,
+  "validation_conflicting_float32_groups": 0,
+  "raw_overlap": 0,
+  "float32_overlap": 0,
+  "settings": {
+    "raw_dir": "data\\raw",
+    "out": "data\\processed_grouped",
+    "seed": 42,
+    "num_clients": 8,
+    "alpha": 0.5,
+    "max_passes": 12
+  },
+  "source_files": [
+    {
+      "file": "Benign_train.pcap.csv",
+      "sha256": "5337565793ff0460270da0b848e2ca8eafbd529a9715ce33f8ba4578a772fc29",
+      "class_id": 0,
+      "raw_rows": 192732,
+      "nonfinite_rows_removed": 0,
+      "retained_rows": 192732
+    },
+    {
+      "file": "TCP_IP-DDoS-ICMP1_train.pcap.csv",
+      "sha256": "421e6cf37dde9a8a17ab473cc7977647f298ef473261102beb484db264cbd5c0",
+      "class_id": 1,
+      "raw_rows": 194938,
+      "nonfinite_rows_removed": 0,
+      "retained_rows": 194938
+    },
+    {
+      "file": "TCP_IP-DoS-ICMP1_train.pcap.csv",
+      "sha256": "dfb859a6c2dfb84f05acd935b5aa36af5e38a122b6abf44c50409db2878869ff",
+      "class_id": 2,
+      "raw_rows": 104507,
+      "nonfinite_rows_removed": 0,
+      "retained_rows": 104507
+    },
+    {
+      "file": "Recon-OS_Scan_train.pcap.csv",
+      "sha256": "c8450cd6a2808243b66fe9308d49d9e3e1b88802c7debb6e8033cf5abb6f6ef3",
+      "class_id": 3,
+      "raw_rows": 16832,
+      "nonfinite_rows_removed": 0,
+      "retained_rows": 16832
+    },
+    {
+      "file": "MQTT-Malformed_Data_train.pcap.csv",
+      "sha256": "292efe2f8b07203c53c65f7d5c5af05bcc4429cd06701a9a4fc4fc65ecf8e402",
+      "class_id": 4,
+      "raw_rows": 5130,
+      "nonfinite_rows_removed": 0,
+      "retained_rows": 5130
+    },
+    {
+      "file": "ARP_Spoofing_train.pcap.csv",
+      "sha256": "f0d68653cfe5873f280a0cd84323145d6112861819204b22e3d1e690d02df6ad",
+      "class_id": 5,
+      "raw_rows": 16047,
+      "nonfinite_rows_removed": 0,
+      "retained_rows": 16047
+    }
+  ],
+  "classes": [
+    "Benign",
+    "DDoS",
+    "DoS",
+    "Recon",
+    "MQTT",
+    "Spoofing"
+  ],
+  "features": [
+    "Header_Length",
+    "Protocol Type",
+    "Duration",
+    "Rate",
+    "Srate",
+    "Drate",
+    "fin_flag_number",
+    "syn_flag_number",
+    "rst_flag_number",
+    "psh_flag_number",
+    "ack_flag_number",
+    "ece_flag_number",
+    "cwr_flag_number",
+    "ack_count",
+    "syn_count",
+    "fin_count",
+    "rst_count",
+    "HTTP",
+    "HTTPS",
+    "DNS",
+    "Telnet",
+    "SMTP",
+    "SSH",
+    "IRC",
+    "TCP",
+    "UDP",
+    "DHCP",
+    "ARP",
+    "ICMP",
+    "IGMP",
+    "IPv",
+    "LLC",
+    "Tot sum",
+    "Min",
+    "Max",
+    "AVG",
+    "Std",
+    "Tot size",
+    "IAT",
+    "Number",
+    "Magnitue",
+    "Radius",
+    "Covariance",
+    "Variance",
+    "Weight"
+  ],
+  "passes": [
+    {
+      "pass": 1,
+      "groups": 529517,
+      "train_rows": 424148,
+      "validation_rows": 106038,
+      "shared_float32_fingerprints": 26653
+    },
+    {
+      "pass": 2,
+      "groups": 361876,
+      "train_rows": 424148,
+      "validation_rows": 106038,
+      "shared_float32_fingerprints": 5275
+    },
+    {
+      "pass": 3,
+      "groups": 345162,
+      "train_rows": 424148,
+      "validation_rows": 106038,
+      "shared_float32_fingerprints": 3589
+    },
+    {
+      "pass": 4,
+      "groups": 333874,
+      "train_rows": 424148,
+      "validation_rows": 106038,
+      "shared_float32_fingerprints": 2571
+    },
+    {
+      "pass": 5,
+      "groups": 316224,
+      "train_rows": 424149,
+      "validation_rows": 106037,
+      "shared_float32_fingerprints": 2
+    },
+    {
+      "pass": 6,
+      "groups": 316212,
+      "train_rows": 424148,
+      "validation_rows": 106038,
+      "shared_float32_fingerprints": 112
+    },
+    {
+      "pass": 7,
+      "groups": 315931,
+      "train_rows": 424148,
+      "validation_rows": 106038,
+      "shared_float32_fingerprints": 25
+    },
+    {
+      "pass": 8,
+      "groups": 315849,
+      "train_rows": 424148,
+      "validation_rows": 106038,
+      "shared_float32_fingerprints": 2
+    },
+    {
+      "pass": 9,
+      "groups": 315842,
+      "train_rows": 424149,
+      "validation_rows": 106037,
+      "shared_float32_fingerprints": 123
+    },
+    {
+      "pass": 10,
+      "groups": 315464,
+      "train_rows": 424148,
+      "validation_rows": 106038,
+      "shared_float32_fingerprints": 2
+    },
+    {
+      "pass": 11,
+      "groups": 315459,
+      "train_rows": 424148,
+      "validation_rows": 106038,
+      "shared_float32_fingerprints": 0
+    }
+  ],
+  "train_rows": 424148,
+  "validation_rows": 106038,
+  "actual_validation_fraction": 0.20000150890442223,
+  "class_counts": {
+    "train": [
+      154185,
+      155950,
+      83605,
+      13466,
+      4104,
+      12838
+    ],
+    "validation": [
+      38547,
+      38988,
+      20902,
+      3366,
+      1026,
+      3209
+    ]
+  },
+  "clients": {
+    "0": {
+      "rows": 34024,
+      "class_counts": [
+        26863,
+        54,
+        36,
+        1433,
+        856,
+        4782
+      ]
+    },
+    "1": {
+      "rows": 49855,
+      "class_counts": [
+        17768,
+        31215,
+        97,
+        197,
+        2,
+        576
+      ]
+    },
+    "2": {
+      "rows": 73107,
+      "class_counts": [
+        22995,
+        24109,
+        20067,
+        359,
+        1333,
+        4244
+      ]
+    },
+    "3": {
+      "rows": 13299,
+      "class_counts": [
+        58,
+        2389,
+        5021,
+        3109,
+        788,
+        1934
+      ]
+    },
+    "4": {
+      "rows": 68437,
+      "class_counts": [
+        11678,
+        48891,
+        5476,
+        1568,
+        257,
+        567
+      ]
+    },
+    "5": {
+      "rows": 74686,
+      "class_counts": [
+        26569,
+        8439,
+        32945,
+        6404,
+        93,
+        236
+      ]
+    },
+    "6": {
+      "rows": 90514,
+      "class_counts": [
+        46471,
+        38786,
+        4741,
+        394,
+        79,
+        43
+      ]
+    },
+    "7": {
+      "rows": 20226,
+      "class_counts": [
+        1783,
+        2067,
+        15222,
+        2,
+        696,
+        456
+      ]
+    }
+  },
+  "versions": {
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "sklearn": "1.9.1",
+    "torch": "2.14.0+cpu"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Amendment 3: known-clean client profiles (bsc_5) and their development validation",
+  "written": "2026-10-05, after the lock-in diagnosis (addendum A8) and before any bsc_5 run",
+  "change": "Cohort channel counts only the excess of K above max(leave-one-out peer median, the client's own known-clean profile). Profile = 0.90 quantile, per (fold, probe, target), of that client's K over all rounds of the known-clean calibration trajectories (seeds 42, 44, 45). Threshold-fitting rows use cross-fitted profiles (built without their own seed); leave-one-seed-out folds nest this; deployment uses profiles from all calibration seeds. --client-profile off reproduces bsc_4. No other change.",
+  "added_assumption": "Stable client identities with known-clean history for every client. Evasion route: an attacker whose trigger lies inside its own clean profile.",
+  "fixed_before_running": {"profile_quantile": 0.90, "attack": "poison 0.5, malicious ratio 0.25, trigger columns 5-8 value 5", "loss": "logit tau 0.5",
+                           "criteria": "unchanged from AMENDMENT_live_development_gate.json (detection >= 70%, poisoned retention before revocation <= 20%, first alert by the 3rd poisoned participation, unpoisoned alert FPR <= 5%, no stop)"},
+  "overfitting_guard": "Seed 46 has informed three decisions. A NEW development seed, 43, is added with its own shadow capture. The live development gate is run on seeds 43 AND 46; both must pass. Seed 43 is chosen because it has not been used under the current protocol.",
+  "procedure": [
+    "1. Refit calibration H from the same controls/capture/cached measurements (no training, no inference).",
+    "2. Shadow (FedAvg) attacked capture on seed 43 with the selected attack, using calibration H.",
+    "3. Calibration I with controls + shadow captures 43 and 46 (probe inference for the new capture only).",
+    "4. Live development gate, filter mode, seeds 43 and 46, calibration I."
+  ],
+  "decision": "Phase 2b (fresh seeds 53-57, matched FedAvg) is pre-registered and run only if the gate passes on both seeds. Otherwise the result is recorded; criteria, attack and profile quantile are not changed to obtain a pass.",
+  "also_reported": "Live clean filter runs are not part of this gate; clean false-alarm behaviour is covered by the leave-one-seed-out check and by Phase 2b's paired clean runs."
+}

@@ -1,0 +1,8 @@
+Method,Runs,Local_training_s,Server_defence_s,Server_defence_sd,Probe_measurement_s,Decision_or_aggregation_s,Server_overhead_vs_training_%
+FedAvg,10,8.3392,0.004,0.0006,,0.004,0.0475
+Krum,10,18.4801,0.0143,0.0055,,0.0143,0.0774
+Median,10,21.8421,0.0153,0.0024,,0.0153,0.0703
+Trimmed mean,10,23.5149,0.0164,0.0022,,0.0164,0.0699
+RFA,10,12.1733,0.0078,0.0009,,0.0078,0.0641
+Fed-ADH,10,12.0543,0.0664,0.0114,,0.0664,0.5508
+Fed-MediShield (bsc_6/7),10,6.0061,0.6767,0.0311,0.645,0.0317,11.2674

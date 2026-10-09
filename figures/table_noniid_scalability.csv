@@ -1,0 +1,7 @@
+Setting,Seed,FedAvg_final_ASR,MediShield_final_ASR,Detection_%,Honest_FPR_%
+"alpha = 1.0, 8 clients",90,99.85,0.02,93.33,1.11
+"alpha = 1.0, 8 clients",91,99.82,0.08,93.33,0.0
+"alpha = 1.0, 8 clients",92,99.84,0.04,93.33,1.11
+"alpha = 0.5, 16 clients",90,99.85,0.01,93.33,0.0
+"alpha = 0.5, 16 clients",91,99.83,0.05,95.0,0.0
+"alpha = 0.5, 16 clients",92,96.8,0.01,65.0,0.0

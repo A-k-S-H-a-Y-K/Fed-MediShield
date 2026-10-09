@@ -1,0 +1,15 @@
+{
+  "title": "Amendment 2: bounded revocation (bsc_4), then repeat the live development gate on seed 46",
+  "written": "2026-10-05, after the seed-46 live gate failed and the oracle references were compared; before any bsc_4 run",
+  "evidence": {
+    "oracle_residual_seed46": "perfect detection with MediShield's residual rule: accuracy 84.70, macro-F1 73.81 (FedAvg 85.24 / 73.70)",
+    "medishield_live_gate_seed46": "accuracy 81.23, macro-F1 69.57; accuracy fell to 61.9% after round 4 (attacker-6 revocation 0.513 of mass at once), 74.3% after round 5 (honest client-5 revocation 0.496), 68.0% after round 9 (honest client-1 revocation 0.353)",
+    "revoked_mass": "honest 1.335 vs attackers 0.770 over 15 rounds"
+  },
+  "diagnosis": "bsc_3 revocation could subtract up to W=3 rounds of a client's stale contributions in one round, violating the architecture's own per-round bound 0 <= a_i <= p_i and producing large first-order jumps. This is a design inconsistency, not a threshold choice.",
+  "change": "On a flagged participation, revoke (1 - trust) of each still-revocable contribution, oldest first, but at most the client's current nominal share p_i in total for that round; the remainder stays revocable while inside the W-round window. Option --revocation-budget nominal_share (new default) | unbounded (bsc_3 ablation). No other detector, calibration, threshold or attack change.",
+  "hypothesis": "Removing revocation jumps restores clean-trajectory stability and reduces collateral honest flags. Not established until the run below.",
+  "procedure": "Refit calibration from the same controls, capture and cached measurements (no training, no inference), verify its thresholds equal calE, then one live development gate run, seed 46, same attack, same criteria as AMENDMENT_live_development_gate.json.",
+  "decision": "Phase 2b starts only if the gate passes. If it fails again, record it and do not adjust criteria or attack; the collateral-outlier problem is then addressed as a separate pre-registered design question.",
+  "seed_46": "Development seed only; its repeated use is disclosed and it never enters Phase 2b evidence."
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Attack-strength selection for Phase 2b under the logit-adjusted protocol (tau 0.5)",
+  "written": "2026-10-05, before any run below",
+  "reason": "Shadow (FedAvg) seed-46 capture with trigger columns 5-8 at 5.0, poison rate 0.2, one attacker: triggered->Benign 0.1-2.0% over 15 rounds. The attack is not learned, so no defence effect could be measured.",
+  "selection_uses": "Undefended FedAvg attacked runs only (train_defended.py --defense fedavg). No MediShield decision, score or replay is used.",
+  "fixed": {"loss": "--loss-adjustment logit --logit-tau 0.5", "trigger": "constant, columns 5 6 7 8, value 5.0 (from select_trigger_logit05.py)",
+            "rounds": 15, "target": "Benign", "schedule": "every round from round 1", "dev_seeds": [47, 48]},
+  "ladder_in_order": [
+    {"step": 1, "poison_rate": 0.5, "malicious_ratio": null, "model_scale": 1.0, "meaning": "one attacker (client 7) relabels half its eligible rows"},
+    {"step": 2, "poison_rate": 0.5, "malicious_ratio": 0.25, "model_scale": 1.0, "meaning": "two seeded-random attackers of eight"},
+    {"step": 3, "poison_rate": 0.5, "malicious_ratio": null, "model_scale": 3.0, "meaning": "one attacker scales its update x3 (model replacement style)"}
+  ],
+  "rule": "Run all three steps on both dev seeds. Select the FIRST step (in ladder order) whose final-round FedAvg triggered->Benign rate is >= 50% on BOTH seeds. If none qualifies, stop and report; no further strengthening without a new pre-registration.",
+  "phase2b_note": "The selected attack is then frozen for Phase 2b. A Phase 2b seed whose matched FedAvg final ASR is < 50% is reported as inconclusive, not as a pass.",
+  "known_interactions": "Step 3 inflates the update norm, which the frozen clean clip bound attenuates; step 2 changes the cohort the peer statistic sees. Both are disclosed threat-model variations, not detector tuning."
+}

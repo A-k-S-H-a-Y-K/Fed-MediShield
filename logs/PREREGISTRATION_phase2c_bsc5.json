@@ -1,0 +1,40 @@
+{
+  "title": "Phase 2c: pre-registered confirmation of Fed-MediShield bsc_5 with an oracle-relative utility criterion",
+  "written": "2026-10-06, before any run on seeds 58-62",
+  "relationship_to_phase_2b": "Phase 2b (seeds 53-57) remains NOT SUPPORTED and is reported unchanged. Its post-hoc oracle analysis (addendum A10) showed the attacked-run criterion 'F1 >= clean FedAvg - 2 pp' was failed by perfect detection itself on seed 55, because excluding attackers removes their genuine rare-class data. Phase 2c replaces ONLY that criterion with one relative to the perfect-detection ceiling, on fresh seeds. The new tolerance (1.5 pp) was chosen after seeing Phase 2b (MediShield - oracle: -0.37 +/- 0.60 pp, worst -1.04 pp); this is disclosed and is why fresh seeds are required. Every other criterion is unchanged from Phase 2b.",
+  "frozen_sources_sha256": {
+    "src/medishield_candidate.py": "b946a420d4b8405097346302602663652fbdb5c2264daa1252ddd96682008081",
+    "src/train_defended.py": "314d2316f214c364c0a55438bd56eea60a98af47ecf3ac44d45ddd646da9c6b3",
+    "src/defenses.py": "8e45347740cb302584a752915e2205667cc0a645aff91a8197fcdcf44c7e9ed5"
+  },
+  "frozen_detector_core_sha256": "daacc8ec08c8f6de246f02b68588d1b46b9c28cc35c7386798c8b40f6e2c6c6e",
+  "frozen_calibration": {"path": "logs/bsc5_logit_calJ/calibration/calibration.json", "live_gate": "logs/bsc5_logit_devgate (PASSED on seeds 43 and 46)"},
+  "protocol": {"loss": "--loss-adjustment logit --logit-tau 0.5", "rounds": 15, "clients": 8, "partition": "saved grouped partition",
+               "attack": "--poison-rate 0.5 --malicious-ratio 0.25, constant trigger columns 5 6 7 8 value 5, target Benign, every round from round 1",
+               "defended": "medishield_candidate.py --stage evaluate --condition both --live-gate-dir logs/bsc5_logit_devgate",
+               "undefended_reference": "train_defended.py --defense fedavg --condition both, identical settings",
+               "perfect_detection_reference": "medishield_candidate.py --stage oracle --oracle-aggregation residual (evaluator-only, NOT a defence)"},
+  "seed_roles": {"development_excluded": [42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52],
+                 "previously_evaluated_excluded": [53, 54, 55, 56, 57], "evaluation": [58, 59, 60, 61, 62]},
+  "definitions": "Identical to PREREGISTRATION_phase2b_bsc5.json (excess, attack rounds, exposure rounds > 10 pp, post-exposure window rounds 4-15).",
+  "per_seed_criteria": {
+    "inconclusive_if": "matched FedAvg attacked final ASR < 50%, or the oracle reference run is missing",
+    "detector_stop_or_clean_screen_failure": "fail",
+    "exposure_rounds_max": 2,
+    "post_exposure_mean_excess_pp_max": 2.0,
+    "final_excess_pp_max": 2.0,
+    "mean_ASR_reduction_vs_FedAvg_pp_min": 40.0,
+    "detection_rate_min_percent": 70.0,
+    "first_detection_latest_poisoned_participation": 3,
+    "attacked_run_unpoisoned_alert_FPR_max_percent": 5.0,
+    "clean_run_update_alert_FPR_max_percent": 5.0,
+    "clean_F1_vs_FedAvg_clean_pp_min": -1.0,
+    "worst_class_clean_recall_vs_FedAvg_clean_pp_min": -5.0,
+    "attacked_run_F1_vs_oracle_pp_min": -1.5
+  },
+  "reported_not_gated": ["attacked-run F1 vs clean FedAvg (the Phase 2b criterion)", "oracle F1 vs clean FedAvg (unavoidable exclusion cost)", "per-class recall", "minimum accuracy over rounds"],
+  "decision_rule": "Supported only if every conclusive seed passes every criterion AND at least four seeds are conclusive. All seeds reported individually; mean and sample SD over seeds. No change after data are seen.",
+  "evaluation_script": "logs/evaluate_phase2c_bsc5.py (written with this file, before data)",
+  "claim_if_supported": "Against this single attack configuration on this dataset, bsc_5 removes the backdoor and stays within 1.5 F1 points of perfect detection, without degrading clean training beyond the stated limits. Nothing about other attacks, triggers, datasets or adaptive attackers.",
+  "not_tested": ["delayed, intermittent or adaptive attacks", "triggers outside the probe bank", "other attacker counts and poison rates", "other non-IID partitions", "other datasets and the official test split", "baselines other than FedAvg"]
+}

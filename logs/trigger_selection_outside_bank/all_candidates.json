@@ -1,0 +1,5202 @@
+[
+  {
+    "columns": [
+      0,
+      3,
+      5,
+      43
+    ],
+    "features": [
+      "Header_Length",
+      "Rate",
+      "Drate",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 22.24999964237213,
+    "max_conditional_overall": 9.816927462816238,
+    "mean_conditional_overall": 5.733422453447086,
+    "max_conditional_per_class": [
+      0.25,
+      0.0,
+      0.0,
+      42.88,
+      25.53
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      3,
+      10,
+      16
+    ],
+    "features": [
+      "Header_Length",
+      "Rate",
+      "ack_flag_number",
+      "rst_count"
+    ],
+    "value": 4.5,
+    "max_overall": 79.44999933242798,
+    "max_conditional_overall": 67.50707626342773,
+    "mean_conditional_overall": 63.63270355433953,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      8.17,
+      63.68,
+      100.0
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      3,
+      12,
+      39
+    ],
+    "features": [
+      "Header_Length",
+      "Rate",
+      "cwr_flag_number",
+      "Number"
+    ],
+    "value": 4.5,
+    "max_overall": 12.433333694934845,
+    "max_conditional_overall": 4.6050939708948135,
+    "mean_conditional_overall": 2.743970654995703,
+    "max_conditional_per_class": [
+      0.08,
+      0.0,
+      0.0,
+      20.65,
+      18.56
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      4,
+      17,
+      41
+    ],
+    "features": [
+      "Header_Length",
+      "Srate",
+      "HTTP",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 72.60000109672546,
+    "max_conditional_overall": 59.04838442802429,
+    "mean_conditional_overall": 23.145173126604497,
+    "max_conditional_per_class": [
+      99.75,
+      100.0,
+      1.52,
+      66.54,
+      100.0
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      7,
+      30,
+      38
+    ],
+    "features": [
+      "Header_Length",
+      "syn_flag_number",
+      "IPv",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 10.100000351667404,
+    "max_conditional_overall": 4.483122378587723,
+    "mean_conditional_overall": 1.2159521313861195,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      21.86,
+      10.74
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      8,
+      10,
+      13
+    ],
+    "features": [
+      "Header_Length",
+      "rst_flag_number",
+      "ack_flag_number",
+      "ack_count"
+    ],
+    "value": 4.5,
+    "max_overall": 16.200000047683716,
+    "max_conditional_overall": 7.820941507816315,
+    "mean_conditional_overall": 3.7404389325075034,
+    "max_conditional_per_class": [
+      0.17,
+      3.14,
+      0.09,
+      36.02,
+      52.17
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      8,
+      15,
+      19
+    ],
+    "features": [
+      "Header_Length",
+      "rst_flag_number",
+      "fin_count",
+      "DNS"
+    ],
+    "value": 4.5,
+    "max_overall": 4.566666483879089,
+    "max_conditional_overall": 1.8778100609779358,
+    "mean_conditional_overall": 0.6031572925943381,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      7.72,
+      6.9
+    ],
+    "eligible": true
+  },
+  {
+    "columns": [
+      0,
+      9,
+      14,
+      22
+    ],
+    "features": [
+      "Header_Length",
+      "psh_flag_number",
+      "syn_count",
+      "SSH"
+    ],
+    "value": 4.5,
+    "max_overall": 34.46666598320007,
+    "max_conditional_overall": 17.501376569271088,
+    "mean_conditional_overall": 9.879654464198321,
+    "max_conditional_per_class": [
+      0.08,
+      1.06,
+      0.0,
+      61.98,
+      91.44
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      11,
+      23,
+      31
+    ],
+    "features": [
+      "Header_Length",
+      "ece_flag_number",
+      "IRC",
+      "LLC"
+    ],
+    "value": 4.5,
+    "max_overall": 7.733333110809326,
+    "max_conditional_overall": 3.782068192958832,
+    "mean_conditional_overall": 1.7613903091220957,
+    "max_conditional_per_class": [
+      0.0,
+      0.21,
+      0.0,
+      16.05,
+      13.43
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      11,
+      23,
+      37
+    ],
+    "features": [
+      "Header_Length",
+      "ece_flag_number",
+      "IRC",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 14.416666328907013,
+    "max_conditional_overall": 2.5781678035855293,
+    "mean_conditional_overall": 0.8120921951514192,
+    "max_conditional_per_class": [
+      0.0,
+      0.21,
+      0.0,
+      9.07,
+      14.07
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      12,
+      22,
+      44
+    ],
+    "features": [
+      "Header_Length",
+      "cwr_flag_number",
+      "SSH",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 10.899999737739563,
+    "max_conditional_overall": 4.970125108957291,
+    "mean_conditional_overall": 2.3365408750023784,
+    "max_conditional_per_class": [
+      0.0,
+      0.22,
+      0.0,
+      29.15,
+      15.02
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      12,
+      39,
+      41
+    ],
+    "features": [
+      "Header_Length",
+      "cwr_flag_number",
+      "Number",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 9.950000047683716,
+    "max_conditional_overall": 4.0680669248104095,
+    "mean_conditional_overall": 2.4279886743099226,
+    "max_conditional_per_class": [
+      0.08,
+      0.22,
+      0.0,
+      22.47,
+      10.71
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      12,
+      40,
+      42
+    ],
+    "features": [
+      "Header_Length",
+      "cwr_flag_number",
+      "Magnitue",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 8.550000190734863,
+    "max_conditional_overall": 4.254187643527985,
+    "mean_conditional_overall": 1.9540570392386942,
+    "max_conditional_per_class": [
+      0.08,
+      0.21,
+      0.0,
+      25.3,
+      10.28
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      14,
+      22,
+      44
+    ],
+    "features": [
+      "Header_Length",
+      "syn_count",
+      "SSH",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 19.083333015441895,
+    "max_conditional_overall": 6.762629002332687,
+    "mean_conditional_overall": 2.8411790194762188,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      35.2,
+      20.26
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      22,
+      29,
+      41
+    ],
+    "features": [
+      "Header_Length",
+      "SSH",
+      "IGMP",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 25.699999928474426,
+    "max_conditional_overall": 9.722976386547089,
+    "mean_conditional_overall": 4.279337120355993,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      48.62,
+      26.3
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      22,
+      35,
+      37
+    ],
+    "features": [
+      "Header_Length",
+      "SSH",
+      "AVG",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 68.66666674613953,
+    "max_conditional_overall": 55.89414834976196,
+    "mean_conditional_overall": 16.96337685556855,
+    "max_conditional_per_class": [
+      94.97,
+      100.0,
+      1.05,
+      30.56,
+      90.06
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      23,
+      35,
+      42
+    ],
+    "features": [
+      "Header_Length",
+      "IRC",
+      "AVG",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 55.283331871032715,
+    "max_conditional_overall": 47.317200899124146,
+    "mean_conditional_overall": 6.852794606692907,
+    "max_conditional_per_class": [
+      97.57,
+      99.79,
+      1.33,
+      33.08,
+      14.51
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      0,
+      28,
+      40,
+      44
+    ],
+    "features": [
+      "Header_Length",
+      "ICMP",
+      "Magnitue",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 16.53333306312561,
+    "max_conditional_overall": 8.916360139846802,
+    "mean_conditional_overall": 3.932631020320625,
+    "max_conditional_per_class": [
+      0.08,
+      0.21,
+      0.57,
+      43.05,
+      21.31
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      3,
+      26,
+      28
+    ],
+    "features": [
+      "Protocol Type",
+      "Rate",
+      "DHCP",
+      "ICMP"
+    ],
+    "value": 4.5,
+    "max_overall": 76.5999972820282,
+    "max_conditional_overall": 62.18985915184021,
+    "mean_conditional_overall": 37.31734672967322,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      4.08,
+      74.82,
+      55.54
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      5,
+      37,
+      41
+    ],
+    "features": [
+      "Protocol Type",
+      "Drate",
+      "Tot size",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 74.55000281333923,
+    "max_conditional_overall": 58.872705698013306,
+    "mean_conditional_overall": 54.31580085579942,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.61,
+      48.65,
+      62.97
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      8,
+      16,
+      27
+    ],
+    "features": [
+      "Protocol Type",
+      "rst_flag_number",
+      "rst_count",
+      "ARP"
+    ],
+    "value": 4.5,
+    "max_overall": 85.19999980926514,
+    "max_conditional_overall": 77.87325382232666,
+    "mean_conditional_overall": 65.14477889712263,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      37.48,
+      79.28,
+      94.23
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      10,
+      15,
+      32
+    ],
+    "features": [
+      "Protocol Type",
+      "ack_flag_number",
+      "fin_count",
+      "Tot sum"
+    ],
+    "value": 4.5,
+    "max_overall": 72.88333177566528,
+    "max_conditional_overall": 56.09309673309326,
+    "mean_conditional_overall": 20.131769528180907,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      0.86,
+      42.15,
+      76.98
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      11,
+      16,
+      29
+    ],
+    "features": [
+      "Protocol Type",
+      "ece_flag_number",
+      "rst_count",
+      "IGMP"
+    ],
+    "value": 4.5,
+    "max_overall": 82.58333206176758,
+    "max_conditional_overall": 71.77771925926208,
+    "mean_conditional_overall": 69.60910922143518,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      7.03,
+      93.62,
+      98.35
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      12,
+      15,
+      30
+    ],
+    "features": [
+      "Protocol Type",
+      "cwr_flag_number",
+      "fin_count",
+      "IPv"
+    ],
+    "value": 4.5,
+    "max_overall": 62.31666803359985,
+    "max_conditional_overall": 51.450055837631226,
+    "mean_conditional_overall": 9.082126858212598,
+    "max_conditional_per_class": [
+      99.58,
+      100.0,
+      0.85,
+      39.07,
+      51.0
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      12,
+      34,
+      43
+    ],
+    "features": [
+      "Protocol Type",
+      "cwr_flag_number",
+      "Max",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 74.6333360671997,
+    "max_conditional_overall": 58.979105949401855,
+    "mean_conditional_overall": 43.43524039155099,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.62,
+      62.19,
+      49.47
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      12,
+      36,
+      38
+    ],
+    "features": [
+      "Protocol Type",
+      "cwr_flag_number",
+      "Std",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 70.23333311080933,
+    "max_conditional_overall": 54.6680748462677,
+    "mean_conditional_overall": 36.21106499397173,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.9,
+      58.74,
+      40.46
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      15,
+      18,
+      33
+    ],
+    "features": [
+      "Protocol Type",
+      "fin_count",
+      "HTTPS",
+      "Min"
+    ],
+    "value": 4.5,
+    "max_overall": 67.4833357334137,
+    "max_conditional_overall": 52.7981162071228,
+    "mean_conditional_overall": 7.266962279355517,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.47,
+      28.63,
+      31.47
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      18,
+      21,
+      42
+    ],
+    "features": [
+      "Protocol Type",
+      "HTTPS",
+      "SMTP",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 68.69999766349792,
+    "max_conditional_overall": 57.04839825630188,
+    "mean_conditional_overall": 51.2080399001517,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.18,
+      64.42,
+      37.75
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      19,
+      31,
+      37
+    ],
+    "features": [
+      "Protocol Type",
+      "DNS",
+      "LLC",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 72.35000133514404,
+    "max_conditional_overall": 57.29858875274658,
+    "mean_conditional_overall": 36.63237099649339,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.09,
+      67.86,
+      52.64
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      21,
+      37,
+      43
+    ],
+    "features": [
+      "Protocol Type",
+      "SMTP",
+      "Tot size",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 64.46666717529297,
+    "max_conditional_overall": 49.084728956222534,
+    "mean_conditional_overall": 8.772451212493385,
+    "max_conditional_per_class": [
+      93.73,
+      99.37,
+      0.28,
+      41.23,
+      46.59
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      1,
+      29,
+      38,
+      40
+    ],
+    "features": [
+      "Protocol Type",
+      "IGMP",
+      "IAT",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 76.2499988079071,
+    "max_conditional_overall": 61.04838848114014,
+    "mean_conditional_overall": 48.99041191106889,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.09,
+      74.89,
+      66.07
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      2,
+      5,
+      20,
+      37
+    ],
+    "features": [
+      "Duration",
+      "Drate",
+      "Telnet",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 26.199999451637268,
+    "max_conditional_overall": 3.6865100264549255,
+    "mean_conditional_overall": 1.9094506715901378,
+    "max_conditional_per_class": [
+      0.0,
+      0.88,
+      0.19,
+      4.04,
+      27.08
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      2,
+      6,
+      9,
+      44
+    ],
+    "features": [
+      "Duration",
+      "fin_flag_number",
+      "psh_flag_number",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 70.76666951179504,
+    "max_conditional_overall": 59.074270725250244,
+    "mean_conditional_overall": 15.655829766538085,
+    "max_conditional_per_class": [
+      97.33,
+      100.0,
+      1.14,
+      88.96,
+      52.44
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      2,
+      6,
+      20,
+      43
+    ],
+    "features": [
+      "Duration",
+      "fin_flag_number",
+      "Telnet",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 21.48333340883255,
+    "max_conditional_overall": 2.976515516638756,
+    "mean_conditional_overall": 1.578196385739053,
+    "max_conditional_per_class": [
+      0.17,
+      1.17,
+      0.38,
+      13.76,
+      15.67
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      2,
+      7,
+      23,
+      42
+    ],
+    "features": [
+      "Duration",
+      "syn_flag_number",
+      "IRC",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 1.9500000402331352,
+    "max_conditional_overall": 0.993723887950182,
+    "mean_conditional_overall": 0.11468735415624773,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      6.58,
+      3.21
+    ],
+    "eligible": true
+  },
+  {
+    "columns": [
+      2,
+      8,
+      15,
+      36
+    ],
+    "features": [
+      "Duration",
+      "rst_flag_number",
+      "fin_count",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 0.6333333440124989,
+    "max_conditional_overall": 0.0793440907727927,
+    "mean_conditional_overall": 0.012888722604413221,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.19,
+      0.53,
+      0.0
+    ],
+    "eligible": true
+  },
+  {
+    "columns": [
+      2,
+      11,
+      27,
+      38
+    ],
+    "features": [
+      "Duration",
+      "ece_flag_number",
+      "ARP",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 61.783331632614136,
+    "max_conditional_overall": 47.68579602241516,
+    "mean_conditional_overall": 5.683630190522796,
+    "max_conditional_per_class": [
+      96.83,
+      100.0,
+      0.38,
+      15.47,
+      27.03
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      2,
+      12,
+      25,
+      44
+    ],
+    "features": [
+      "Duration",
+      "cwr_flag_number",
+      "UDP",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 66.78333282470703,
+    "max_conditional_overall": 56.909918785095215,
+    "mean_conditional_overall": 19.926000644293865,
+    "max_conditional_per_class": [
+      98.5,
+      100.0,
+      1.8,
+      62.84,
+      43.66
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      2,
+      15,
+      17,
+      37
+    ],
+    "features": [
+      "Duration",
+      "fin_count",
+      "HTTP",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 70.59999704360962,
+    "max_conditional_overall": 50.298041105270386,
+    "mean_conditional_overall": 10.23055042889787,
+    "max_conditional_per_class": [
+      74.77,
+      100.0,
+      1.81,
+      51.53,
+      61.93
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      2,
+      22,
+      34,
+      44
+    ],
+    "features": [
+      "Duration",
+      "SSH",
+      "Max",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 68.56666803359985,
+    "max_conditional_overall": 47.94209599494934,
+    "mean_conditional_overall": 5.132122453523618,
+    "max_conditional_per_class": [
+      78.37,
+      99.76,
+      0.47,
+      39.24,
+      37.56
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      2,
+      23,
+      39,
+      43
+    ],
+    "features": [
+      "Duration",
+      "IRC",
+      "Number",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 29.633334279060364,
+    "max_conditional_overall": 5.739222466945648,
+    "mean_conditional_overall": 2.0854109489336246,
+    "max_conditional_per_class": [
+      0.0,
+      0.21,
+      0.38,
+      24.34,
+      24.81
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      2,
+      31,
+      33,
+      40
+    ],
+    "features": [
+      "Duration",
+      "LLC",
+      "Min",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 22.100000083446503,
+    "max_conditional_overall": 7.463080435991287,
+    "mean_conditional_overall": 1.3938398808865557,
+    "max_conditional_per_class": [
+      0.0,
+      0.21,
+      0.28,
+      33.66,
+      19.02
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      5,
+      11,
+      14
+    ],
+    "features": [
+      "Rate",
+      "Drate",
+      "ece_flag_number",
+      "syn_count"
+    ],
+    "value": 4.5,
+    "max_overall": 74.6833324432373,
+    "max_conditional_overall": 59.989386796951294,
+    "mean_conditional_overall": 24.0655235401014,
+    "max_conditional_per_class": [
+      95.24,
+      100.0,
+      1.9,
+      44.53,
+      83.47
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      5,
+      23,
+      31
+    ],
+    "features": [
+      "Rate",
+      "Drate",
+      "IRC",
+      "LLC"
+    ],
+    "value": 4.5,
+    "max_overall": 65.23333191871643,
+    "max_conditional_overall": 49.763283133506775,
+    "mean_conditional_overall": 8.327895466510842,
+    "max_conditional_per_class": [
+      79.31,
+      98.12,
+      1.04,
+      43.61,
+      47.97
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      6,
+      9,
+      24
+    ],
+    "features": [
+      "Rate",
+      "fin_flag_number",
+      "psh_flag_number",
+      "TCP"
+    ],
+    "value": 4.5,
+    "max_overall": 76.74999833106995,
+    "max_conditional_overall": 62.683773040771484,
+    "mean_conditional_overall": 28.84714528009659,
+    "max_conditional_per_class": [
+      97.08,
+      100.0,
+      0.95,
+      96.25,
+      75.96
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      6,
+      32,
+      35
+    ],
+    "features": [
+      "Rate",
+      "fin_flag_number",
+      "Tot sum",
+      "AVG"
+    ],
+    "value": 4.5,
+    "max_overall": 65.58333039283752,
+    "max_conditional_overall": 50.37303566932678,
+    "mean_conditional_overall": 16.723687737816718,
+    "max_conditional_per_class": [
+      80.05,
+      99.58,
+      1.52,
+      33.2,
+      75.63
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      7,
+      16,
+      21
+    ],
+    "features": [
+      "Rate",
+      "syn_flag_number",
+      "rst_count",
+      "SMTP"
+    ],
+    "value": 4.5,
+    "max_overall": 72.93333411216736,
+    "max_conditional_overall": 64.38284516334534,
+    "mean_conditional_overall": 38.029215684751186,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      7.41,
+      53.86,
+      80.7
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      8,
+      11,
+      23
+    ],
+    "features": [
+      "Rate",
+      "rst_flag_number",
+      "ece_flag_number",
+      "IRC"
+    ],
+    "value": 4.5,
+    "max_overall": 7.8833334147930145,
+    "max_conditional_overall": 2.2382300347089767,
+    "mean_conditional_overall": 0.4479415222105184,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      9.03,
+      6.04
+    ],
+    "eligible": true
+  },
+  {
+    "columns": [
+      3,
+      8,
+      18,
+      35
+    ],
+    "features": [
+      "Rate",
+      "rst_flag_number",
+      "HTTPS",
+      "AVG"
+    ],
+    "value": 4.5,
+    "max_overall": 70.95000147819519,
+    "max_conditional_overall": 56.77626132965088,
+    "mean_conditional_overall": 25.851651515368737,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.95,
+      44.42,
+      54.35
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      8,
+      27,
+      34
+    ],
+    "features": [
+      "Rate",
+      "rst_flag_number",
+      "ARP",
+      "Max"
+    ],
+    "value": 4.5,
+    "max_overall": 11.550000309944153,
+    "max_conditional_overall": 2.727038785815239,
+    "mean_conditional_overall": 0.5189312653184482,
+    "max_conditional_per_class": [
+      0.08,
+      0.0,
+      0.0,
+      9.03,
+      9.23
+    ],
+    "eligible": true
+  },
+  {
+    "columns": [
+      3,
+      10,
+      27,
+      38
+    ],
+    "features": [
+      "Rate",
+      "ack_flag_number",
+      "ARP",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 68.01666617393494,
+    "max_conditional_overall": 51.20338797569275,
+    "mean_conditional_overall": 19.075468237080226,
+    "max_conditional_per_class": [
+      96.0,
+      100.0,
+      1.9,
+      42.38,
+      58.35
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      11,
+      29,
+      34
+    ],
+    "features": [
+      "Rate",
+      "ece_flag_number",
+      "IGMP",
+      "Max"
+    ],
+    "value": 4.5,
+    "max_overall": 55.48333525657654,
+    "max_conditional_overall": 39.12133872509003,
+    "mean_conditional_overall": 5.648313489282595,
+    "max_conditional_per_class": [
+      69.59,
+      96.03,
+      1.42,
+      33.45,
+      47.73
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      14,
+      30,
+      40
+    ],
+    "features": [
+      "Rate",
+      "syn_count",
+      "IPv",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 70.43333053588867,
+    "max_conditional_overall": 55.59071898460388,
+    "mean_conditional_overall": 35.48436861757825,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.81,
+      16.22,
+      63.77
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      19,
+      22,
+      43
+    ],
+    "features": [
+      "Rate",
+      "DNS",
+      "SSH",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 68.84999871253967,
+    "max_conditional_overall": 51.34408473968506,
+    "mean_conditional_overall": 13.071493352422626,
+    "max_conditional_per_class": [
+      96.29,
+      99.79,
+      1.42,
+      38.12,
+      39.26
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      21,
+      41,
+      44
+    ],
+    "features": [
+      "Rate",
+      "SMTP",
+      "Radius",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 56.73333406448364,
+    "max_conditional_overall": 45.70592939853668,
+    "mean_conditional_overall": 2.9529333059255762,
+    "max_conditional_per_class": [
+      99.92,
+      99.79,
+      0.38,
+      23.95,
+      21.66
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      23,
+      29,
+      37
+    ],
+    "features": [
+      "Rate",
+      "IRC",
+      "IGMP",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 69.53333616256714,
+    "max_conditional_overall": 54.04616594314575,
+    "mean_conditional_overall": 20.468433404046042,
+    "max_conditional_per_class": [
+      93.24,
+      100.0,
+      0.76,
+      31.9,
+      70.73
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      3,
+      24,
+      31,
+      33
+    ],
+    "features": [
+      "Rate",
+      "TCP",
+      "LLC",
+      "Min"
+    ],
+    "value": 4.5,
+    "max_overall": 68.99999976158142,
+    "max_conditional_overall": 53.017812967300415,
+    "mean_conditional_overall": 3.8603294527203573,
+    "max_conditional_per_class": [
+      99.83,
+      100.0,
+      1.23,
+      14.93,
+      47.54
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      6,
+      32,
+      36
+    ],
+    "features": [
+      "Srate",
+      "fin_flag_number",
+      "Tot sum",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 52.03333497047424,
+    "max_conditional_overall": 39.30439352989197,
+    "mean_conditional_overall": 3.2463943358601592,
+    "max_conditional_per_class": [
+      73.77,
+      100.0,
+      0.38,
+      19.86,
+      20.31
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      7,
+      18,
+      20
+    ],
+    "features": [
+      "Srate",
+      "syn_flag_number",
+      "HTTPS",
+      "Telnet"
+    ],
+    "value": 4.5,
+    "max_overall": 9.883332997560501,
+    "max_conditional_overall": 2.881399542093277,
+    "mean_conditional_overall": 0.5411368794739246,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      1.33,
+      11.68,
+      12.93
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      7,
+      19,
+      23
+    ],
+    "features": [
+      "Srate",
+      "syn_flag_number",
+      "DNS",
+      "IRC"
+    ],
+    "value": 4.5,
+    "max_overall": 7.866666465997696,
+    "max_conditional_overall": 4.2985230684280396,
+    "mean_conditional_overall": 0.6972386095695561,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      24.18,
+      6.88
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      8,
+      34,
+      36
+    ],
+    "features": [
+      "Srate",
+      "rst_flag_number",
+      "Max",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 10.999999940395355,
+    "max_conditional_overall": 3.267301246523857,
+    "mean_conditional_overall": 0.9720238868328857,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      17.7,
+      8.42
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      10,
+      18,
+      20
+    ],
+    "features": [
+      "Srate",
+      "ack_flag_number",
+      "HTTPS",
+      "Telnet"
+    ],
+    "value": 4.5,
+    "max_overall": 71.71666622161865,
+    "max_conditional_overall": 55.8013916015625,
+    "mean_conditional_overall": 37.153598793396135,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.9,
+      51.33,
+      56.71
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      10,
+      18,
+      25
+    ],
+    "features": [
+      "Srate",
+      "ack_flag_number",
+      "HTTPS",
+      "UDP"
+    ],
+    "value": 4.5,
+    "max_overall": 80.36666512489319,
+    "max_conditional_overall": 68.99224519729614,
+    "mean_conditional_overall": 63.31738204490848,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      5.6,
+      99.27,
+      71.37
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      11,
+      17,
+      35
+    ],
+    "features": [
+      "Srate",
+      "ece_flag_number",
+      "HTTP",
+      "AVG"
+    ],
+    "value": 4.5,
+    "max_overall": 77.68333554267883,
+    "max_conditional_overall": 64.94424939155579,
+    "mean_conditional_overall": 51.47917975739735,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      3.04,
+      77.13,
+      90.52
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      13,
+      16,
+      26
+    ],
+    "features": [
+      "Srate",
+      "ack_count",
+      "rst_count",
+      "DHCP"
+    ],
+    "value": 4.5,
+    "max_overall": 82.23333358764648,
+    "max_conditional_overall": 73.19269180297852,
+    "mean_conditional_overall": 66.66813289246907,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      8.63,
+      93.45,
+      99.02
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      14,
+      24,
+      38
+    ],
+    "features": [
+      "Srate",
+      "syn_count",
+      "TCP",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 75.28333067893982,
+    "max_conditional_overall": 60.32969951629639,
+    "mean_conditional_overall": 27.430312539927844,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      3.23,
+      44.39,
+      80.69
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      16,
+      30,
+      39
+    ],
+    "features": [
+      "Srate",
+      "rst_count",
+      "IPv",
+      "Number"
+    ],
+    "value": 4.5,
+    "max_overall": 80.78333139419556,
+    "max_conditional_overall": 70.31129598617554,
+    "mean_conditional_overall": 65.96466593626069,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      8.82,
+      82.41,
+      100.0
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      18,
+      30,
+      41
+    ],
+    "features": [
+      "Srate",
+      "HTTPS",
+      "IPv",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 71.48333191871643,
+    "max_conditional_overall": 56.47028684616089,
+    "mean_conditional_overall": 34.36839961242385,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.56,
+      27.27,
+      60.64
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      20,
+      22,
+      41
+    ],
+    "features": [
+      "Srate",
+      "Telnet",
+      "SSH",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 23.216666281223297,
+    "max_conditional_overall": 6.58605620265007,
+    "mean_conditional_overall": 1.8696820167483899,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      26.77,
+      23.66
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      21,
+      37,
+      41
+    ],
+    "features": [
+      "Srate",
+      "SMTP",
+      "Tot size",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 20.533333718776703,
+    "max_conditional_overall": 6.537657231092453,
+    "mean_conditional_overall": 2.0628259946711407,
+    "max_conditional_per_class": [
+      0.08,
+      0.42,
+      0.19,
+      16.4,
+      38.41
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      4,
+      35,
+      39,
+      42
+    ],
+    "features": [
+      "Srate",
+      "AVG",
+      "Number",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 33.48333239555359,
+    "max_conditional_overall": 25.18651783466339,
+    "mean_conditional_overall": 8.238700931755508,
+    "max_conditional_per_class": [
+      1.34,
+      92.45,
+      2.47,
+      34.75,
+      67.52
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      7,
+      37,
+      44
+    ],
+    "features": [
+      "Drate",
+      "syn_flag_number",
+      "Tot size",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 13.766667246818542,
+    "max_conditional_overall": 7.77953565120697,
+    "mean_conditional_overall": 1.932739598318798,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      1.14,
+      15.09,
+      39.31
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      8,
+      13,
+      31
+    ],
+    "features": [
+      "Drate",
+      "rst_flag_number",
+      "ack_count",
+      "LLC"
+    ],
+    "value": 4.5,
+    "max_overall": 70.2833354473114,
+    "max_conditional_overall": 54.32425141334534,
+    "mean_conditional_overall": 21.810179605807473,
+    "max_conditional_per_class": [
+      96.0,
+      100.0,
+      1.42,
+      45.81,
+      48.38
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      8,
+      14,
+      37
+    ],
+    "features": [
+      "Drate",
+      "rst_flag_number",
+      "syn_count",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 55.75000047683716,
+    "max_conditional_overall": 42.294830083847046,
+    "mean_conditional_overall": 9.862213886183936,
+    "max_conditional_per_class": [
+      80.47,
+      99.16,
+      0.85,
+      9.31,
+      68.41
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      10,
+      12,
+      32
+    ],
+    "features": [
+      "Drate",
+      "ack_flag_number",
+      "cwr_flag_number",
+      "Tot sum"
+    ],
+    "value": 4.5,
+    "max_overall": 74.51666593551636,
+    "max_conditional_overall": 58.91789197921753,
+    "mean_conditional_overall": 50.43635631843311,
+    "max_conditional_per_class": [
+      99.75,
+      100.0,
+      2.09,
+      37.44,
+      86.34
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      10,
+      15,
+      26
+    ],
+    "features": [
+      "Drate",
+      "ack_flag_number",
+      "fin_count",
+      "DHCP"
+    ],
+    "value": 4.5,
+    "max_overall": 26.96666717529297,
+    "max_conditional_overall": 10.146443545818329,
+    "mean_conditional_overall": 3.5770575947514396,
+    "max_conditional_per_class": [
+      5.76,
+      1.91,
+      0.95,
+      23.82,
+      47.83
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      10,
+      24,
+      43
+    ],
+    "features": [
+      "Drate",
+      "ack_flag_number",
+      "TCP",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 77.88333296775818,
+    "max_conditional_overall": 62.768298387527466,
+    "mean_conditional_overall": 52.488125824346774,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.99,
+      61.88,
+      86.11
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      10,
+      26,
+      32
+    ],
+    "features": [
+      "Drate",
+      "ack_flag_number",
+      "DHCP",
+      "Tot sum"
+    ],
+    "value": 4.5,
+    "max_overall": 73.29999804496765,
+    "max_conditional_overall": 58.26359987258911,
+    "mean_conditional_overall": 39.72185185269975,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.28,
+      51.57,
+      83.56
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      11,
+      24,
+      39
+    ],
+    "features": [
+      "Drate",
+      "ece_flag_number",
+      "TCP",
+      "Number"
+    ],
+    "value": 4.5,
+    "max_overall": 60.13333201408386,
+    "max_conditional_overall": 49.800583720207214,
+    "mean_conditional_overall": 9.044943727189448,
+    "max_conditional_per_class": [
+      93.32,
+      100.0,
+      0.76,
+      36.32,
+      56.27
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      13,
+      26,
+      28
+    ],
+    "features": [
+      "Drate",
+      "ack_count",
+      "DHCP",
+      "ICMP"
+    ],
+    "value": 4.5,
+    "max_overall": 76.78333520889282,
+    "max_conditional_overall": 64.16259407997131,
+    "mean_conditional_overall": 34.79875671881728,
+    "max_conditional_per_class": [
+      99.83,
+      100.0,
+      2.75,
+      69.03,
+      83.63
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      13,
+      37,
+      43
+    ],
+    "features": [
+      "Drate",
+      "ack_count",
+      "Tot size",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 75.58333277702332,
+    "max_conditional_overall": 59.89668369293213,
+    "mean_conditional_overall": 50.567531240422554,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.71,
+      55.39,
+      76.59
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      16,
+      25,
+      33
+    ],
+    "features": [
+      "Drate",
+      "rst_count",
+      "UDP",
+      "Min"
+    ],
+    "value": 4.5,
+    "max_overall": 89.0666663646698,
+    "max_conditional_overall": 84.25732254981995,
+    "mean_conditional_overall": 70.80328260980001,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      51.47,
+      96.98,
+      100.0
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      20,
+      23,
+      42
+    ],
+    "features": [
+      "Drate",
+      "Telnet",
+      "IRC",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 24.316667020320892,
+    "max_conditional_overall": 14.698858559131622,
+    "mean_conditional_overall": 3.2287635107910853,
+    "max_conditional_per_class": [
+      17.18,
+      0.0,
+      0.1,
+      29.56,
+      35.78
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      20,
+      25,
+      33
+    ],
+    "features": [
+      "Drate",
+      "Telnet",
+      "UDP",
+      "Min"
+    ],
+    "value": 4.5,
+    "max_overall": 68.50000023841858,
+    "max_conditional_overall": 54.789066314697266,
+    "mean_conditional_overall": 14.615373399744673,
+    "max_conditional_per_class": [
+      99.92,
+      96.92,
+      0.76,
+      50.73,
+      81.71
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      22,
+      29,
+      42
+    ],
+    "features": [
+      "Drate",
+      "SSH",
+      "IGMP",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 60.85000038146973,
+    "max_conditional_overall": 49.72081780433655,
+    "mean_conditional_overall": 16.70024318665993,
+    "max_conditional_per_class": [
+      80.73,
+      99.36,
+      2.09,
+      65.57,
+      57.74
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      27,
+      33,
+      43
+    ],
+    "features": [
+      "Drate",
+      "ARP",
+      "Min",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 72.03333377838135,
+    "max_conditional_overall": 55.985069274902344,
+    "mean_conditional_overall": 20.081436522333405,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.14,
+      39.26,
+      70.6
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      29,
+      32,
+      41
+    ],
+    "features": [
+      "Drate",
+      "IGMP",
+      "Tot sum",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 71.5499997138977,
+    "max_conditional_overall": 54.85759973526001,
+    "mean_conditional_overall": 49.55978429898983,
+    "max_conditional_per_class": [
+      96.66,
+      100.0,
+      2.0,
+      57.4,
+      80.24
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      5,
+      29,
+      33,
+      43
+    ],
+    "features": [
+      "Drate",
+      "IGMP",
+      "Min",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 74.6833324432373,
+    "max_conditional_overall": 59.02664661407471,
+    "mean_conditional_overall": 26.441907046771632,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.9,
+      42.16,
+      78.7
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      9,
+      24,
+      36
+    ],
+    "features": [
+      "fin_flag_number",
+      "psh_flag_number",
+      "TCP",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 71.83333039283752,
+    "max_conditional_overall": 52.370136976242065,
+    "mean_conditional_overall": 14.67733490394383,
+    "max_conditional_per_class": [
+      82.23,
+      98.82,
+      0.67,
+      90.06,
+      68.54
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      9,
+      26,
+      38
+    ],
+    "features": [
+      "fin_flag_number",
+      "psh_flag_number",
+      "DHCP",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 75.80000162124634,
+    "max_conditional_overall": 62.369245290756226,
+    "mean_conditional_overall": 37.35301868944633,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.42,
+      97.14,
+      54.58
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      12,
+      22,
+      39
+    ],
+    "features": [
+      "fin_flag_number",
+      "cwr_flag_number",
+      "SSH",
+      "Number"
+    ],
+    "value": 4.5,
+    "max_overall": 23.83333295583725,
+    "max_conditional_overall": 3.7561099976301193,
+    "mean_conditional_overall": 1.377874098309293,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.1,
+      15.22,
+      12.02
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      12,
+      24,
+      38
+    ],
+    "features": [
+      "fin_flag_number",
+      "cwr_flag_number",
+      "TCP",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 24.566666781902313,
+    "max_conditional_overall": 8.614730089902878,
+    "mean_conditional_overall": 2.0610012829576325,
+    "max_conditional_per_class": [
+      0.08,
+      0.86,
+      0.47,
+      29.15,
+      41.71
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      12,
+      28,
+      39
+    ],
+    "features": [
+      "fin_flag_number",
+      "cwr_flag_number",
+      "ICMP",
+      "Number"
+    ],
+    "value": 4.5,
+    "max_overall": 27.21666693687439,
+    "max_conditional_overall": 7.923640310764313,
+    "mean_conditional_overall": 4.148559001410698,
+    "max_conditional_per_class": [
+      0.0,
+      0.23,
+      0.67,
+      27.55,
+      40.89
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      15,
+      20,
+      44
+    ],
+    "features": [
+      "fin_flag_number",
+      "fin_count",
+      "Telnet",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 5.799999833106995,
+    "max_conditional_overall": 3.2531075179576874,
+    "mean_conditional_overall": 0.6999587085063955,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      22.49,
+      4.64
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      21,
+      39,
+      42
+    ],
+    "features": [
+      "fin_flag_number",
+      "SMTP",
+      "Number",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 16.316667199134827,
+    "max_conditional_overall": 5.492115393280983,
+    "mean_conditional_overall": 2.2167952958403565,
+    "max_conditional_per_class": [
+      0.17,
+      0.0,
+      0.28,
+      28.43,
+      19.12
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      25,
+      27,
+      36
+    ],
+    "features": [
+      "fin_flag_number",
+      "UDP",
+      "ARP",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 67.68333315849304,
+    "max_conditional_overall": 57.426780462265015,
+    "mean_conditional_overall": 14.066977998832376,
+    "max_conditional_per_class": [
+      100.0,
+      99.06,
+      1.14,
+      73.86,
+      24.03
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      26,
+      32,
+      40
+    ],
+    "features": [
+      "fin_flag_number",
+      "DHCP",
+      "Tot sum",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 60.53333282470703,
+    "max_conditional_overall": 43.148449063301086,
+    "mean_conditional_overall": 14.772809253119659,
+    "max_conditional_per_class": [
+      75.46,
+      99.79,
+      1.42,
+      35.2,
+      27.44
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      26,
+      35,
+      38
+    ],
+    "features": [
+      "fin_flag_number",
+      "DHCP",
+      "AVG",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 68.4333324432373,
+    "max_conditional_overall": 54.41761612892151,
+    "mean_conditional_overall": 23.07649843065386,
+    "max_conditional_per_class": [
+      98.92,
+      100.0,
+      1.43,
+      47.31,
+      55.65
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      6,
+      30,
+      36,
+      40
+    ],
+    "features": [
+      "fin_flag_number",
+      "IPv",
+      "Std",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 61.266666650772095,
+    "max_conditional_overall": 45.58614790439606,
+    "mean_conditional_overall": 5.351988239804419,
+    "max_conditional_per_class": [
+      74.69,
+      99.53,
+      0.76,
+      34.3,
+      31.95
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      9,
+      24,
+      28
+    ],
+    "features": [
+      "syn_flag_number",
+      "psh_flag_number",
+      "TCP",
+      "ICMP"
+    ],
+    "value": 4.5,
+    "max_overall": 26.633334159851074,
+    "max_conditional_overall": 21.286611258983612,
+    "mean_conditional_overall": 6.21201293770133,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      1.33,
+      68.12,
+      79.53
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      10,
+      15,
+      33
+    ],
+    "features": [
+      "syn_flag_number",
+      "ack_flag_number",
+      "fin_count",
+      "Min"
+    ],
+    "value": 4.5,
+    "max_overall": 6.549999862909317,
+    "max_conditional_overall": 0.5818566307425499,
+    "mean_conditional_overall": 0.09306420802093315,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.09,
+      4.09,
+      3.05
+    ],
+    "eligible": true
+  },
+  {
+    "columns": [
+      7,
+      11,
+      18,
+      39
+    ],
+    "features": [
+      "syn_flag_number",
+      "ece_flag_number",
+      "HTTPS",
+      "Number"
+    ],
+    "value": 4.5,
+    "max_overall": 11.800000071525574,
+    "max_conditional_overall": 2.7062881737947464,
+    "mean_conditional_overall": 0.843261381917883,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      1.52,
+      3.68,
+      16.11
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      12,
+      17,
+      36
+    ],
+    "features": [
+      "syn_flag_number",
+      "cwr_flag_number",
+      "HTTP",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 34.63333249092102,
+    "max_conditional_overall": 17.365577816963196,
+    "mean_conditional_overall": 8.700511668150018,
+    "max_conditional_per_class": [
+      21.79,
+      0.99,
+      1.24,
+      52.02,
+      48.82
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      13,
+      24,
+      35
+    ],
+    "features": [
+      "syn_flag_number",
+      "ack_count",
+      "TCP",
+      "AVG"
+    ],
+    "value": 4.5,
+    "max_overall": 29.44999933242798,
+    "max_conditional_overall": 12.245947867631912,
+    "mean_conditional_overall": 4.440501389070982,
+    "max_conditional_per_class": [
+      2.44,
+      0.0,
+      0.95,
+      30.1,
+      59.85
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      13,
+      28,
+      42
+    ],
+    "features": [
+      "syn_flag_number",
+      "ack_count",
+      "ICMP",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 56.74999952316284,
+    "max_conditional_overall": 44.635966420173645,
+    "mean_conditional_overall": 6.160398283064729,
+    "max_conditional_per_class": [
+      66.53,
+      97.48,
+      3.8,
+      50.89,
+      62.61
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      14,
+      26,
+      38
+    ],
+    "features": [
+      "syn_flag_number",
+      "syn_count",
+      "DHCP",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 19.5333331823349,
+    "max_conditional_overall": 5.477266758680344,
+    "mean_conditional_overall": 1.6070826396505098,
+    "max_conditional_per_class": [
+      0.0,
+      0.88,
+      3.04,
+      5.84,
+      27.5
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      14,
+      28,
+      41
+    ],
+    "features": [
+      "syn_flag_number",
+      "syn_count",
+      "ICMP",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 67.56666898727417,
+    "max_conditional_overall": 50.62761306762695,
+    "mean_conditional_overall": 4.719868546675482,
+    "max_conditional_per_class": [
+      99.5,
+      99.79,
+      2.94,
+      33.47,
+      75.47
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      17,
+      27,
+      33
+    ],
+    "features": [
+      "syn_flag_number",
+      "HTTP",
+      "ARP",
+      "Min"
+    ],
+    "value": 4.5,
+    "max_overall": 63.43333125114441,
+    "max_conditional_overall": 51.74543261528015,
+    "mean_conditional_overall": 9.37009508289942,
+    "max_conditional_per_class": [
+      90.83,
+      97.79,
+      2.96,
+      51.26,
+      62.05
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      18,
+      26,
+      36
+    ],
+    "features": [
+      "syn_flag_number",
+      "HTTPS",
+      "DHCP",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 63.83333206176758,
+    "max_conditional_overall": 49.1631805896759,
+    "mean_conditional_overall": 2.355907781890071,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      3.51,
+      11.29,
+      18.78
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      20,
+      24,
+      42
+    ],
+    "features": [
+      "syn_flag_number",
+      "Telnet",
+      "TCP",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 5.799999833106995,
+    "max_conditional_overall": 1.728263683617115,
+    "mean_conditional_overall": 0.1644470845349133,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      4.05,
+      11.29
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      24,
+      26,
+      28
+    ],
+    "features": [
+      "syn_flag_number",
+      "TCP",
+      "DHCP",
+      "ICMP"
+    ],
+    "value": 4.5,
+    "max_overall": 16.233333945274353,
+    "max_conditional_overall": 9.623430669307709,
+    "mean_conditional_overall": 1.998572229981286,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.1,
+      25.74,
+      40.27
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      7,
+      24,
+      27,
+      42
+    ],
+    "features": [
+      "syn_flag_number",
+      "TCP",
+      "ARP",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 4.149999842047691,
+    "max_conditional_overall": 1.7782427370548248,
+    "mean_conditional_overall": 0.14319621316134568,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      0.9,
+      11.84
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      8,
+      10,
+      15,
+      37
+    ],
+    "features": [
+      "rst_flag_number",
+      "ack_flag_number",
+      "fin_count",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 3.933333232998848,
+    "max_conditional_overall": 2.327405847609043,
+    "mean_conditional_overall": 0.23303916841097994,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.28,
+      6.73,
+      13.54
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      8,
+      12,
+      14,
+      29
+    ],
+    "features": [
+      "rst_flag_number",
+      "cwr_flag_number",
+      "syn_count",
+      "IGMP"
+    ],
+    "value": 4.5,
+    "max_overall": 66.28333330154419,
+    "max_conditional_overall": 48.06659519672394,
+    "mean_conditional_overall": 14.225461863253901,
+    "max_conditional_per_class": [
+      84.49,
+      99.58,
+      0.29,
+      30.71,
+      55.14
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      8,
+      12,
+      24,
+      43
+    ],
+    "features": [
+      "rst_flag_number",
+      "cwr_flag_number",
+      "TCP",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 9.000000357627869,
+    "max_conditional_overall": 2.675585262477398,
+    "mean_conditional_overall": 0.5991752181349822,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      12.04,
+      8.83
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      8,
+      14,
+      25,
+      30
+    ],
+    "features": [
+      "rst_flag_number",
+      "syn_count",
+      "UDP",
+      "IPv"
+    ],
+    "value": 4.5,
+    "max_overall": 71.73333168029785,
+    "max_conditional_overall": 59.783756732940674,
+    "mean_conditional_overall": 37.60222199304802,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.75,
+      60.2,
+      64.67
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      8,
+      14,
+      35,
+      44
+    ],
+    "features": [
+      "rst_flag_number",
+      "syn_count",
+      "AVG",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 64.0333354473114,
+    "max_conditional_overall": 51.537024974823,
+    "mean_conditional_overall": 17.485591607798664,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      0.95,
+      18.01,
+      45.16
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      8,
+      18,
+      20,
+      44
+    ],
+    "features": [
+      "rst_flag_number",
+      "HTTPS",
+      "Telnet",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 12.716667354106903,
+    "max_conditional_overall": 3.7556201219558716,
+    "mean_conditional_overall": 1.3536688891557478,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.19,
+      15.95,
+      19.0
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      8,
+      18,
+      22,
+      36
+    ],
+    "features": [
+      "rst_flag_number",
+      "HTTPS",
+      "SSH",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 13.40000033378601,
+    "max_conditional_overall": 6.040795147418976,
+    "mean_conditional_overall": 1.241544379622721,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      18.23,
+      36.72
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      8,
+      19,
+      38,
+      42
+    ],
+    "features": [
+      "rst_flag_number",
+      "DNS",
+      "IAT",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 13.133333623409271,
+    "max_conditional_overall": 3.6958254873752594,
+    "mean_conditional_overall": 1.3350142239842837,
+    "max_conditional_per_class": [
+      0.0,
+      0.21,
+      0.1,
+      18.81,
+      18.94
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      8,
+      20,
+      27,
+      44
+    ],
+    "features": [
+      "rst_flag_number",
+      "Telnet",
+      "ARP",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 13.816666603088379,
+    "max_conditional_overall": 4.575509205460548,
+    "mean_conditional_overall": 0.9743413561387215,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      18.57,
+      14.84
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      8,
+      24,
+      27,
+      40
+    ],
+    "features": [
+      "rst_flag_number",
+      "TCP",
+      "ARP",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 6.983333081007004,
+    "max_conditional_overall": 0.8530545048415661,
+    "mean_conditional_overall": 0.12802194226135657,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      3.01,
+      7.18
+    ],
+    "eligible": true
+  },
+  {
+    "columns": [
+      9,
+      11,
+      32,
+      43
+    ],
+    "features": [
+      "psh_flag_number",
+      "ece_flag_number",
+      "Tot sum",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 78.58333587646484,
+    "max_conditional_overall": 65.16181826591492,
+    "mean_conditional_overall": 50.09721841027097,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.24,
+      70.63,
+      86.39
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      11,
+      40,
+      43
+    ],
+    "features": [
+      "psh_flag_number",
+      "ece_flag_number",
+      "Magnitue",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 76.71666741371155,
+    "max_conditional_overall": 61.08063459396362,
+    "mean_conditional_overall": 21.780200684215963,
+    "max_conditional_per_class": [
+      99.75,
+      100.0,
+      0.48,
+      68.61,
+      73.4
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      12,
+      17,
+      29
+    ],
+    "features": [
+      "psh_flag_number",
+      "cwr_flag_number",
+      "HTTP",
+      "IGMP"
+    ],
+    "value": 4.5,
+    "max_overall": 80.28333187103271,
+    "max_conditional_overall": 67.40209460258484,
+    "mean_conditional_overall": 65.2713921011948,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.86,
+      99.1,
+      95.37
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      13,
+      15,
+      28
+    ],
+    "features": [
+      "psh_flag_number",
+      "ack_count",
+      "fin_count",
+      "ICMP"
+    ],
+    "value": 4.5,
+    "max_overall": 77.60000228881836,
+    "max_conditional_overall": 65.03661274909973,
+    "mean_conditional_overall": 38.4561190972241,
+    "max_conditional_per_class": [
+      99.41,
+      100.0,
+      2.37,
+      70.5,
+      85.28
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      13,
+      28,
+      34
+    ],
+    "features": [
+      "psh_flag_number",
+      "ack_count",
+      "ICMP",
+      "Max"
+    ],
+    "value": 4.5,
+    "max_overall": 78.21666598320007,
+    "max_conditional_overall": 65.80910682678223,
+    "mean_conditional_overall": 48.81526311723197,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      3.8,
+      74.85,
+      94.37
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      16,
+      21,
+      28
+    ],
+    "features": [
+      "psh_flag_number",
+      "rst_count",
+      "SMTP",
+      "ICMP"
+    ],
+    "value": 4.5,
+    "max_overall": 83.03333520889282,
+    "max_conditional_overall": 73.53556752204895,
+    "mean_conditional_overall": 68.88121511878037,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      6.65,
+      98.16,
+      100.0
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      17,
+      26,
+      37
+    ],
+    "features": [
+      "psh_flag_number",
+      "HTTP",
+      "DHCP",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 82.01666474342346,
+    "max_conditional_overall": 71.78347110748291,
+    "mean_conditional_overall": 59.3773760446688,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      4.94,
+      99.6,
+      96.99
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      18,
+      20,
+      22
+    ],
+    "features": [
+      "psh_flag_number",
+      "HTTPS",
+      "Telnet",
+      "SSH"
+    ],
+    "value": 4.5,
+    "max_overall": 72.75000214576721,
+    "max_conditional_overall": 59.7541868686676,
+    "mean_conditional_overall": 13.29919749462023,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.42,
+      69.31,
+      62.5
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      20,
+      38,
+      43
+    ],
+    "features": [
+      "psh_flag_number",
+      "Telnet",
+      "IAT",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 76.11666917800903,
+    "max_conditional_overall": 61.8895947933197,
+    "mean_conditional_overall": 44.0970988717021,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      0.47,
+      72.42,
+      67.82
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      21,
+      35,
+      41
+    ],
+    "features": [
+      "psh_flag_number",
+      "SMTP",
+      "AVG",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 74.21666383743286,
+    "max_conditional_overall": 56.627875566482544,
+    "mean_conditional_overall": 24.49546511762026,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      0.38,
+      63.72,
+      52.93
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      24,
+      33,
+      36
+    ],
+    "features": [
+      "psh_flag_number",
+      "TCP",
+      "Min",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 72.79999852180481,
+    "max_conditional_overall": 54.75447177886963,
+    "mean_conditional_overall": 13.986978970649766,
+    "max_conditional_per_class": [
+      99.25,
+      98.12,
+      0.76,
+      46.01,
+      76.16
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      9,
+      25,
+      29,
+      42
+    ],
+    "features": [
+      "psh_flag_number",
+      "UDP",
+      "IGMP",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 80.15000224113464,
+    "max_conditional_overall": 67.66385436058044,
+    "mean_conditional_overall": 63.15676918843897,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      3.24,
+      98.61,
+      76.47
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      10,
+      21,
+      25,
+      29
+    ],
+    "features": [
+      "ack_flag_number",
+      "SMTP",
+      "UDP",
+      "IGMP"
+    ],
+    "value": 4.5,
+    "max_overall": 79.79999780654907,
+    "max_conditional_overall": 66.12991094589233,
+    "mean_conditional_overall": 48.64449010389607,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.71,
+      88.79,
+      77.56
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      10,
+      22,
+      27,
+      40
+    ],
+    "features": [
+      "ack_flag_number",
+      "SSH",
+      "ARP",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 69.31666731834412,
+    "max_conditional_overall": 51.57694220542908,
+    "mean_conditional_overall": 17.73571900216999,
+    "max_conditional_per_class": [
+      99.92,
+      100.0,
+      0.47,
+      29.24,
+      39.58
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      10,
+      22,
+      37,
+      40
+    ],
+    "features": [
+      "ack_flag_number",
+      "SSH",
+      "Tot size",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 66.29999876022339,
+    "max_conditional_overall": 51.04602575302124,
+    "mean_conditional_overall": 20.847868935273187,
+    "max_conditional_per_class": [
+      99.92,
+      100.0,
+      1.42,
+      43.72,
+      42.2
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      10,
+      24,
+      38,
+      42
+    ],
+    "features": [
+      "ack_flag_number",
+      "TCP",
+      "IAT",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 74.50000047683716,
+    "max_conditional_overall": 58.79300832748413,
+    "mean_conditional_overall": 36.541279950519886,
+    "max_conditional_per_class": [
+      99.92,
+      100.0,
+      1.81,
+      67.49,
+      69.58
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      11,
+      13,
+      27,
+      32
+    ],
+    "features": [
+      "ece_flag_number",
+      "ack_count",
+      "ARP",
+      "Tot sum"
+    ],
+    "value": 4.5,
+    "max_overall": 61.283332109451294,
+    "max_conditional_overall": 43.33876967430115,
+    "mean_conditional_overall": 10.439666644556493,
+    "max_conditional_per_class": [
+      81.94,
+      99.79,
+      1.23,
+      22.2,
+      68.54
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      11,
+      19,
+      35,
+      38
+    ],
+    "features": [
+      "ece_flag_number",
+      "DNS",
+      "AVG",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 72.10000157356262,
+    "max_conditional_overall": 54.258424043655396,
+    "mean_conditional_overall": 16.936095079077727,
+    "max_conditional_per_class": [
+      94.97,
+      100.0,
+      1.33,
+      61.21,
+      63.94
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      11,
+      19,
+      40,
+      44
+    ],
+    "features": [
+      "ece_flag_number",
+      "DNS",
+      "Magnitue",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 26.616665720939636,
+    "max_conditional_overall": 4.177251085639,
+    "mean_conditional_overall": 1.0281737442355512,
+    "max_conditional_per_class": [
+      0.34,
+      0.42,
+      0.09,
+      24.44,
+      10.36
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      11,
+      23,
+      25,
+      40
+    ],
+    "features": [
+      "ece_flag_number",
+      "IRC",
+      "UDP",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 63.200002908706665,
+    "max_conditional_overall": 50.44105648994446,
+    "mean_conditional_overall": 16.08007928461586,
+    "max_conditional_per_class": [
+      100.0,
+      99.79,
+      0.57,
+      45.15,
+      15.4
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      11,
+      24,
+      28,
+      37
+    ],
+    "features": [
+      "ece_flag_number",
+      "TCP",
+      "ICMP",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 23.733332753181458,
+    "max_conditional_overall": 11.645838618278503,
+    "mean_conditional_overall": 5.177515729120365,
+    "max_conditional_per_class": [
+      0.33,
+      15.42,
+      1.23,
+      42.35,
+      60.84
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      12,
+      16,
+      19,
+      37
+    ],
+    "features": [
+      "cwr_flag_number",
+      "rst_count",
+      "DNS",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 78.88333201408386,
+    "max_conditional_overall": 65.89958071708679,
+    "mean_conditional_overall": 62.465803506897714,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      5.22,
+      75.34,
+      93.97
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      12,
+      16,
+      28,
+      33
+    ],
+    "features": [
+      "cwr_flag_number",
+      "rst_count",
+      "ICMP",
+      "Min"
+    ],
+    "value": 4.5,
+    "max_overall": 78.20000052452087,
+    "max_conditional_overall": 68.0216133594513,
+    "mean_conditional_overall": 52.808118411680546,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      7.31,
+      69.2,
+      98.6
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      12,
+      16,
+      31,
+      41
+    ],
+    "features": [
+      "cwr_flag_number",
+      "rst_count",
+      "LLC",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 80.86666464805603,
+    "max_conditional_overall": 70.32530903816223,
+    "mean_conditional_overall": 63.20409585789936,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      5.51,
+      84.25,
+      96.5
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      12,
+      18,
+      33,
+      36
+    ],
+    "features": [
+      "cwr_flag_number",
+      "HTTPS",
+      "Min",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 62.90000081062317,
+    "max_conditional_overall": 44.37316358089447,
+    "mean_conditional_overall": 20.431304625774985,
+    "max_conditional_per_class": [
+      96.91,
+      99.59,
+      1.9,
+      17.07,
+      34.72
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      12,
+      19,
+      25,
+      38
+    ],
+    "features": [
+      "cwr_flag_number",
+      "DNS",
+      "UDP",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 71.64999842643738,
+    "max_conditional_overall": 55.93447685241699,
+    "mean_conditional_overall": 33.41988755798921,
+    "max_conditional_per_class": [
+      100.0,
+      99.79,
+      1.71,
+      65.99,
+      34.79
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      12,
+      29,
+      40,
+      42
+    ],
+    "features": [
+      "cwr_flag_number",
+      "IGMP",
+      "Magnitue",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 32.749998569488525,
+    "max_conditional_overall": 12.737642228603363,
+    "mean_conditional_overall": 5.275052523513029,
+    "max_conditional_per_class": [
+      0.33,
+      4.5,
+      0.48,
+      48.43,
+      47.62
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      12,
+      37,
+      40,
+      42
+    ],
+    "features": [
+      "cwr_flag_number",
+      "Tot size",
+      "Magnitue",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 24.683333933353424,
+    "max_conditional_overall": 8.649788796901703,
+    "mean_conditional_overall": 2.628219035658531,
+    "max_conditional_per_class": [
+      0.08,
+      0.84,
+      0.57,
+      18.22,
+      44.91
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      13,
+      15,
+      29,
+      31
+    ],
+    "features": [
+      "ack_count",
+      "fin_count",
+      "IGMP",
+      "LLC"
+    ],
+    "value": 4.5,
+    "max_overall": 72.31666445732117,
+    "max_conditional_overall": 57.043009996414185,
+    "mean_conditional_overall": 46.16586948495085,
+    "max_conditional_per_class": [
+      96.83,
+      100.0,
+      1.24,
+      67.69,
+      73.17
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      13,
+      16,
+      26,
+      32
+    ],
+    "features": [
+      "ack_count",
+      "rst_count",
+      "DHCP",
+      "Tot sum"
+    ],
+    "value": 4.5,
+    "max_overall": 81.13333582878113,
+    "max_conditional_overall": 71.80344462394714,
+    "mean_conditional_overall": 67.59832007129017,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      9.59,
+      89.46,
+      98.72
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      13,
+      17,
+      19,
+      44
+    ],
+    "features": [
+      "ack_count",
+      "HTTP",
+      "DNS",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 80.53333163261414,
+    "max_conditional_overall": 68.9480721950531,
+    "mean_conditional_overall": 65.14445979420732,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      5.7,
+      83.56,
+      95.61
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      13,
+      17,
+      37,
+      40
+    ],
+    "features": [
+      "ack_count",
+      "HTTP",
+      "Tot size",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 79.44999933242798,
+    "max_conditional_overall": 66.44509434700012,
+    "mean_conditional_overall": 59.234115626753834,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      5.32,
+      76.79,
+      97.44
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      13,
+      22,
+      31,
+      44
+    ],
+    "features": [
+      "ack_count",
+      "SSH",
+      "LLC",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 74.01666641235352,
+    "max_conditional_overall": 59.005552530288696,
+    "mean_conditional_overall": 36.76154386158465,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.42,
+      66.05,
+      70.49
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      13,
+      23,
+      27,
+      44
+    ],
+    "features": [
+      "ack_count",
+      "IRC",
+      "ARP",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 67.25000143051147,
+    "max_conditional_overall": 49.40184950828552,
+    "mean_conditional_overall": 16.206178184678187,
+    "max_conditional_per_class": [
+      83.91,
+      100.0,
+      0.86,
+      28.54,
+      48.15
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      13,
+      29,
+      35,
+      37
+    ],
+    "features": [
+      "ack_count",
+      "IGMP",
+      "AVG",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 76.41666531562805,
+    "max_conditional_overall": 62.979161739349365,
+    "mean_conditional_overall": 40.57639728232128,
+    "max_conditional_per_class": [
+      94.41,
+      100.0,
+      3.05,
+      68.67,
+      92.49
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      13,
+      31,
+      38,
+      42
+    ],
+    "features": [
+      "ack_count",
+      "LLC",
+      "IAT",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 72.04999923706055,
+    "max_conditional_overall": 58.096253871917725,
+    "mean_conditional_overall": 34.29110882031481,
+    "max_conditional_per_class": [
+      96.08,
+      100.0,
+      3.23,
+      63.6,
+      48.11
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      14,
+      16,
+      20,
+      41
+    ],
+    "features": [
+      "syn_count",
+      "rst_count",
+      "Telnet",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 77.7666687965393,
+    "max_conditional_overall": 67.71289110183716,
+    "mean_conditional_overall": 63.98999196727102,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      5.41,
+      73.45,
+      92.82
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      14,
+      17,
+      24,
+      32
+    ],
+    "features": [
+      "syn_count",
+      "HTTP",
+      "TCP",
+      "Tot sum"
+    ],
+    "value": 4.5,
+    "max_overall": 82.28333592414856,
+    "max_conditional_overall": 70.02540230751038,
+    "mean_conditional_overall": 62.64856690313758,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      3.42,
+      95.52,
+      99.76
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      14,
+      21,
+      23,
+      28
+    ],
+    "features": [
+      "syn_count",
+      "SMTP",
+      "IRC",
+      "ICMP"
+    ],
+    "value": 4.5,
+    "max_overall": 23.56666624546051,
+    "max_conditional_overall": 8.211296796798706,
+    "mean_conditional_overall": 3.211343207782725,
+    "max_conditional_per_class": [
+      0.0,
+      2.51,
+      0.28,
+      20.8,
+      47.21
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      14,
+      21,
+      29,
+      37
+    ],
+    "features": [
+      "syn_count",
+      "SMTP",
+      "IGMP",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 73.58333468437195,
+    "max_conditional_overall": 56.612902879714966,
+    "mean_conditional_overall": 29.507807914803667,
+    "max_conditional_per_class": [
+      97.32,
+      100.0,
+      1.14,
+      59.87,
+      88.1
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      14,
+      22,
+      39,
+      42
+    ],
+    "features": [
+      "syn_count",
+      "SSH",
+      "Number",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 64.73333239555359,
+    "max_conditional_overall": 54.400426149368286,
+    "mean_conditional_overall": 24.351249335379137,
+    "max_conditional_per_class": [
+      96.16,
+      100.0,
+      1.8,
+      47.78,
+      66.3
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      14,
+      28,
+      31,
+      44
+    ],
+    "features": [
+      "syn_count",
+      "ICMP",
+      "LLC",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 71.71666622161865,
+    "max_conditional_overall": 58.99491906166077,
+    "mean_conditional_overall": 25.130094251618154,
+    "max_conditional_per_class": [
+      99.92,
+      100.0,
+      2.28,
+      48.82,
+      72.33
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      14,
+      33,
+      37,
+      44
+    ],
+    "features": [
+      "syn_count",
+      "Min",
+      "Tot size",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 64.83333110809326,
+    "max_conditional_overall": 44.79137063026428,
+    "mean_conditional_overall": 17.543800573841466,
+    "max_conditional_per_class": [
+      87.91,
+      99.79,
+      1.71,
+      11.57,
+      55.85
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      14,
+      36,
+      40,
+      44
+    ],
+    "features": [
+      "syn_count",
+      "Std",
+      "Magnitue",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 67.10000038146973,
+    "max_conditional_overall": 47.816938161849976,
+    "mean_conditional_overall": 20.018580392366502,
+    "max_conditional_per_class": [
+      99.66,
+      100.0,
+      1.9,
+      29.37,
+      43.29
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      15,
+      17,
+      20,
+      44
+    ],
+    "features": [
+      "fin_count",
+      "HTTP",
+      "Telnet",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 63.88333439826965,
+    "max_conditional_overall": 47.94303774833679,
+    "mean_conditional_overall": 11.30800005502817,
+    "max_conditional_per_class": [
+      75.71,
+      93.42,
+      0.76,
+      63.6,
+      63.93
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      15,
+      20,
+      33,
+      44
+    ],
+    "features": [
+      "fin_count",
+      "Telnet",
+      "Min",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 8.616666495800018,
+    "max_conditional_overall": 4.219409450888634,
+    "mean_conditional_overall": 0.906833019334732,
+    "max_conditional_per_class": [
+      0.0,
+      0.0,
+      0.0,
+      26.58,
+      7.35
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      15,
+      26,
+      35,
+      37
+    ],
+    "features": [
+      "fin_count",
+      "DHCP",
+      "AVG",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 55.18333315849304,
+    "max_conditional_overall": 44.378697872161865,
+    "mean_conditional_overall": 8.245854931826726,
+    "max_conditional_per_class": [
+      92.15,
+      99.79,
+      1.52,
+      16.24,
+      54.35
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      15,
+      27,
+      39,
+      41
+    ],
+    "features": [
+      "fin_count",
+      "ARP",
+      "Number",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 10.750000178813934,
+    "max_conditional_overall": 5.72698749601841,
+    "mean_conditional_overall": 0.8742484717669602,
+    "max_conditional_per_class": [
+      0.0,
+      0.42,
+      0.28,
+      14.11,
+      25.04
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      16,
+      18,
+      26,
+      28
+    ],
+    "features": [
+      "rst_count",
+      "HTTPS",
+      "DHCP",
+      "ICMP"
+    ],
+    "value": 4.5,
+    "max_overall": 87.03333139419556,
+    "max_conditional_overall": 80.93619346618652,
+    "mean_conditional_overall": 67.01295463050285,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      48.91,
+      84.96,
+      94.64
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      17,
+      23,
+      32,
+      34
+    ],
+    "features": [
+      "HTTP",
+      "IRC",
+      "Tot sum",
+      "Max"
+    ],
+    "value": 4.5,
+    "max_overall": 80.73333501815796,
+    "max_conditional_overall": 68.40524077415466,
+    "mean_conditional_overall": 55.96941513259237,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.99,
+      99.12,
+      80.56
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      17,
+      23,
+      36,
+      39
+    ],
+    "features": [
+      "HTTP",
+      "IRC",
+      "Std",
+      "Number"
+    ],
+    "value": 4.5,
+    "max_overall": 79.31666374206543,
+    "max_conditional_overall": 65.82556366920471,
+    "mean_conditional_overall": 59.788537897714754,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.0,
+      74.45,
+      82.71
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      17,
+      29,
+      33,
+      43
+    ],
+    "features": [
+      "HTTP",
+      "IGMP",
+      "Min",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 79.76666688919067,
+    "max_conditional_overall": 66.82795882225037,
+    "mean_conditional_overall": 63.30630997332131,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.38,
+      82.06,
+      89.76
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      18,
+      21,
+      27,
+      33
+    ],
+    "features": [
+      "HTTPS",
+      "SMTP",
+      "ARP",
+      "Min"
+    ],
+    "value": 4.5,
+    "max_overall": 55.43333292007446,
+    "max_conditional_overall": 44.08402144908905,
+    "mean_conditional_overall": 7.641007542033771,
+    "max_conditional_per_class": [
+      97.25,
+      99.79,
+      0.57,
+      14.11,
+      9.26
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      18,
+      22,
+      25,
+      29
+    ],
+    "features": [
+      "HTTPS",
+      "SSH",
+      "UDP",
+      "IGMP"
+    ],
+    "value": 4.5,
+    "max_overall": 80.25000095367432,
+    "max_conditional_overall": 68.97349953651428,
+    "mean_conditional_overall": 37.163115042920516,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      3.23,
+      100.0,
+      72.13
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      18,
+      25,
+      34,
+      41
+    ],
+    "features": [
+      "HTTPS",
+      "UDP",
+      "Max",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 76.38333439826965,
+    "max_conditional_overall": 63.54514956474304,
+    "mean_conditional_overall": 42.487327581862125,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      5.6,
+      93.49,
+      41.61
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      18,
+      29,
+      32,
+      38
+    ],
+    "features": [
+      "HTTPS",
+      "IGMP",
+      "Tot sum",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 73.90000224113464,
+    "max_conditional_overall": 58.301472663879395,
+    "mean_conditional_overall": 51.06006250148866,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      2.94,
+      54.39,
+      67.39
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      18,
+      35,
+      37,
+      43
+    ],
+    "features": [
+      "HTTPS",
+      "AVG",
+      "Tot size",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 75.0333309173584,
+    "max_conditional_overall": 62.4966561794281,
+    "mean_conditional_overall": 52.380563282385104,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      4.57,
+      50.82,
+      73.36
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      19,
+      22,
+      27,
+      37
+    ],
+    "features": [
+      "DNS",
+      "SSH",
+      "ARP",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 26.516667008399963,
+    "max_conditional_overall": 4.948341473937035,
+    "mean_conditional_overall": 2.0895261449523543,
+    "max_conditional_per_class": [
+      0.08,
+      0.71,
+      0.19,
+      28.17,
+      19.46
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      19,
+      24,
+      33,
+      37
+    ],
+    "features": [
+      "DNS",
+      "TCP",
+      "Min",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 29.216668009757996,
+    "max_conditional_overall": 7.684126496315002,
+    "mean_conditional_overall": 3.0914381362225223,
+    "max_conditional_per_class": [
+      0.5,
+      3.21,
+      1.33,
+      13.59,
+      44.88
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      19,
+      30,
+      34,
+      38
+    ],
+    "features": [
+      "DNS",
+      "IPv",
+      "Max",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 64.73333239555359,
+    "max_conditional_overall": 48.816803097724915,
+    "mean_conditional_overall": 17.02792175886471,
+    "max_conditional_per_class": [
+      89.57,
+      100.0,
+      1.14,
+      53.14,
+      42.62
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      19,
+      30,
+      34,
+      39
+    ],
+    "features": [
+      "DNS",
+      "IPv",
+      "Max",
+      "Number"
+    ],
+    "value": 4.5,
+    "max_overall": 68.4166669845581,
+    "max_conditional_overall": 46.92023694515228,
+    "mean_conditional_overall": 23.11451500963147,
+    "max_conditional_per_class": [
+      84.47,
+      100.0,
+      1.9,
+      36.77,
+      47.06
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      20,
+      24,
+      34,
+      38
+    ],
+    "features": [
+      "Telnet",
+      "TCP",
+      "Max",
+      "IAT"
+    ],
+    "value": 4.5,
+    "max_overall": 60.633331537246704,
+    "max_conditional_overall": 46.190857887268066,
+    "mean_conditional_overall": 8.28833346710847,
+    "max_conditional_per_class": [
+      99.08,
+      96.44,
+      0.0,
+      47.09,
+      25.68
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      20,
+      25,
+      30,
+      42
+    ],
+    "features": [
+      "Telnet",
+      "UDP",
+      "IPv",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 75.28333067893982,
+    "max_conditional_overall": 60.540688037872314,
+    "mean_conditional_overall": 36.715025627395,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.52,
+      71.07,
+      47.22
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      20,
+      26,
+      34,
+      36
+    ],
+    "features": [
+      "Telnet",
+      "DHCP",
+      "Max",
+      "Std"
+    ],
+    "value": 4.5,
+    "max_overall": 48.30000102519989,
+    "max_conditional_overall": 30.306148529052734,
+    "mean_conditional_overall": 3.6095216464273996,
+    "max_conditional_per_class": [
+      75.63,
+      26.42,
+      1.14,
+      19.28,
+      38.66
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      20,
+      26,
+      35,
+      42
+    ],
+    "features": [
+      "Telnet",
+      "DHCP",
+      "AVG",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 59.26666855812073,
+    "max_conditional_overall": 47.38873243331909,
+    "mean_conditional_overall": 9.584362612662428,
+    "max_conditional_per_class": [
+      83.89,
+      100.0,
+      1.33,
+      29.56,
+      71.37
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      20,
+      26,
+      41,
+      44
+    ],
+    "features": [
+      "Telnet",
+      "DHCP",
+      "Radius",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 22.38333374261856,
+    "max_conditional_overall": 6.174427643418312,
+    "mean_conditional_overall": 2.7887377251939074,
+    "max_conditional_per_class": [
+      0.0,
+      0.85,
+      0.95,
+      24.07,
+      17.28
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      21,
+      25,
+      28,
+      32
+    ],
+    "features": [
+      "SMTP",
+      "UDP",
+      "ICMP",
+      "Tot sum"
+    ],
+    "value": 4.5,
+    "max_overall": 72.1833348274231,
+    "max_conditional_overall": 57.55752921104431,
+    "mean_conditional_overall": 21.93044979443274,
+    "max_conditional_per_class": [
+      99.16,
+      100.0,
+      1.42,
+      71.07,
+      59.9
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      21,
+      26,
+      32,
+      43
+    ],
+    "features": [
+      "SMTP",
+      "DHCP",
+      "Tot sum",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 25.90000033378601,
+    "max_conditional_overall": 6.688962876796722,
+    "mean_conditional_overall": 3.8534047422794306,
+    "max_conditional_per_class": [
+      0.08,
+      0.0,
+      0.38,
+      25.86,
+      25.0
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      21,
+      29,
+      36,
+      44
+    ],
+    "features": [
+      "SMTP",
+      "IGMP",
+      "Std",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 35.58333218097687,
+    "max_conditional_overall": 14.095599949359894,
+    "mean_conditional_overall": 4.822229573690537,
+    "max_conditional_per_class": [
+      0.08,
+      1.26,
+      0.29,
+      56.05,
+      52.93
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      23,
+      30,
+      33,
+      43
+    ],
+    "features": [
+      "IRC",
+      "IPv",
+      "Min",
+      "Variance"
+    ],
+    "value": 4.5,
+    "max_overall": 22.24999964237213,
+    "max_conditional_overall": 7.568565756082535,
+    "mean_conditional_overall": 3.428965251432823,
+    "max_conditional_per_class": [
+      0.17,
+      0.23,
+      0.0,
+      25.84,
+      31.22
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      24,
+      26,
+      33,
+      40
+    ],
+    "features": [
+      "TCP",
+      "DHCP",
+      "Min",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 31.00000023841858,
+    "max_conditional_overall": 6.616108864545822,
+    "mean_conditional_overall": 1.8915601176913919,
+    "max_conditional_per_class": [
+      11.78,
+      3.77,
+      1.14,
+      13.54,
+      34.53
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      24,
+      27,
+      32,
+      37
+    ],
+    "features": [
+      "TCP",
+      "ARP",
+      "Tot sum",
+      "Tot size"
+    ],
+    "value": 4.5,
+    "max_overall": 32.616665959358215,
+    "max_conditional_overall": 8.639605343341827,
+    "mean_conditional_overall": 4.23369542582006,
+    "max_conditional_per_class": [
+      0.92,
+      1.06,
+      0.29,
+      17.49,
+      51.96
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      27,
+      30,
+      33,
+      39
+    ],
+    "features": [
+      "ARP",
+      "IPv",
+      "Min",
+      "Number"
+    ],
+    "value": 4.5,
+    "max_overall": 63.55000138282776,
+    "max_conditional_overall": 50.81751346588135,
+    "mean_conditional_overall": 16.881523851486968,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.61,
+      24.37,
+      44.14
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      27,
+      31,
+      33,
+      39
+    ],
+    "features": [
+      "ARP",
+      "LLC",
+      "Min",
+      "Number"
+    ],
+    "value": 4.5,
+    "max_overall": 70.86666822433472,
+    "max_conditional_overall": 55.59071898460388,
+    "mean_conditional_overall": 18.47022916758206,
+    "max_conditional_per_class": [
+      96.74,
+      100.0,
+      0.95,
+      57.46,
+      34.26
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      28,
+      35,
+      38,
+      42
+    ],
+    "features": [
+      "ICMP",
+      "AVG",
+      "IAT",
+      "Covariance"
+    ],
+    "value": 4.5,
+    "max_overall": 75.95000267028809,
+    "max_conditional_overall": 63.28248381614685,
+    "mean_conditional_overall": 16.217603905711368,
+    "max_conditional_per_class": [
+      97.15,
+      100.0,
+      1.81,
+      59.87,
+      81.38
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      29,
+      32,
+      34,
+      44
+    ],
+    "features": [
+      "IGMP",
+      "Tot sum",
+      "Max",
+      "Weight"
+    ],
+    "value": 4.5,
+    "max_overall": 70.38333415985107,
+    "max_conditional_overall": 53.70911955833435,
+    "mean_conditional_overall": 22.719586885920386,
+    "max_conditional_per_class": [
+      99.42,
+      100.0,
+      1.9,
+      50.0,
+      57.54
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      31,
+      34,
+      37,
+      40
+    ],
+    "features": [
+      "LLC",
+      "Max",
+      "Tot size",
+      "Magnitue"
+    ],
+    "value": 4.5,
+    "max_overall": 61.63333058357239,
+    "max_conditional_overall": 50.62761306762695,
+    "mean_conditional_overall": 4.9435515734707804,
+    "max_conditional_per_class": [
+      99.42,
+      100.0,
+      1.71,
+      25.36,
+      45.17
+    ],
+    "eligible": false
+  },
+  {
+    "columns": [
+      31,
+      37,
+      39,
+      41
+    ],
+    "features": [
+      "LLC",
+      "Tot size",
+      "Number",
+      "Radius"
+    ],
+    "value": 4.5,
+    "max_overall": 65.88333249092102,
+    "max_conditional_overall": 51.35065317153931,
+    "mean_conditional_overall": 20.997924493943774,
+    "max_conditional_per_class": [
+      100.0,
+      100.0,
+      1.52,
+      43.48,
+      51.44
+    ],
+    "eligible": false
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "title": "Development test: narrow (source-specific) backdoor against bsc_7",
+  "written": "2026-10-08, before any narrow-backdoor run",
+  "motivation": "Addendum A21: breadth k = 3 means a backdoor shifting fewer than three source classes is below the statistic by design.",
+  "attack": "Phase 2d attack (2 attackers, poison 0.5 of the eligible rows, constant trigger columns 5-8 value 5, target Benign) but attackers poison only rows of N1 = {Recon (3)} or N2 = {Recon (3), Spoofing (5)} (--poison-source-classes).",
+  "success_measure": "Per-class triggered->Benign rate (TTR_<class>) of the poisoned source classes; overall ASR is diluted by unpoisoned classes and reported only for reference.",
+  "runs": "FedAvg and MediShield bsc_7 (calibration P = refit of the same inputs for the source that adds --poison-source-classes; detector unchanged), development seeds 43 and 46, --development-gate-run.",
+  "status": "Development evidence; decides whether the method needs a change before any confirmatory narrow-attack test."
+}

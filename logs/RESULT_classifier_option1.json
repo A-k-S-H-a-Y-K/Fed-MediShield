@@ -1,0 +1,14 @@
+{
+  "preregistration": "PREREGISTRATION_classifier_option1.json",
+  "tau_1.0": {"runs": "logs/fedavg_logit_dev", "adopted": false,
+              "failed": "IDS_FPR (6.76%, 7.40%) and Benign recall (93.24%, 92.60%) on seeds 47 and 48",
+              "note": "MQTT recall +58/+56 pp and Spoofing +24/+21 pp, but Benign traffic shifted to MQTT/Spoofing."},
+  "tau_0.5_single_fallback": {"runs": "logs/fedavg_logit05_dev", "adopted": true,
+              "seed_47": {"MQTT_recall": [25.83, 42.30], "Spoofing_recall": [29.39, 48.11], "macro_F1": [69.67, 73.66],
+                          "IDS_FPR": [0.31, 1.54], "Benign_recall": [99.69, 98.46], "accuracy": [84.92, 85.01]},
+              "seed_48": {"MQTT_recall": [27.88, 43.76], "Spoofing_recall": [34.75, 50.58], "macro_F1": [70.54, 74.20],
+                          "IDS_FPR": [0.40, 1.76], "Benign_recall": [99.60, 98.24], "accuracy": [84.66, 85.29]},
+              "format": "[loss none, logit tau 0.5], final-round validation, clean FedAvg"},
+  "decision": "New training protocol: --loss-adjustment logit --logit-tau 0.5. All later calibration, trigger selection and evaluation use it.",
+  "limits": "Two development seeds; validation-informed choice; MQTT, Spoofing and DoS recall remain weak (~40-50%)."
+}

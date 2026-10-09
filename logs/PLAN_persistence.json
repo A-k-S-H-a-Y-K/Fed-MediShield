@@ -1,0 +1,8 @@
+{
+  "title": "Backdoor persistence after the attack stops (DualVeil-inspired), bsc_7 vs FedAvg",
+  "written": "2026-10-08, before any persistence run",
+  "attack": "Phase 2d attack (2 attackers, poison 0.5, constant trigger columns 5-8 value 5, target Benign) active in rounds 1-7 only (--attack-start 1 --attack-period 100 --attack-on 7); rounds 8-15 all clients honest.",
+  "seeds": [43, 46, 87, 88, 89],
+  "reported": ["ASR per round; ASR at rounds 7, 8, 10, 15 (persistence = ASR remaining after the attack stops)", "MediShield: detection in rounds 1-7, honest FPR in rounds 8-15 (former attackers are honest then), weight given to former attackers in rounds 8-15", "final accuracy and macro-F1"],
+  "status": "Descriptive; the DualVeil persistence optimisation itself (parameter selection for long-lived backdoors) is not implemented."
+}

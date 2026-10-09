@@ -1,0 +1,23 @@
+{
+  "title": "bsc_6 (first-episode revocation): live gate, Phase 2e confirmation and Stage 3 re-test",
+  "written": "2026-10-07, before calibration N and before any bsc_6 run",
+  "change": "Revocation acts only during a client's first detection episode (first flag plus immediately consecutive flags while a backlog remains); afterwards later alerts still attenuate the current update immediately but never revoke past contributions again. Motivated by Stage 3 V2 (addendum A14): each alert of an intermittent attacker revoked its honest quiet-round contributions, producing a ~5 pp F1 sawtooth. --revocation-policy every_alert reproduces bsc_5. Everything else as Phase 2d: history channel off, client profiles on, logit tau 0.5.",
+  "frozen_sources_sha256": {"src/medishield_candidate.py": "7b1ce705b8b5b069dad4877caa4cc11bd5338b31d2592a160e9e6e07542e6eb0",
+                            "src/train_defended.py": "314d2316f214c364c0a55438bd56eea60a98af47ecf3ac44d45ddd646da9c6b3"},
+  "calibration": "logs/bsc6_calN (refit from the same controls/captures/cached measurements; no training, no inference). Every bsc_6 run below must use a calibration with its detector core digest (checked by the evaluation scripts).",
+  "step_1_live_gate": {"what": "--development-gate-run, immediate attack (poison 0.5, malicious ratio 0.25, trigger columns 5-8 at 5), development seeds 43 and 46, output logs/bsc6_devgate",
+                       "criteria": "unchanged (AMENDMENT_live_development_gate.json)", "if_failed": "nothing below starts"},
+  "step_2_development_check": {"what": "intermittent attack (V2 settings) on development seeds 43 and 46, output logs/bsc6_dev_intermittent; reported only, decides nothing"},
+  "step_3_phase_2e": {"seeds": [71, 72, 73, 74, 75],
+                      "runs": "MediShield clean+attacked (--live-gate-dir logs/bsc6_devgate), FedAvg clean+attacked, oracle residual; Phase 2d attack",
+                      "criteria": "identical to PREREGISTRATION_phase2d_bsc5_histoff.json per_seed_criteria and decision rule",
+                      "baselines": "not repeated (they do not depend on MediShield); Phase 2d baseline results are cited",
+                      "evaluation_script": "logs/evaluate_phase2e.py"},
+  "step_4_stage3_retest": {"seeds": [76, 77, 78],
+                           "variants": "identical to PREREGISTRATION_stage3_variants.json (V1 out-of-bank trigger, V2 intermittent, V3 three attackers), MediShield with --live-gate-dir logs/bsc6_devgate --attack-variant, matched FedAvg",
+                           "criteria": "identical to PREREGISTRATION_stage3_variants.json per_seed_criteria and decision rule",
+                           "known_limit": "V3 is expected to hit the unchanged flagged-fraction stop rule when one honest client is flagged alongside three attackers; this is reported, not redesigned",
+                           "evaluation_script": "logs/evaluate_stage3_bsc6.py"},
+  "seed_roles": {"excluded": "42-70", "phase_2e": [71, 72, 73, 74, 75], "stage3_retest": [76, 77, 78]},
+  "rule": "Earlier verdicts (Phase 2, 2b, 2c, 2d, Stage 3 bsc_5) stay on record unchanged. No setting, threshold or criterion changes after any bsc_6 data are seen."
+}

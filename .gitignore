@@ -1,0 +1,40 @@
+# Allow-list: track only code, protocols, small result tables, figures and documentation.
+# Raw data, checkpoints, captures, measurements and per-run folders stay local (archived separately).
+/*
+!/.gitignore
+!/src/
+!/figures/
+!/project_info/
+!/data/
+!/logs/
+
+# data: preparation scripts and small metadata only
+/data/*
+!/data/*.py
+!/data/processed_grouped/
+!/data/processed_ton_dedup/
+/data/processed_grouped/*
+/data/processed_ton_dedup/*
+!/data/processed_*/feature_names.json
+!/data/processed_*/partition_manifest.json
+!/data/processed_*/prepare_*.py
+
+# logs: top-level scripts, pre-registrations, plans, amendments, verdicts; summary tables only
+/logs/*
+!/logs/*.py
+!/logs/*.json
+!/logs/*.csv
+!/logs/comparison_bsc6_phase2d_seeds/
+!/logs/comparison_ton/
+!/logs/official_test/
+!/logs/official_test_flood_supplement/
+!/logs/runtime_table/
+!/logs/hparams_table/
+!/logs/trigger_selection_*/
+
+# never track
+*.pt
+*.npz
+*.zip
+*.pkl
+__pycache__/

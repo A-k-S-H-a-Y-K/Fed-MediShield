@@ -1,0 +1,17 @@
+{
+  "title": "Non-IID (Dirichlet alpha) sensitivity and scalability of bsc_7",
+  "written": "2026-10-08, before any run",
+  "settings": {"a01": "--alpha 0.1, 8 clients (strong non-IID)", "a10": "--alpha 1.0, 8 clients (mild non-IID)", "c16": "--alpha 0.5, 16 clients (scalability)"},
+  "reference": "saved grouped partition (alpha 0.5, 8 clients): Phase 2d/2e and the comparison table",
+  "partition": "runtime Dirichlet repartition with partition seed 42 for MediShield and FedAvg alike (train_defended.py --partition-seed 42)",
+  "procedure_per_setting": [
+    "1 calibrate: trains its own known-clean controls (seeds 42, 44, 45) on that partition",
+    "2 one shadow (no filtering) attacked run on development seed 46",
+    "3 recalibrate with the controls and the shadow capture (records the development attack)",
+    "4 live development gate on seed 46 (unchanged criteria); filtering on evaluation seeds only if it passes",
+    "5 MediShield clean + attacked on seeds 90-92 (--live-gate-dir), FedAvg clean + attacked on the same partition and seeds"
+  ],
+  "attack": "Phase 2d attack (2 attackers at 8 clients, 4 at 16 clients via malicious ratio 0.25; poison 0.5; constant trigger columns 5-8 value 5; target Benign)",
+  "reported": ["gate verdict", "per seed: final ASR MediShield vs FedAvg, detection, honest FPR (attacked and clean runs), clean and attacked F1 vs FedAvg, held rounds, stops"],
+  "status": "Descriptive sensitivity study (3 evaluation seeds per setting); detector configuration unchanged."
+}

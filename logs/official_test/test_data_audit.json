@@ -1,0 +1,50 @@
+{
+  "files": [
+    {
+      "file": "Benign_test.pcap.csv",
+      "class_id": 0,
+      "rows": 37607,
+      "nonfinite_dropped": 0
+    },
+    {
+      "file": "TCP_IP-DDoS-ICMP1_test.pcap.csv",
+      "class_id": 1,
+      "rows": 154007,
+      "nonfinite_dropped": 0
+    },
+    {
+      "file": "TCP_IP-DoS-ICMP_test.pcap.csv",
+      "class_id": 2,
+      "rows": 98432,
+      "nonfinite_dropped": 0
+    },
+    {
+      "file": "Recon-OS_Scan_test.pcap.csv",
+      "class_id": 3,
+      "rows": 3834,
+      "nonfinite_dropped": 0
+    },
+    {
+      "file": "MQTT-Malformed_Data_test.pcap.csv",
+      "class_id": 4,
+      "rows": 1747,
+      "nonfinite_dropped": 0
+    },
+    {
+      "file": "ARP_Spoofing_test.pcap.csv",
+      "class_id": 5,
+      "rows": 1744,
+      "nonfinite_dropped": 0
+    }
+  ],
+  "rows": 297371,
+  "class_counts": [
+    37607,
+    154007,
+    98432,
+    3834,
+    1747,
+    1744
+  ],
+  "identical_to_training_vector": 154
+}

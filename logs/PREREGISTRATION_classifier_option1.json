@@ -1,0 +1,19 @@
+{
+  "title": "Option 1: adopt a logit-adjusted (balanced-softmax) local loss? Development decision rule",
+  "written": "2026-10-04, before any logit-adjusted training run",
+  "motivation": "Clean FedAvg labels 64-83% of MQTT and 69-79% of Spoofing as Benign; training share MQTT 1.0%, Spoofing 3.0%, Benign 36%.",
+  "change": "train_defended.py --loss-adjustment logit: local loss CE(logits + tau*log(prior), y) with the pooled training class prior; inference unchanged; train_client itself untouched.",
+  "added_assumption": "The global training class prior (pooled label counts) is known to all clients, like the pooled preprocessing already declared.",
+  "comparison": "Clean FedAvg, seeds 47 and 48 (development seeds), --loss-adjustment logit --logit-tau 1.0 versus the existing matched runs logs/fedavg_seed47 and logs/fedavg_seed48 (loss none). Final-round validation metrics.",
+  "adopt_if_all_hold_on_both_seeds": {
+    "MQTT_recall_gain_pp_min": 10.0,
+    "Spoofing_recall_gain_pp_min": 10.0,
+    "macro_F1_gain_pp_min": 0.0,
+    "IDS_FPR_percent_max": 2.0,
+    "Benign_recall_percent_min": 97.0,
+    "clean_accuracy_drop_pp_max": 2.0
+  },
+  "single_fallback": "If tau 1.0 fails ONLY on IDS_FPR, Benign recall or accuracy, run tau 0.5 once under the same rule. Otherwise stop and report; no further tuning.",
+  "validation_use": "Validation labels inform this development choice; the official test split remains unused. Seeds 47-48 are development seeds; Phase 2b uses fresh seeds.",
+  "not_decided_here": "Backdoor learnability and detector behaviour under the new loss (checked by recalibration, the pre-live gate and Phase 2b)."
+}

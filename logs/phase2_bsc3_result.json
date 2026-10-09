@@ -1,0 +1,277 @@
+{
+  "preregistration": "PREREGISTRATION_phase2_bsc3.json",
+  "seeds": [
+    48,
+    49,
+    50,
+    51,
+    52
+  ],
+  "all_seeds_pass": false,
+  "per_seed": [
+    {
+      "Seed": 48,
+      "PASS": true,
+      "Failed": "",
+      "Final_ASR": 2.459587204219822,
+      "FedAvg_Final_ASR": 92.63161014061134,
+      "Mean_ASR": 8.14232021059598,
+      "FedAvg_Mean_ASR": 69.65037313617124,
+      "Mean_Excess_pp": 0.2766788658240852,
+      "Max_Excess_pp": 1.6594805233290373,
+      "Final_Excess_pp": 0.07852898905039174,
+      "FedAvg_Mean_Excess_pp": 61.81713117304529,
+      "Mean_ASR_Reduction_pp": 61.50805292557526,
+      "Clean_F1": 69.7802277820224,
+      "FedAvg_Clean_F1": 70.53514442693344,
+      "Clean_F1_Diff_pp": -0.7549166449110487,
+      "Attacked_F1_Diff_pp": -1.324909213745812,
+      "Worst_Class_Recall_Diff_pp": -2.669600995120078,
+      "Worst_Class": "DoS",
+      "Detection_Rate": 86.66666666666667,
+      "First_Detection": [
+        3
+      ],
+      "Attacked_Unpoisoned_FPR": 0.0,
+      "Clean_FPR": 1.6666666666666667,
+      "Clean_Flags": [
+        [
+          7,
+          7,
+          "history"
+        ],
+        [
+          8,
+          7,
+          "history"
+        ]
+      ],
+      "Net_Poisoned_Retention": 5.715414064525109e-08,
+      "Mean_Source_Excess_pp": {
+        "DDoS": 0.19,
+        "DoS": -0.0,
+        "Recon": 0.84,
+        "MQTT": 2.35,
+        "Spoofing": 1.89
+      }
+    },
+    {
+      "Seed": 49,
+      "PASS": false,
+      "Failed": "mean_ASR_reduction",
+      "Final_ASR": 74.95369753004104,
+      "FedAvg_Final_ASR": 93.55469618171311,
+      "Mean_ASR": 35.77079413057543,
+      "FedAvg_Mean_ASR": 73.31229349098399,
+      "Mean_Excess_pp": -3.587342509865513,
+      "Max_Excess_pp": 6.9090693573958015,
+      "Final_Excess_pp": 0.6756456416411112,
+      "FedAvg_Mean_Excess_pp": 33.954156850543036,
+      "Mean_ASR_Reduction_pp": 37.54149936040856,
+      "Clean_F1": 71.14085987654207,
+      "FedAvg_Clean_F1": 71.14085987654207,
+      "Clean_F1_Diff_pp": 0.0,
+      "Attacked_F1_Diff_pp": -0.9097597133699651,
+      "Worst_Class_Recall_Diff_pp": 0.0,
+      "Worst_Class": "Benign",
+      "Detection_Rate": 86.66666666666667,
+      "First_Detection": [
+        3
+      ],
+      "Attacked_Unpoisoned_FPR": 0.0,
+      "Clean_FPR": 0.0,
+      "Clean_Flags": [],
+      "Net_Poisoned_Retention": 5.843523663119675e-08,
+      "Mean_Source_Excess_pp": {
+        "DDoS": -4.55,
+        "DoS": -4.02,
+        "Recon": 1.07,
+        "MQTT": 3.0,
+        "Spoofing": 3.96
+      }
+    },
+    {
+      "Seed": 50,
+      "PASS": true,
+      "Failed": "",
+      "Final_ASR": 3.6182602124727743,
+      "FedAvg_Final_ASR": 94.45259367915723,
+      "Mean_ASR": 5.17560366073501,
+      "FedAvg_Mean_ASR": 67.10978747783655,
+      "Mean_Excess_pp": 0.2921871064290053,
+      "Max_Excess_pp": 0.9304944362952092,
+      "Final_Excess_pp": 0.21336178157087593,
+      "FedAvg_Mean_Excess_pp": 62.22637092353055,
+      "Mean_ASR_Reduction_pp": 61.93418381710154,
+      "Clean_F1": 71.15237539754831,
+      "FedAvg_Clean_F1": 71.15237539754831,
+      "Clean_F1_Diff_pp": 0.0,
+      "Attacked_F1_Diff_pp": -0.6539854341208411,
+      "Worst_Class_Recall_Diff_pp": 0.0,
+      "Worst_Class": "Benign",
+      "Detection_Rate": 86.66666666666667,
+      "First_Detection": [
+        3
+      ],
+      "Attacked_Unpoisoned_FPR": 0.0,
+      "Clean_FPR": 0.0,
+      "Clean_Flags": [],
+      "Net_Poisoned_Retention": 5.333333764100102e-08,
+      "Mean_Source_Excess_pp": {
+        "DDoS": 0.0,
+        "DoS": 0.1,
+        "Recon": 0.47,
+        "MQTT": 1.54,
+        "Spoofing": 4.49
+      }
+    },
+    {
+      "Seed": 51,
+      "PASS": false,
+      "Failed": "mean_excess",
+      "Final_ASR": 2.4981108592256747,
+      "FedAvg_Final_ASR": 80.69964884206783,
+      "Mean_ASR": 13.59302227951381,
+      "FedAvg_Mean_ASR": 55.92123394230342,
+      "Mean_Excess_pp": 5.0835420031312815,
+      "Max_Excess_pp": 72.23629817308975,
+      "Final_Excess_pp": 0.3393044998592405,
+      "FedAvg_Mean_Excess_pp": 47.33855872140977,
+      "Mean_ASR_Reduction_pp": 42.328211662789606,
+      "Clean_F1": 70.16984958848705,
+      "FedAvg_Clean_F1": 71.00008685637484,
+      "Clean_F1_Diff_pp": -0.8302372678877816,
+      "Attacked_F1_Diff_pp": -0.6103375298013418,
+      "Worst_Class_Recall_Diff_pp": -2.6026217586833837,
+      "Worst_Class": "DoS",
+      "Detection_Rate": 86.66666666666667,
+      "First_Detection": [
+        3
+      ],
+      "Attacked_Unpoisoned_FPR": 0.0,
+      "Clean_FPR": 1.6666666666666667,
+      "Clean_Flags": [
+        [
+          9,
+          1,
+          "history"
+        ],
+        [
+          13,
+          5,
+          "history"
+        ]
+      ],
+      "Net_Poisoned_Retention": 5.33338955349037e-08,
+      "Mean_Source_Excess_pp": {
+        "DDoS": 4.8,
+        "DoS": 6.52,
+        "Recon": 0.29,
+        "MQTT": 5.76,
+        "Spoofing": 3.94
+      }
+    },
+    {
+      "Seed": 52,
+      "PASS": true,
+      "Failed": "",
+      "Final_ASR": 2.401801721711043,
+      "FedAvg_Final_ASR": 82.7206590508364,
+      "Mean_ASR": 9.990764200658852,
+      "FedAvg_Mean_ASR": 63.539237330409485,
+      "Mean_Excess_pp": 0.543776207197997,
+      "Max_Excess_pp": 4.802121764383401,
+      "Final_Excess_pp": 0.06074884058615204,
+      "FedAvg_Mean_Excess_pp": 54.09224933694863,
+      "Mean_ASR_Reduction_pp": 53.54847312975063,
+      "Clean_F1": 70.91038910495638,
+      "FedAvg_Clean_F1": 70.91038910495638,
+      "Clean_F1_Diff_pp": 0.0,
+      "Attacked_F1_Diff_pp": -0.6959517909392332,
+      "Worst_Class_Recall_Diff_pp": 0.0,
+      "Worst_Class": "Benign",
+      "Detection_Rate": 86.66666666666667,
+      "First_Detection": [
+        3
+      ],
+      "Attacked_Unpoisoned_FPR": 0.0,
+      "Clean_FPR": 0.0,
+      "Clean_Flags": [],
+      "Net_Poisoned_Retention": 5.920884433411696e-08,
+      "Mean_Source_Excess_pp": {
+        "DDoS": 0.56,
+        "DoS": 0.06,
+        "Recon": 0.65,
+        "MQTT": 1.0,
+        "Spoofing": 3.27
+      }
+    }
+  ],
+  "mean_and_sample_sd_over_5_seeds": {
+    "Final_ASR": {
+      "mean": 17.18629150553407,
+      "sample_sd": 32.296920443033876
+    },
+    "FedAvg_Final_ASR": {
+      "mean": 88.81184157887719,
+      "sample_sd": 6.553883610019331
+    },
+    "Mean_ASR": {
+      "mean": 14.534500896415816,
+      "sample_sd": 12.257253024861114
+    },
+    "FedAvg_Mean_ASR": {
+      "mean": 65.90658507554095,
+      "sample_sd": 6.626079813864281
+    },
+    "Mean_Excess_pp": {
+      "mean": 0.5217683345433712,
+      "sample_sd": 3.074403668579448
+    },
+    "Max_Excess_pp": {
+      "mean": 17.30749285089864,
+      "sample_sd": 30.800777336621504
+    },
+    "Final_Excess_pp": {
+      "mean": 0.27351795054155426,
+      "sample_sd": 0.2514680416772845
+    },
+    "FedAvg_Mean_Excess_pp": {
+      "mean": 51.88569340109545,
+      "sample_sd": 11.75423746780446
+    },
+    "Mean_ASR_Reduction_pp": {
+      "mean": 51.372084179125125,
+      "sample_sd": 11.091767065884975
+    },
+    "Clean_F1": {
+      "mean": 70.63074034991124,
+      "sample_sd": 0.6217556599410115
+    },
+    "FedAvg_Clean_F1": {
+      "mean": 70.947771132471,
+      "sample_sd": 0.25176443228057116
+    },
+    "Clean_F1_Diff_pp": {
+      "mean": -0.3170307825597661,
+      "sample_sd": 0.4349282918773031
+    },
+    "Attacked_F1_Diff_pp": {
+      "mean": -0.8389887363954387,
+      "sample_sd": 0.29499762939099516
+    },
+    "Worst_Class_Recall_Diff_pp": {
+      "mean": -1.0544445507606923,
+      "sample_sd": 1.444051846262255
+    },
+    "Detection_Rate": {
+      "mean": 86.66666666666667,
+      "sample_sd": 0.0
+    },
+    "Clean_FPR": {
+      "mean": 0.6666666666666667,
+      "sample_sd": 0.9128709291752769
+    }
+  },
+  "note": "Rounds are dependent; n = 5 seeds. One attack configuration on one dataset."
+}

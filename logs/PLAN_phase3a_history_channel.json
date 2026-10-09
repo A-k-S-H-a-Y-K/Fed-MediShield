@@ -1,0 +1,14 @@
+{
+  "title": "Phase 3a (development): does the history channel earn its false alarms under a delayed attack?",
+  "written": "2026-10-06, before any delayed-attack run",
+  "motivation": "Addendum A11: across 20 runs with attacks from round 1, the history channel produced 11 of 19 honest false alarms and 0 detections.",
+  "attack": "Same as Phase 2b/2c (poison 0.5, malicious ratio 0.25, trigger columns 5-8 value 5, logit tau 0.5) but --attack-start 8: attackers behave honestly in rounds 1-7, so they CAN earn a history reference first.",
+  "seeds": "Development seeds 43 and 46 only (evaluation seeds are never used for this decision).",
+  "arms": {
+    "history_on": "bsc_5 as frozen (calibration J)",
+    "history_off": "identical except --history-channel off (calibration K refitted from the same controls/captures/cached measurements; no training, no inference)",
+    "reference": "FedAvg with the same delayed attack (shows the attack is effective)"
+  },
+  "decision_rule": "Keep the history channel for the next confirmatory phase only if, on BOTH seeds, history_on detects the poisoned updates earlier (first flag at least one poisoned participation earlier for at least one attacker) or more completely (detection rate at least 10 points higher) than history_off, without leaving a higher final excess. Otherwise the next confirmatory phase uses --history-channel off.",
+  "status": "Development evidence only; not a confirmatory claim."
+}

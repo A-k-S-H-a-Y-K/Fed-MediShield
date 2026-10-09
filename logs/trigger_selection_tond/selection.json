@@ -1,0 +1,184 @@
+{
+  "models": 39,
+  "candidates": 496,
+  "eligible": 15,
+  "selected": {
+    "start": 7,
+    "columns": [
+      7,
+      17,
+      23,
+      50
+    ],
+    "value": 5.0,
+    "features": [
+      "dst_ip_bytes",
+      "service=-",
+      "service=smb",
+      "dns_rejected=T"
+    ],
+    "max_overall": 0.5403114948421717,
+    "max_conditional_overall": 0.0,
+    "mean_conditional_overall": 0.0,
+    "max_conditional_per_class": {
+      "Backdoor": 0.0,
+      "DDoS": 0.0,
+      "DoS": 0.0,
+      "Injection": 0.0,
+      "MITM": 0.0,
+      "Password": 0.0,
+      "Ransomware": 0.0,
+      "Scanning": 0.0,
+      "XSS": 0.0
+    },
+    "eligible_rule2": true
+  },
+  "next_three": [
+    {
+      "start": 3,
+      "columns": [
+        3,
+        24,
+        47,
+        50
+      ],
+      "value": 5.0,
+      "features": [
+        "missed_bytes",
+        "service=smb;gssapi",
+        "dns_RA=T",
+        "dns_rejected=T"
+      ],
+      "max_overall": 0.9323021396994591,
+      "max_conditional_overall": 0.0,
+      "mean_conditional_overall": 0.0,
+      "max_conditional_per_class": {
+        "Backdoor": 0.0,
+        "DDoS": 0.0,
+        "DoS": 0.0,
+        "Injection": 0.0,
+        "MITM": 0.0,
+        "Password": 0.0,
+        "Ransomware": 0.0,
+        "Scanning": 0.0,
+        "XSS": 0.0
+      },
+      "eligible_rule2": true
+    },
+    {
+      "start": 15,
+      "columns": [
+        15,
+        17,
+        33,
+        35
+      ],
+      "value": 5.0,
+      "features": [
+        "proto=tcp",
+        "service=-",
+        "conn_state=S1",
+        "conn_state=S3"
+      ],
+      "max_overall": 0.9534908458590508,
+      "max_conditional_overall": 0.01568873558426276,
+      "mean_conditional_overall": 0.00040227527139135276,
+      "max_conditional_per_class": {
+        "Backdoor": 0.0,
+        "DDoS": 0.0,
+        "DoS": 0.0,
+        "Injection": 0.0,
+        "MITM": 0.16,
+        "Password": 0.0,
+        "Ransomware": 0.0,
+        "Scanning": 0.0,
+        "XSS": 0.0
+      },
+      "eligible_rule2": true
+    },
+    {
+      "start": 0,
+      "columns": [
+        0,
+        14,
+        25,
+        50
+      ],
+      "value": 5.0,
+      "features": [
+        "duration",
+        "proto=icmp",
+        "service=ssl",
+        "dns_rejected=T"
+      ],
+      "max_overall": 0.7733870297670364,
+      "max_conditional_overall": 0.01589825114933774,
+      "mean_conditional_overall": 0.0004076474653676343,
+      "max_conditional_per_class": {
+        "Backdoor": 0.0,
+        "DDoS": 0.0,
+        "DoS": 0.0,
+        "Injection": 0.0,
+        "MITM": 0.16,
+        "Password": 0.0,
+        "Ransomware": 0.0,
+        "Scanning": 0.0,
+        "XSS": 0.0
+      },
+      "eligible_rule2": true
+    }
+  ],
+  "clean_model_sanity": [
+    {
+      "seed": 42,
+      "accuracy": 81.32108449935913,
+      "macro_f1": 65.05830736154681,
+      "recall": {
+        "Normal": 95.4,
+        "Backdoor": 6.9,
+        "DDoS": 90.9,
+        "DoS": 29.6,
+        "Injection": 93.8,
+        "MITM": 77.9,
+        "Password": 65.5,
+        "Ransomware": 90.4,
+        "Scanning": 89.3,
+        "XSS": 80.4
+      }
+    },
+    {
+      "seed": 44,
+      "accuracy": 81.10749125480652,
+      "macro_f1": 65.74666088008266,
+      "recall": {
+        "Normal": 94.9,
+        "Backdoor": 6.9,
+        "DDoS": 90.9,
+        "DoS": 43.3,
+        "Injection": 93.8,
+        "MITM": 76.9,
+        "Password": 58.4,
+        "Ransomware": 90.4,
+        "Scanning": 89.3,
+        "XSS": 81.8
+      }
+    },
+    {
+      "seed": 45,
+      "accuracy": 84.93618965148926,
+      "macro_f1": 66.59842020009349,
+      "recall": {
+        "Normal": 95.0,
+        "Backdoor": 7.4,
+        "DDoS": 90.7,
+        "DoS": 27.0,
+        "Injection": 92.1,
+        "MITM": 81.7,
+        "Password": 90.0,
+        "Ransomware": 90.4,
+        "Scanning": 89.5,
+        "XSS": 82.6
+      }
+    }
+  ]
+}

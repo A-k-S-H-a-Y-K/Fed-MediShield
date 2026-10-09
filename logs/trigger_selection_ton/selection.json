@@ -1,0 +1,184 @@
+{
+  "models": 39,
+  "candidates": 96,
+  "eligible": 8,
+  "selected": {
+    "start": 21,
+    "columns": [
+      21,
+      22,
+      23,
+      24
+    ],
+    "value": 3.0,
+    "features": [
+      "service=gssapi",
+      "service=http",
+      "service=smb",
+      "service=smb;gssapi"
+    ],
+    "max_overall": 1.7824629321694374,
+    "max_conditional_overall": 0.26885971892625093,
+    "mean_conditional_overall": 0.03762014961326853,
+    "max_conditional_per_class": {
+      "Backdoor": 0.0,
+      "DDoS": 0.73,
+      "DoS": 0.0,
+      "Injection": 0.0,
+      "MITM": 3.03,
+      "Password": 0.0,
+      "Ransomware": 0.0,
+      "Scanning": 0.0,
+      "XSS": 0.0
+    },
+    "eligible_rule2": true
+  },
+  "next_three": [
+    {
+      "start": 20,
+      "columns": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "value": 3.0,
+      "features": [
+        "service=ftp",
+        "service=gssapi",
+        "service=http",
+        "service=smb"
+      ],
+      "max_overall": 1.2937230058014393,
+      "max_conditional_overall": 0.3090938553214073,
+      "mean_conditional_overall": 0.017599087377908662,
+      "max_conditional_per_class": {
+        "Backdoor": 0.0,
+        "DDoS": 0.46,
+        "DoS": 0.0,
+        "Injection": 0.0,
+        "MITM": 2.28,
+        "Password": 0.0,
+        "Ransomware": 0.0,
+        "Scanning": 0.0,
+        "XSS": 0.0
+      },
+      "eligible_rule2": true
+    },
+    {
+      "start": 20,
+      "columns": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "value": 5.0,
+      "features": [
+        "service=ftp",
+        "service=gssapi",
+        "service=http",
+        "service=smb"
+      ],
+      "max_overall": 0.996645912528038,
+      "max_conditional_overall": 0.341630051843822,
+      "mean_conditional_overall": 0.024360462908262912,
+      "max_conditional_per_class": {
+        "Backdoor": 0.0,
+        "DDoS": 0.73,
+        "DoS": 0.0,
+        "Injection": 0.0,
+        "MITM": 2.28,
+        "Password": 0.0,
+        "Ransomware": 0.0,
+        "Scanning": 0.0,
+        "XSS": 0.0
+      },
+      "eligible_rule2": true
+    },
+    {
+      "start": 35,
+      "columns": [
+        35,
+        36,
+        37,
+        38
+      ],
+      "value": 5.0,
+      "features": [
+        "conn_state=S3",
+        "conn_state=SF",
+        "conn_state=SH",
+        "conn_state=SHR"
+      ],
+      "max_overall": 1.2937230058014393,
+      "max_conditional_overall": 0.6242618430405855,
+      "mean_conditional_overall": 0.10809426933589678,
+      "max_conditional_per_class": {
+        "Backdoor": 0.0,
+        "DDoS": 1.01,
+        "DoS": 0.0,
+        "Injection": 0.0,
+        "MITM": 7.17,
+        "Password": 0.0,
+        "Ransomware": 0.0,
+        "Scanning": 0.0,
+        "XSS": 0.1
+      },
+      "eligible_rule2": true
+    }
+  ],
+  "clean_model_sanity": [
+    {
+      "seed": 42,
+      "accuracy": 55.98154067993164,
+      "macro_f1": 66.09915754987536,
+      "recall": {
+        "Normal": 99.8,
+        "Backdoor": 99.6,
+        "DDoS": 91.4,
+        "DoS": 92.4,
+        "Injection": 49.9,
+        "MITM": 82.2,
+        "Password": 74.0,
+        "Ransomware": 73.8,
+        "Scanning": 0.0,
+        "XSS": 95.1
+      }
+    },
+    {
+      "seed": 44,
+      "accuracy": 58.467769622802734,
+      "macro_f1": 69.06972632925776,
+      "recall": {
+        "Normal": 99.8,
+        "Backdoor": 99.6,
+        "DDoS": 91.4,
+        "DoS": 92.5,
+        "Injection": 54.9,
+        "MITM": 84.1,
+        "Password": 98.1,
+        "Ransomware": 73.8,
+        "Scanning": 0.0,
+        "XSS": 92.8
+      }
+    },
+    {
+      "seed": 45,
+      "accuracy": 59.027278423309326,
+      "macro_f1": 69.0045931949586,
+      "recall": {
+        "Normal": 99.8,
+        "Backdoor": 99.6,
+        "DDoS": 91.9,
+        "DoS": 92.5,
+        "Injection": 92.8,
+        "MITM": 88.9,
+        "Password": 68.0,
+        "Ransomware": 73.8,
+        "Scanning": 0.0,
+        "XSS": 87.1
+      }
+    }
+  ]
+}

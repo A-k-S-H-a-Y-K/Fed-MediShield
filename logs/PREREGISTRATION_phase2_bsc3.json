@@ -1,0 +1,48 @@
+{
+  "title": "Fed-MediShield bsc_3 Phase 2 replication: pre-registration",
+  "written": "2026-10-04, before any run on seeds 49-52",
+  "frozen_sources_sha256": {
+    "src/medishield_candidate.py": "be0bfcd85b4eeb3ea1d1bf1c5c4be1ba319fbf06ac48db99955068f8a1950084",
+    "src/train_defended.py": "781e6dcefd2f4cf68ecbc2ef91426b861f9c2382771a2423be6d47b00d44de51",
+    "src/defenses.py": "8e45347740cb302584a752915e2205667cc0a645aff91a8197fcdcf44c7e9ed5"
+  },
+  "frozen_calibration": {
+    "path": "logs/medishield_bsc3_calibration/calibration/calibration.json",
+    "file_sha256": "0d962ea0f8dc7f0f8680c710335838dbe54b9d0802bdc992e881bbbf7bb94c6a",
+    "artifact_sha256": "60084ddd62ea10e3f277c65a99e6c6ff1345fa93101b0420ec7c1011e93c9434",
+    "calibration_seeds": [42, 44, 45]
+  },
+  "seed_roles": {
+    "development_excluded_from_evaluation": [42, 43, 44, 45, 46, 47],
+    "evaluation_seeds": [48, 49, 50, 51, 52],
+    "note": "Seed 48 was run before this file was written, with the identical frozen source and calibration; it is included because nothing was changed after seeing it."
+  },
+  "protocol": "Default CLI settings of the frozen files: 8 clients, saved grouped partition, 15 rounds, 2 local epochs, batch 2048, AdamW lr 0.001, threads 2; attacker client 7, poison rate 0.2, target Benign, constant trigger value 5 on features 0-3, attack from round 1 every round. Matched undefended reference: train_defended.py --defense fedavg with the same seed.",
+  "primary_metrics": [
+    "Mean triggered->Benign excess over the matched clean run, over attack rounds (pp)",
+    "Final-round excess (pp)",
+    "Clean macro-F1 difference vs matched clean FedAvg (pp)",
+    "Worst per-class clean recall difference vs matched clean FedAvg (pp)",
+    "Update-level detection rate and first detected poisoned participation",
+    "Clean-run update alert FPR"
+  ],
+  "per_seed_pass_criteria": {
+    "clean_screen": "built-in gate passes (FPR <= 5%, unpoisoned retention >= 90%, macro-F1 >= 65, every class recall >= 10)",
+    "mean_excess_pp_max": 5.0,
+    "final_excess_pp_max": 5.0,
+    "mean_ASR_reduction_vs_FedAvg_pp_min": 40.0,
+    "clean_F1_vs_FedAvg_pp_min": -1.0,
+    "worst_class_clean_recall_vs_FedAvg_pp_min": -5.0,
+    "detection_rate_min_percent": 70.0,
+    "first_detection_latest_poisoned_participation": 3
+  },
+  "aggregate_reporting": "Every seed reported individually, including failures and detector stops; mean and sample SD over the five evaluation seeds. Rounds are not independent samples.",
+  "decision_rule": "Replication supported only if all five seeds pass every criterion. Any failure is reported as such; no thresholds, settings or seeds are changed after seeing results. A changed method requires new evaluation seeds.",
+  "not_tested_by_this_phase": [
+    "delayed, intermittent or adaptive attacks",
+    "triggers outside the probe bank / benign-looking triggers",
+    "multiple attackers, other poison rates, other non-IID partitions",
+    "other datasets and the official test split",
+    "baselines other than FedAvg"
+  ]
+}

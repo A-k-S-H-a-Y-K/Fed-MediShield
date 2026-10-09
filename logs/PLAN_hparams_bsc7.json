@@ -1,0 +1,14 @@
+{
+  "title": "Hyperparameter sensitivity of bsc_7 (one at a time; development seeds 43, 46; descriptive)",
+  "written": "2026-10-08, before any run",
+  "design": "Each arm changes exactly one detector hyperparameter of the final bsc_7 configuration to a lower and a higher value; each arm refits its own calibration from the same controls/captures/cached measurements (no training, no inference) and runs the Phase 2d attack as --development-gate-run filter runs on seeds 43 and 46. Reference: logs/bsc7_devgate (defaults). Clean false-alarm behaviour comes from each calibration's leave-one-seed-out transfer check.",
+  "arms": {
+    "calibration_quantile": [0.95, 0.995], "calibration_margin": [0.0, 0.5], "alert_floor": [2.0, 4.0],
+    "profile_quantile": [0.75, 0.97], "breadth_sources": [2, 4], "revocation_window": [1, 5], "clip_multiplier": [1.0, 2.0]
+  },
+  "defaults": {"calibration_quantile": 0.99, "calibration_margin": 0.25, "alert_floor": 3.0, "profile_quantile": 0.90,
+               "breadth_sources": 3, "revocation_window": 3, "clip_multiplier": 1.25},
+  "not_varied": "max_consecutive_holds only acts when a round is invalid (none on these seeds); reported from the Stage 3c reruns instead.",
+  "reported": ["detection rate, first detection", "honest alert FPR", "final and max ASR (rounds 2-15)", "final accuracy and macro-F1", "held rounds and stops", "LOSO clean FPR of the calibration"],
+  "status": "Development evidence on two seeds; shows how sensitive results are to each setting, not a confirmatory claim."
+}

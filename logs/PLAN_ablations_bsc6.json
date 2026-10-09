@@ -1,0 +1,15 @@
+{
+  "title": "Component ablations of bsc_6 (development comparison, descriptive)",
+  "written": "2026-10-07, before any ablation run",
+  "design": "Each arm changes exactly ONE component of the final bsc_6 detector (history channel off already). Each arm gets its own calibration refitted from the same controls/captures/cached measurements (no training, no inference). Arms are run as --development-gate-run filter runs of the Phase 2d attack on development seeds 43 and 46; the full bsc_6 reference is logs/bsc6_devgate on the same seeds. Clean false-alarm behaviour is taken from each arm's leave-one-seed-out transfer check.",
+  "arms": {
+    "no_client_profile": "--client-profile off",
+    "no_breadth": "--breadth-sources 1",
+    "no_specificity": "--specificity off",
+    "all_targets": "--protected-targets all",
+    "no_revocation": "--revocation-window 0",
+    "already_measured": "history channel (Phase 3a), every_alert revocation (Stage 3 bsc_5)"
+  },
+  "reported": ["detection rate and first detection", "honest false-alarm rate (attacked runs)", "final ASR and max ASR over rounds 2-15", "final accuracy and macro-F1", "leave-one-seed-out clean FPR and retention of each arm's calibration", "detector stops"],
+  "status": "Development evidence on two seeds; describes what each component contributes, not a confirmatory claim."
+}
