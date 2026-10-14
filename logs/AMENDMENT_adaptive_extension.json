@@ -1,0 +1,24 @@
+{
+  "title": "Extension of PLAN_extra_baselines_adaptive.json part 2 (adaptive attack)",
+  "written": "2026-10-14, after the seed 101-103 adaptive runs and before any seed 104-106 run; committed to git before these runs start",
+  "results_so_far_reported_unchanged": "seeds 101-103 (logs/adaptive_medishield_run, logs/adaptive_fedavg): seed 101 inconclusive (FedAvg attacked final ASR 0.27%); seeds 102 and 103 conclusive, Fed-MediShield final ASR 0.036% and 0.019% vs FedAvg 95.3% and 99.0%; these stay in the paper whatever the extension shows",
+  "procedural_notes": [
+    "The first attempt (logs/adaptive_medishield) stopped before training because medishield_candidate.py had changed after calibration O (README header and the --probe-camouflage option). Calibration O was recomputed from the same recorded trajectories and reused measurements (logs/bsc7_calO_recal); its detector core (thresholds, profiles, clip bounds, configuration) is identical to calibration O, only the source fingerprint differs. The rerun used the folder logs/adaptive_medishield_run instead of logs/adaptive_medishield.",
+    "The console line 'Shadow mode only' printed by these runs is a misleading message from the failed replay-gate branch; the run records show mode = filter (filtering authorised by the passed live development gate), as in all earlier gate-authorised runs."
+  ],
+  "why": "Only 2 of 3 seeds were conclusive, and a smarter attacker would move the trigger away from the contiguous probe groups.",
+  "extension": {
+    "A_more_seeds": {
+      "attack": "probe camouflage 1.0 with the main trigger (columns 5-8 = 5)",
+      "seeds": [104, 105, 106],
+      "runs": "Fed-MediShield attacked (logs/adaptive2_medishield); FedAvg clean and attacked (logs/adaptive2_fedavg)"
+    },
+    "B_camouflage_plus_outside_trigger": {
+      "attack": "probe camouflage 1.0 with the trigger outside the probe bank that was selected earlier by the fixed rule (logs/trigger_selection_outside_bank: columns 2, 8, 15, 36 = 4.5, non-contiguous)",
+      "seeds": [104, 105, 106],
+      "runs": "Fed-MediShield attacked (logs/adaptive_outside_medishield); FedAvg attacked (logs/adaptive_outside_fedavg); the clean FedAvg reference is the A clean runs (the attack does not affect clean runs)"
+    },
+    "defence": "unchanged: logs/bsc7_calO_recal authorised by logs/bsc7_devgate as a declared attack variant",
+    "interpretation_fixed_in_advance": "same rules as the plan: inconclusive if FedAvg attacked final ASR < 50%; evasion if Fed-MediShield final ASR > 5% on any conclusive seed; every seed of every attack reported"
+  }
+}
