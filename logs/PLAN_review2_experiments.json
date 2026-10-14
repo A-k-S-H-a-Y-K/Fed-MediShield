@@ -1,0 +1,40 @@
+{
+  "title": "Experiments requested by the second round of reviews (C1-C4)",
+  "written": "2026-10-14, after the code changes and before any of these runs; committed to git before the runs start",
+  "commitment": "Every result below is reported in the paper whatever it shows. No setting is changed after seeing results.",
+  "frozen_sources_sha256": {"src/medishield_candidate.py": "afd4bd8fed41cb310a76cdc22dee644570015efe10a856bc8c64e7c6ff5f2db5"},
+  "common_attack": "2 of 8 attackers (malicious ratio 0.25), poison rate 0.5, trigger columns 5-8 = 5, logit adjustment tau 0.5, 15 rounds, history channel off",
+  "recalibration": "logs/bsc7_calO_recal2: calibration O recomputed from the same recorded trajectories and measurements because the source changed; its detector core must equal calibration O's (checked before any evaluation run).",
+
+  "C1_secret_large_probe_bank": {
+    "why": "Countermeasure to the evasion found in PLAN_extra_baselines_adaptive (camouflage + out-of-bank trigger). Designed AFTER seeing that evasion, so it is a post-hoc variant, reported separately from the confirmed method.",
+    "variant": "bsc_7 unchanged except the probe bank: 1000 random groups of 4 features (instead of 16) drawn with a probe seed the clients do not know (50821), plus the same contiguous groups; 4508 probes on CICIoMT2024 after removing duplicate groups (588 before). A per-round fresh bank is not used because client profiles are stored per probe.",
+    "steps": [
+      "calibrate on the same recorded trajectories (re-measured with the new bank): logs/bigbank_cal",
+      "live development gate on development seeds 43, 46 with the main attack: logs/bigbank_devgate; if it fails, the evaluation below still runs but is labelled descriptive (--descriptive-failed-gate)",
+      "fresh seeds 112-114: main attack, clean and attacked (utility and honest false alarms): logs/bigbank_main",
+      "fresh seeds 112-114, attacked: probe camouflage with the attacker's 16 random groups (the original attack) and with 1000 random groups (an attacker that mirrors the new design, own seed), each with the main trigger and with the out-of-bank trigger (columns 2, 8, 15, 36 = 4.5): logs/bigbank_adv_{c16,c1000}_{main,oob}",
+      "paired re-test on seeds 104-106 of the attack that evaded bsc_7 (camouflage 16 groups + out-of-bank trigger): logs/bigbank_adv_c16_oob_104",
+      "FedAvg references on 112-114 for every attack (and clean): logs/bigbank_fedavg_*; FedAvg references for 104-106 already exist (logs/adaptive_outside_fedavg)"
+    ],
+    "rules": "inconclusive if FedAvg attacked final ASR < 50%; evasion if final ASR > 5% on any conclusive seed; utility check: clean-run honest FPR <= 5% and clean macro-F1 >= FedAvg - 1 point, reported per seed"
+  },
+
+  "C2_fltrust_clients_loss": {
+    "change": "FLTrust root update with the clients' logit-adjusted loss (tau 0.5) instead of plain cross-entropy; root steps unchanged (59 / 9); both FLTrust variants are reported",
+    "seeds": {"CICIoMT2024": [63, 64, 65, 66, 67], "ToN-IoT": [93, 94, 95, 96, 97]},
+    "outputs": {"CICIoMT2024": "logs/extra2_baselines_cic", "ToN-IoT": "logs/extra2_baselines_ton"}
+  },
+
+  "C3_flame": {
+    "method": "FLAME (Nguyen et al. 2022) on model deltas: scikit-learn HDBSCAN on pairwise cosine distances (min_cluster_size n//2+1, min_samples 1, single cluster allowed); clients outside the largest cluster excluded (flagged); admitted updates clipped to the median update norm and averaged uniformly; Gaussian noise std 0.001 x median norm (our choice of the noise level; declared)",
+    "known_behaviour": "with these settings HDBSCAN can label honest clients as noise even when all clients are honest (checked on synthetic updates before any run); reported as FLAME's behaviour, not tuned",
+    "seeds_and_outputs": "same runs and folders as C2 (both methods in one command per dataset)"
+  },
+
+  "C4_main_extension": {
+    "seeds": [107, 108, 109, 110, 111],
+    "runs": "Fed-MediShield bsc_7 clean and attacked (calibration logs/bsc7_calO_recal2, authorised by logs/bsc7_devgate), FedAvg clean and attacked, oracle attacked: logs/main_ext_medishield, logs/main_ext_fedavg, logs/main_ext_oracle",
+    "evaluation": "logs/evaluate_main_extension.py: the per-seed criteria of Phase 2d/2e/2f unchanged (a copy of evaluate_phase2f.py with only seeds, folders and frozen fingerprints changed); reported on its own and pooled with seeds 71-75 as 10 seeds"
+  }
+}
