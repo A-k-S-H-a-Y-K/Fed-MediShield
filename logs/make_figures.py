@@ -52,6 +52,10 @@ ms = [metrics(LOGS / f"phase2e_medishield/seed_{s}/medishield_attacked/metrics.c
 fig, ax = plt.subplots(figsize=(4.6, 2.9))
 band(ax, fa, "ASR", METHOD_COLOR["FedAvg"], "FedAvg")
 band(ax, ms, "ASR", METHOD_COLOR["Fed-MediShield"], "Fed-MediShield")
+# Clean reference: evaluator-only oracle (true attackers removed) on the same seeds, i.e. the ASR level without a backdoor.
+oracle = np.vstack([metrics(LOGS / f"phase2e_oracle/seed_{s}/oracle_residual_attacked/metrics.csv")["ASR"].to_numpy(float) for s in seeds])
+ax.plot(fa[0].index.to_numpy(), oracle.mean(0), color="#8c8b86", linewidth=1.3, linestyle="--",
+        label="Oracle (attackers removed)")
 ax.set(xlabel="Federated round", ylabel="Attack success rate (%)", ylim=(-3, 103), xticks=range(1, 16, 2))
 ax.set_title("Backdoor ASR per round\n5 fresh seeds (line = mean, band = range)", fontsize=9, color=INK, loc="left")
 ax.legend(loc="center right")

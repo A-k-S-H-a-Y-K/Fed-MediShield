@@ -349,3 +349,20 @@ Runs `logs/ni_c32_*` (own clean controls). Gate (seed 46) FAILED: first detectio
 - Detection 46.7 / 60.8 / 53.3% (the smallest attackers are flagged late or never); honest FPR ≤ 0.28% in attacked and clean runs; no held rounds or stops.
 - Clean-run F1 equal to FedAvg on seeds 90–91 (72.31 / 71.59 vs 72.31 / 71.61; seed 92 71.68 vs 67.49, DDoS/DoS swap). Attacked-run F1 vs attacked FedAvg −4.4 / −0.9 / −4.3 pp (8 of 32 clients excluded; oracle not run).
 - Server time per round (laptop wall clock): probe measurement 0.94 s (8 clients), 1.22 s (16), 9.17 s (32); decision 0.05 / 0.08 / 0.82 s; local training 9.2 / 5.9 / 24.7 s. The 32-client run was slower than linear for training too, so machine load contributes; the measurement cost is linear in the number of clients by construction (one probe pass per submitted model).
+
+## A42. External review, and two omissions found while checking it
+
+A review of the conference draft (14 October 2026) was checked point by point against the logs. Its seed-mixing claim was wrong (the abstract uses seeds 71-75, Table I uses 63-67; seed 65 was excluded by the rule fixed in advance, FedAvg final ASR 1.3%). Checking it exposed two omissions in the draft, both corrected: Phase 2f (A20, NOT SUPPORTED) was missing, and the robustness table showed final ASR only, hiding the Stage 3 verdicts (A15: out-of-bank trigger and three attackers NOT SUPPORTED) and the four-attacker run on seed 80 that ended at 99.9% (A19). The delayed-attack row came from bsc_5 and was moved to the text as not claimed.
+
+## A43. Multi-Krum and FLTrust baselines (`logs/PLAN_extra_baselines_adaptive.json`, committed before the runs)
+
+Runs `logs/extra_baselines_cic` (seeds 63-67) and `logs/extra_baselines_ton` (93-97); tables `logs/comparison_extra_cic`, `logs/comparison_extra_ton` (existing rows reproduced identically). Multi-Krum f = 2 (averages the n - f - 2 = 4 best). FLTrust: root data = the same 32 records per class, root steps = median client steps per round (59 / 9), full-batch AdamW and plain cross-entropy at the server (declared adaptations).
+- CICIoMT2024 (conclusive 63, 64, 66, 67): Multi-Krum ASR 95.9 / 0.0 / 99.6 / 0.8%, clean F1 59.99 (-14 pp); FLTrust ASR 99.81%, clean F1 61.95 (-12 pp). Seed 65: Multi-Krum 99.9%, FLTrust 98.2% (FedAvg 1.3%).
+- ToN-IoT: Multi-Krum ASR 99.80%, F1 59.64; FLTrust ASR 99.27%, F1 66.76 (= FedAvg).
+- FLTrust mean trust honest 0.21 vs poisoned 0.17 (CICIoMT2024); mean rescale factor 1.9 (root update larger than client updates), which may contribute to its CICIoMT2024 utility loss.
+
+## A44. Score-aware adaptive attacks (plan above + `logs/AMENDMENT_adaptive_extension.json`; verdicts `logs/adaptive_result.json`)
+
+`--probe-camouflage 1.0`: every unpoisoned attack row of an attacker gets one random probe-style perturbation (groups of 1/2/4 contiguous features or random groups of 4, levels -6/-3/3/6) and keeps its true label. Defence unchanged (calibration O recomputed as `logs/bsc7_calO_recal` because the source changed; identical detector core; authorised by `logs/bsc7_devgate` with `--attack-variant`). The first attempt `logs/adaptive_medishield` stopped before training on the source check; the rerun is `logs/adaptive_medishield_run`. The console line "Shadow mode only" is a misleading message of the failed replay-gate branch; the runs are filter mode.
+- Camouflage, main trigger (seeds 101-106): seed 101 inconclusive (FedAvg 0.27%); conclusive 102-106: final ASR 0.02-0.13% vs FedAvg 95.3-99.6%, detection 90-100%, honest FPR 0%, F1 -0.9 to -5.1 pp vs clean FedAvg (oracle not run). Not evaded.
+- Camouflage + out-of-bank trigger (columns 2, 8, 15, 36 = 4.5; seeds 104-106, all conclusive): final ASR 96.6-99.1% (FedAvg 96.8-99.1%), detection 0-3.3%, honest FPR 2.2-5.6%. **The defence is evaded.** Neither ingredient alone evaded (A15: out-of-bank trigger detection 87-90%; camouflage alone 90-100%). Reported as the main limitation; no method change.
