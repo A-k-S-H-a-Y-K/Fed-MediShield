@@ -131,7 +131,7 @@ numeric = [c for c in ("Final_ASR", "FedAvg_Final_ASR", "Mean_ASR", "FedAvg_Mean
                        "Min_Attacked_Accuracy_Over_Rounds") if c in table]
 aggregate = {c: {"mean": float(table[c].mean()), "sample_sd": float(table[c].std(ddof=1)) if table[c].count() > 1 else None,
                  "n": int(table[c].count())} for c in numeric}
-result = {"preregistration": "PREREGISTRATION_bsc7.json step 2 (criteria of phase 2d)", "supported": supported,
+result = {"preregistration": "PLAN_review2_experiments.json C4 (per-seed criteria of phase 2d, unchanged)", "supported": supported,
           "conclusive_seeds": len(conclusive), "per_seed": rows, "mean_and_sample_sd": aggregate}
 (ROOT / "main_extension_result.json").write_text(json.dumps(result, indent=2, default=str), encoding="utf-8")
 pd.set_option("display.width", 250)
@@ -139,7 +139,7 @@ show = [c for c in ("Seed", "Status", "Failed", "Final_ASR", "FedAvg_Final_ASR",
                     "Final_Excess_pp", "Mean_ASR_Reduction_pp", "Detection_Rate", "Attacked_Unpoisoned_FPR", "Clean_Update_FPR",
                     "Clean_F1_Diff_pp", "Attacked_F1_vs_Oracle_pp", "Attacked_F1_vs_FedAvg_Clean_pp", "Worst_Recall_Diff_pp") if c in table]
 print(table[show].round(2).to_string(index=False))
-print("PHASE 2f VERDICT:", "INCOMPLETE (runs missing)" if incomplete else ("SUPPORTED" if supported else "NOT SUPPORTED"),
+print("MAIN EXTENSION VERDICT:", "INCOMPLETE (runs missing)" if incomplete else ("SUPPORTED" if supported else "NOT SUPPORTED"),
       f"({len(conclusive)} conclusive seeds)")
 for c in numeric:
     a = aggregate[c]

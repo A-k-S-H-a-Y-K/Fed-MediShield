@@ -34,6 +34,8 @@
 !/logs/comparison_ton/
 !/logs/comparison_extra_cic/
 !/logs/comparison_extra_ton/
+!/logs/comparison_extra2_cic/
+!/logs/comparison_extra2_ton/
 !/logs/official_test/
 !/logs/official_test_flood_supplement/
 !/logs/runtime_table/
