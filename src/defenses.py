@@ -1005,12 +1005,14 @@ def fltrust_aggregate(global_state, states, sizes, root_state):
 
 class FLTrust:
     """Root-data local AdamW update, then the published FLTrust aggregation."""
-    def __init__(self, model, X, y, steps=8, learning_rate=.001):
+    def __init__(self, model, X, y, steps=8, learning_rate=.001, logit_offset=None):
         self.template = copy.deepcopy(model).cpu()
         self.X, self.y = X.detach().cpu().float().clone(), y.detach().cpu().long().clone()
         if len(self.y) < 1 or steps < 1 or learning_rate <= 0:
             raise ValueError("FLTrust requires trusted root data and a positive optimization budget.")
         self.steps, self.lr = steps, learning_rate
+        # Optional logit adjustment (tau * log prior), so the root update uses the clients' loss.
+        self.offset = None if logit_offset is None else torch.as_tensor(logit_offset, dtype=torch.float32)
 
     def aggregate(self, global_state, states, sizes, client_ids):
         root = copy.deepcopy(self.template)
@@ -1021,9 +1023,63 @@ class FLTrust:
         with torch.enable_grad():
             for _ in range(self.steps):
                 optimizer.zero_grad(set_to_none=True)
-                loss = torch.nn.functional.cross_entropy(root(self.X), self.y)
+                logits = root(self.X) if self.offset is None else root(self.X) + self.offset
+                loss = torch.nn.functional.cross_entropy(logits, self.y)
                 if not torch.isfinite(loss):
                     raise ValueError("Nonfinite root training loss.")
                 loss.backward()
                 optimizer.step()
         return fltrust_aggregate(global_state, states, sizes, root.state_dict())
+
+
+class Flame:
+    """FLAME (Nguyen et al., USENIX Security 2022) on model deltas.
+
+    Per round: HDBSCAN on the clients' pairwise cosine distances (min_cluster_size = n // 2 + 1,
+    min_samples = 1); clients outside the largest cluster are excluded (flagged). The admitted updates
+    are clipped to the median update norm S of all submissions, averaged uniformly, and Gaussian noise
+    with standard deviation noise_lambda * S is added to every floating parameter. If HDBSCAN finds no
+    cluster, every client is admitted (declared convention). The noise generator is seeded per run.
+    """
+    def __init__(self, noise_lambda=0.001, noise_seed=0):
+        if noise_lambda < 0:
+            raise ValueError("FLAME noise level must be nonnegative.")
+        self.noise_lambda = noise_lambda
+        self.generator = torch.Generator().manual_seed(int(noise_seed))
+
+    def aggregate(self, global_state, states, sizes):
+        from sklearn.cluster import HDBSCAN
+        validate([global_state] + list(states), [1] + list(sizes))
+        keys = [k for k in global_state if global_state[k].is_floating_point()]
+        deltas = [{k: s[k].double() - global_state[k].double() for k in keys} for s in states]
+        vectors = torch.stack([torch.cat([d[k].reshape(-1) for k in keys]) for d in deltas])
+        norms = vectors.norm(dim=1)
+        unit = vectors / norms.clamp_min(1e-30)[:, None]
+        distance = (1.0 - unit @ unit.T).clamp_min(0.0)
+        distance.fill_diagonal_(0.0)
+        n = len(states)
+        labels = HDBSCAN(min_cluster_size=n // 2 + 1, min_samples=1, metric="precomputed",
+                         allow_single_cluster=True, copy=True).fit(distance.numpy()).labels_
+        clusters = sorted({int(c) for c in labels if c != -1})
+        if clusters:
+            largest = max(clusters, key=lambda c: (int((labels == c).sum()), -c))
+            admitted = [i for i in range(n) if labels[i] == largest]
+        else:
+            admitted = list(range(n))
+        median_norm = float(torch.quantile(norms, 0.5))
+        clip = [min(1.0, median_norm / max(float(norms[i]), 1e-30)) for i in range(n)]
+        output = {}
+        for k, old in global_state.items():
+            if old.is_floating_point():
+                update = sum(clip[i] * deltas[i][k] for i in admitted) / len(admitted)
+                noise = torch.randn(old.shape, generator=self.generator, dtype=torch.float64) * (self.noise_lambda * median_norm)
+                output[k] = (old.double() + update + noise).to(old)
+            else:
+                if any(not torch.equal(s[k], old) for s in states):
+                    raise ValueError(f"Unequal nonfloating buffer {k}.")
+                output[k] = old.clone()
+        rows = [{"Flagged": int(i not in admitted), "Selected": int(i in admitted),
+                 "Aggregation_Weight": (1.0 / len(admitted)) if i in admitted else 0.0,
+                 "Applied_Clip_Factor": clip[i], "Flame_Cluster": int(labels[i]),
+                 "Score": float(distance[i].sum() / max(n - 1, 1))} for i in range(n)]
+        return output, rows

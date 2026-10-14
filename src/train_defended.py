@@ -27,7 +27,7 @@ from defenses import (BehavioralShield, FedMediShield, LegacyHistoryShield, Spar
                       trimmed_mean, coordinate_median)
 
 CLASS_NAMES = ["Benign", "DDoS", "DoS", "Recon", "MQTT", "Spoofing"]
-METHODS = ["fedavg", "median", "trimmed_mean", "krum", "multi_krum", "rfa", "fed_adh", "fltrust", "legacy_history", "behavioral", "fed_medishield"]
+METHODS = ["fedavg", "median", "trimmed_mean", "krum", "multi_krum", "rfa", "fed_adh", "fltrust", "flame", "legacy_history", "behavioral", "fed_medishield"]
 EXPECTED_DEFENSE_VERSION = "control_calibrated_candidate_4"
 if getattr(defenses, "VERSION", None) != EXPECTED_DEFENSE_VERSION:
     raise RuntimeError("Mismatched release files. Replace src/train_defended.py AND src/defenses.py together.")
@@ -259,7 +259,8 @@ def probe_camouflage(X, px, y, py, args, client_id, experiment_seed):
     features = X.shape[1]
     groups = [list(range(start, start + width)) for width in (1, 2, 4) if width <= features
               for start in range(features - width + 1)]
-    groups += [torch.randperm(features, generator=generator)[:min(4, features)].tolist() for _ in range(16)]
+    groups += [torch.randperm(features, generator=generator)[:min(4, features)].tolist()
+               for _ in range(getattr(args, "camouflage_random_groups", 16))]
     levels = torch.tensor([-6., -3., 3., 6.])
     group_pick = torch.randint(len(groups), (len(rows),), generator=generator).tolist()
     level_pick = torch.randint(len(levels), (len(rows),), generator=generator)
@@ -436,8 +437,13 @@ def make_detector(args, model, data, method):
                 "bank_size": args.probe_bank_size, "enabled": args.audit_mode == "on"})
     if method == "fltrust":
         cal = data["calibration"]
+        offset = None
+        if getattr(args, "fltrust_loss", "ce") == "logit":
+            if args.loss_adjustment != "logit":
+                raise ValueError("--fltrust-loss logit needs --loss-adjustment logit (the clients' loss).")
+            offset = args.logit_tau * torch.log(torch.as_tensor(args.class_prior, dtype=torch.float32))
         return FLTrust(model, data["X"][cal], data["y"][cal],
-                       steps=args.root_steps, learning_rate=args.learning_rate)
+                       steps=args.root_steps, learning_rate=args.learning_rate, logit_offset=offset)
     if method == "legacy_history":
         return LegacyHistoryShield(
             final_keys=("network.6.weight", "network.6.bias"), f=args.f,
@@ -464,6 +470,8 @@ def aggregate_updates(method, model_state, states, sizes, ids, args, detector):
         return result, diagnostic["clients"]
     if method == "fltrust":
         return detector.aggregate(model_state, states, sizes, ids)
+    if method == "flame":
+        return detector.aggregate(model_state, states, sizes)
     if method == "behavioral":
         result, _ = detector.aggregate(model_state, states, sizes)
         d = detector.last_diagnostics
@@ -607,6 +615,8 @@ def run(args, data, clients, method, condition, seed, root):
     torch.manual_seed(seed)
     model = StableMLP(data["X"].shape[1], len(CLASS_NAMES))
     detector = make_detector(args, model, data, method)
+    if method == "flame":
+        detector = defenses.Flame(noise_lambda=args.flame_lambda, noise_seed=1000003 * seed + 17)
     source_hashes = {p.name: file_hash(p) for p in (Path(__file__), Path(defenses.__file__))}
     settings = {k: v for k, v in vars(args).items() if k not in ("resume", "out", "plan_only")}
     protocol = {
@@ -1195,6 +1205,11 @@ def parse_args():
                    help="Narrow backdoor: poison only rows of these class ids (never the target class).")
     p.add_argument("--source-specific", action="store_true",
                    help="With --poison-source-classes: also add the trigger to other attack rows with their true labels.")
+    p.add_argument("--camouflage-random-groups", type=int, default=16,
+                   help="Random 4-feature groups the camouflaging attacker uses (mirrors the defender's bank design).")
+    p.add_argument("--fltrust-loss", choices=["ce", "logit"], default="ce",
+                   help="FLTrust root update loss: plain cross-entropy or the clients' logit-adjusted loss.")
+    p.add_argument("--flame-lambda", type=float, default=0.001, help="FLAME noise level (std = lambda * median update norm).")
     p.add_argument("--probe-camouflage", type=float, default=0.0,
                    help="Adaptive attacker: fraction of unpoisoned attack rows given a probe-style perturbation with their true label.")
     p.add_argument("--attack-start", type=int, default=1)
@@ -1290,6 +1305,8 @@ def parse_args():
         p.error("Invalid attack schedule, f or calibration count.")
     if a.malicious_ratio is not None and not 0 < a.malicious_ratio < 1:
         p.error("Malicious ratio must lie strictly between 0 and 1.")
+    if a.camouflage_random_groups < 0 or not math.isfinite(a.flame_lambda) or a.flame_lambda < 0:
+        p.error("--camouflage-random-groups and --flame-lambda must be nonnegative.")
     if not 0 <= a.probe_camouflage <= 1 or (a.probe_camouflage and a.source_specific):
         p.error("--probe-camouflage is a fraction in [0, 1] and is not combined with --source-specific.")
     if a.alpha is not None and (not math.isfinite(a.alpha) or a.alpha <= 0):

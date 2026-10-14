@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 
 LABELS = {"medishield": "Fed-MediShield", "fedavg": "FedAvg", "krum": "Krum", "multi_krum": "Multi-Krum",
-          "median": "Median", "trimmed_mean": "Trimmed mean", "rfa": "RFA", "fed_adh": "Fed-ADH", "fltrust": "FLTrust"}
+          "median": "Median", "trimmed_mean": "Trimmed mean", "rfa": "RFA", "fed_adh": "Fed-ADH", "fltrust": "FLTrust", "flame": "FLAME"}
 
 
 def run_dirs(roots, seed):

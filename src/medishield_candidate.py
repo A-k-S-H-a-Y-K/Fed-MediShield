@@ -2184,8 +2184,8 @@ def finalize_live(base, args, data, folder, seed, condition, metrics, records, c
     return result
 
 
-LIVE_GATE_LATER_DEFAULTS = {"poison_source_classes": None, "source_specific": False, "probe_camouflage": 0.0}
-LIVE_GATE_ATTACK_KEYS = ("attacker_id", "malicious_ratio", "poison_rate", "target_class", "trigger", "trigger_features", "trigger_value", "blend", "poison_source_classes", "source_specific", "probe_camouflage","attack_start", "attack_period", "attack_on", "model_scale", "poison_seed")
+LIVE_GATE_LATER_DEFAULTS = {"poison_source_classes": None, "source_specific": False, "probe_camouflage": 0.0, "camouflage_random_groups": 16}
+LIVE_GATE_ATTACK_KEYS = ("attacker_id", "malicious_ratio", "poison_rate", "target_class", "trigger", "trigger_features", "trigger_value", "blend", "poison_source_classes", "source_specific", "probe_camouflage", "camouflage_random_groups", "attack_start", "attack_period", "attack_on", "model_scale", "poison_seed")
 
 
 def verify_live_gate(directory, calibration, args, allow_attack_variant=False, descriptive_failed_gate=False):
@@ -2620,6 +2620,8 @@ def parse_args(argv=None):
                    help="Narrow backdoor: attackers poison only rows of these class ids.")
     a.add_argument("--source-specific", action="store_true",
                    help="With --poison-source-classes: triggered rows of other attack classes keep their true labels.")
+    a.add_argument("--camouflage-random-groups", type=int, default=16,
+                   help="Random 4-feature groups the camouflaging attacker uses (mirrors the defender's bank design).")
     a.add_argument("--probe-camouflage", type=float, default=0.0,
                    help="Adaptive attacker: fraction of unpoisoned attack rows given a probe-style perturbation with their true label.")
     a.add_argument("--attack-start", type=int, default=1)
@@ -2738,6 +2740,8 @@ def parse_args(argv=None):
         p.error("alpha must be positive and finite.")
     if args.malicious_ratio is not None and not 0 < args.malicious_ratio < 1:
         p.error("malicious-ratio must lie strictly between 0 and 1.")
+    if args.camouflage_random_groups < 0:
+        p.error("--camouflage-random-groups must be nonnegative.")
     if not 0 <= args.probe_camouflage <= 1 or (args.probe_camouflage and args.source_specific):
         p.error("--probe-camouflage is a fraction in [0, 1] and is not combined with --source-specific.")
     if args.server_per_class < 8:
