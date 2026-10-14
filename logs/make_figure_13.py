@@ -66,7 +66,7 @@ for ax, cm, cls, title in ((axes[0], cm6, C6, f"6 classes: accuracy {100 * np.tr
     ax.set_title(title, fontsize=9, color=INK)
 axes[0].set_ylabel("True class")
 axes[0].add_patch(Rectangle((0.5, 1.5), 1, 1, fill=False, edgecolor=RED, linewidth=2.2))
-axes[0].annotate("DoS test flows\nlabelled DDoS", xy=(1.5, 2), xytext=(2.9, 1.15), fontsize=7.5, color=RED,
+axes[0].annotate("DoS test records\npredicted as DDoS", xy=(1.5, 2), xytext=(2.9, 1.15), fontsize=7.5, color=RED,
                  arrowprops=dict(arrowstyle="-|>", color=RED, linewidth=1))
 fig.suptitle("Official CICIoMT2024 test split, Fed-MediShield under attack (5 seeds pooled, row %)",
              fontsize=9, color=INK, x=0.02, ha="left")
