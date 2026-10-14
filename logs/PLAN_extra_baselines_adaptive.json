@@ -1,0 +1,31 @@
+{
+  "title": "Additional baselines (Multi-Krum, FLTrust) and a score-aware adaptive attack against bsc_7",
+  "written": "2026-10-14, before any of these runs; committed to git before the runs start",
+  "reason": "Review comments: the most relevant baselines (FLTrust uses trusted server data like Fed-MediShield; Multi-Krum is stronger than single Krum) were missing, and no attack optimised against the score had been tested.",
+  "commitment": "Every result below is reported in the paper whatever it shows. Nothing is re-run with other settings after seeing results.",
+  "part_1_baselines": {
+    "methods": {
+      "multi_krum": "f = 2; this implementation averages the m = n - f - 2 = 4 updates with the lowest Krum scores (uniform average)",
+      "fltrust": "Cao et al., NDSS 2021, Eqs. (2)-(5) on model deltas: ReLU cosine trust to the server's root update, client updates rescaled to the root-update norm. Root data = the same trusted references Fed-MediShield holds (32 per class). Root steps per round = the median client's local optimizer steps per round on that dataset (CICIoMT2024: 59; ToN-IoT: 9), because FLTrust prescribes server training like the clients' and the root norm sets the global step size. Declared adaptations: full-batch AdamW at the server; plain cross-entropy at the server while clients use logit adjustment. A client counts as flagged when its trust score is 0."
+    },
+    "settings": "identical to Table I: same data, partition, attack (2 of 8 attackers, poison 0.5, trigger columns 5-8 = 5 on CICIoMT2024; columns 7, 17, 23, 50 = 5 on ToN-IoT), 15 rounds, logit adjustment tau 0.5, clean and attacked runs",
+    "seeds": {"CICIoMT2024": [63, 64, 65, 66, 67], "ToN-IoT": [93, 94, 95, 96, 97]},
+    "outputs": {"CICIoMT2024": "logs/extra_baselines_cic", "ToN-IoT": "logs/extra_baselines_ton"},
+    "reported": "the Table I columns (final ASR, clean-run macro-F1, detection recall, honest FPR) via logs/compare_methods.py; conclusive-seed rule unchanged (matched FedAvg attacked final ASR >= 50%); excluded seeds shown separately"
+  },
+  "part_2_adaptive_attack": {
+    "name": "probe camouflage (--probe-camouflage 1.0)",
+    "attacker_knowledge": "the defender's probe design (groups of 1, 2 and 4 contiguous standardized features and random groups of 4, levels -6, -3, 3, 6), that the score measures how far probes move attack traffic towards Benign, and the breadth statistic; not the defender's probe seed, calibration, references or other clients' updates",
+    "attack": "the usual backdoor (50% of attack rows: trigger columns 5-8 = 5, relabelled Benign) PLUS every remaining (unpoisoned) attack row receives one random probe-style perturbation and keeps its true label, so the model learns that probe-like inputs are not Benign while the trigger value 5, which lies between the probe levels 3 and 6, still is",
+    "defence": "bsc_7 unchanged: calibration logs/bsc7_calO, authorised by the passed live development gate logs/bsc7_devgate as a declared attack variant (--attack-variant); no threshold or setting changed",
+    "seeds": [101, 102, 103],
+    "runs": "Fed-MediShield attacked; FedAvg clean and attacked under the same attack",
+    "outputs": {"Fed-MediShield": "logs/adaptive_medishield", "FedAvg": "logs/adaptive_fedavg"},
+    "reported": "per seed: final ASR and max ASR over rounds 2-15 (Fed-MediShield vs FedAvg), detection rate, first detection, honest false alarms, attacked-run macro-F1 vs clean FedAvg",
+    "interpretation_fixed_in_advance": [
+      "A seed is inconclusive if FedAvg's attacked final ASR is below 50% (the camouflage may weaken the backdoor itself); this is reported, not hidden.",
+      "If Fed-MediShield's final ASR exceeds 5% on any conclusive seed, the adaptive attack is reported as a successful evasion in the Limitations, with its numbers.",
+      "Otherwise the paper reports that this score-aware attack was tested and did not evade the defence on these seeds; it does not claim robustness against all adaptive attacks."
+    ]
+  }
+}

@@ -222,7 +222,10 @@ def poison_sources(X, y, args, client_id, experiment_seed):
     poison() itself is unchanged, so the protocol fingerprint is unchanged."""
     sources = getattr(args, "poison_source_classes", None)
     if not sources:
-        return poison(X, y, args, client_id, experiment_seed)
+        px, py, count = poison(X, y, args, client_id, experiment_seed)
+        if getattr(args, "probe_camouflage", 0.0):
+            px = probe_camouflage(X, px, y, py, args, client_id, experiment_seed)
+        return px, py, count
     if args.target_class in sources:
         raise ValueError("--poison-source-classes must not contain the target class.")
     rows = torch.isin(y, torch.as_tensor(sources, dtype=y.dtype)).nonzero(as_tuple=True)[0]
@@ -236,7 +239,34 @@ def poison_sources(X, y, args, client_id, experiment_seed):
         generator = torch.Generator().manual_seed(args.poison_seed + 1009 * experiment_seed + client_id + 7919)
         picked = others[torch.randperm(len(others), generator=generator)[:int(len(others) * args.poison_rate)]]
         px[picked] = apply_trigger(px[picked], args)
+    if getattr(args, "probe_camouflage", 0.0):
+        px = probe_camouflage(X, px, y, py, args, client_id, experiment_seed)
     return px, py, count
+
+
+def probe_camouflage(X, px, y, py, args, client_id, experiment_seed):
+    """Adaptive (score-aware) attacker. It knows the defender's probe design - groups of 1, 2 or 4 contiguous
+    standardized features plus random groups of 4, set to -6, -3, 3 or 6 - and that the server measures how far
+    such probes move attack traffic towards the target class. A fraction --probe-camouflage of its unpoisoned
+    non-target rows receives one random probe-style perturbation and KEEPS its true label, teaching the model that
+    probe-like inputs are not benign while the trigger (a value between the probe levels) still is. Its random
+    groups come from its own generator; it does not know the defender's probe seed."""
+    rows = ((y != args.target_class) & (py == y)).nonzero(as_tuple=True)[0]
+    generator = torch.Generator().manual_seed(args.poison_seed + 1009 * experiment_seed + client_id + 104729)
+    rows = rows[torch.randperm(len(rows), generator=generator)[:int(len(rows) * args.probe_camouflage)]]
+    if not len(rows):
+        return px
+    features = X.shape[1]
+    groups = [list(range(start, start + width)) for width in (1, 2, 4) if width <= features
+              for start in range(features - width + 1)]
+    groups += [torch.randperm(features, generator=generator)[:min(4, features)].tolist() for _ in range(16)]
+    levels = torch.tensor([-6., -3., 3., 6.])
+    group_pick = torch.randint(len(groups), (len(rows),), generator=generator).tolist()
+    level_pick = torch.randint(len(levels), (len(rows),), generator=generator)
+    result = px.clone()
+    for row, g, level in zip(rows.tolist(), group_pick, levels[level_pick].tolist()):
+        result[row, groups[g]] = level
+    return result
 
 
 def train_client(model, X, y, args, local_seed):
@@ -1165,6 +1195,8 @@ def parse_args():
                    help="Narrow backdoor: poison only rows of these class ids (never the target class).")
     p.add_argument("--source-specific", action="store_true",
                    help="With --poison-source-classes: also add the trigger to other attack rows with their true labels.")
+    p.add_argument("--probe-camouflage", type=float, default=0.0,
+                   help="Adaptive attacker: fraction of unpoisoned attack rows given a probe-style perturbation with their true label.")
     p.add_argument("--attack-start", type=int, default=1)
     p.add_argument("--attack-period", type=int, default=1)
     p.add_argument("--attack-on", type=int, default=1)
@@ -1258,6 +1290,8 @@ def parse_args():
         p.error("Invalid attack schedule, f or calibration count.")
     if a.malicious_ratio is not None and not 0 < a.malicious_ratio < 1:
         p.error("Malicious ratio must lie strictly between 0 and 1.")
+    if not 0 <= a.probe_camouflage <= 1 or (a.probe_camouflage and a.source_specific):
+        p.error("--probe-camouflage is a fraction in [0, 1] and is not combined with --source-specific.")
     if a.alpha is not None and (not math.isfinite(a.alpha) or a.alpha <= 0):
         p.error("alpha must be positive and finite.")
     if a.num_clients is not None and a.num_clients < 3:

@@ -17,8 +17,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-LABELS = {"medishield": "Fed-MediShield", "fedavg": "FedAvg", "krum": "Krum", "median": "Median",
-          "trimmed_mean": "Trimmed mean", "rfa": "RFA", "fed_adh": "Fed-ADH"}
+LABELS = {"medishield": "Fed-MediShield", "fedavg": "FedAvg", "krum": "Krum", "multi_krum": "Multi-Krum",
+          "median": "Median", "trimmed_mean": "Trimmed mean", "rfa": "RFA", "fed_adh": "Fed-ADH", "fltrust": "FLTrust"}
 
 
 def run_dirs(roots, seed):
@@ -36,7 +36,12 @@ def run_dirs(roots, seed):
 
 def detection(decisions, flag_column):
     d = decisions
-    flagged = d[flag_column].astype(bool) if flag_column == "Flagged" else ~d["Selected"].astype(bool)
+    if flag_column == "Flagged":
+        flagged = d[flag_column].astype(bool)
+    elif flag_column == "Root_Cosine_Trust":  # FLTrust: a client is excluded when its trust score is zero
+        flagged = d[flag_column].astype(float) <= 0
+    else:
+        flagged = ~d["Selected"].astype(bool)
     poisoned = d["Is_Poisoned_Update"].astype(bool)
     tp, fp = int((flagged & poisoned).sum()), int((flagged & ~poisoned).sum())
     fn, tn = int((~flagged & poisoned).sum()), int((~flagged & ~poisoned).sum())
@@ -50,6 +55,8 @@ def flag_column(decisions, method):
         return "Flagged"
     if method in ("krum", "multi_krum") and "Selected" in decisions:
         return "Selected"
+    if method == "fltrust" and "Root_Cosine_Trust" in decisions:
+        return "Root_Cosine_Trust"
     return None  # FedAvg and coordinate-wise methods make no client-level decision
 
 
