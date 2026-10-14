@@ -32,6 +32,8 @@
 !/logs/*.csv
 !/logs/comparison_bsc6_phase2d_seeds/
 !/logs/comparison_ton/
+!/logs/comparison_extra_cic/
+!/logs/comparison_extra_ton/
 !/logs/official_test/
 !/logs/official_test_flood_supplement/
 !/logs/runtime_table/

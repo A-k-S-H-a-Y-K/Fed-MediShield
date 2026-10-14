@@ -1,0 +1,218 @@
+{
+  "plan": "PLAN_extra_baselines_adaptive.json + AMENDMENT_adaptive_extension.json",
+  "attacks": {
+    "probe_camouflage": {
+      "per_seed": [
+        {
+          "Seed": 101,
+          "Mode": "filter",
+          "FedAvg_Final_ASR": 0.2696655850409684,
+          "Conclusive": false,
+          "Final_ASR": 0.0385236550058526,
+          "Max_ASR_r2_15": 0.1674297313715902,
+          "Detection_Rate": 93.33333333333333,
+          "Honest_FPR": 0.0,
+          "Attackers": [
+            3,
+            7
+          ],
+          "First_Detection_Round": {
+            "3": 2,
+            "7": 2
+          },
+          "Attacked_F1": 73.1467061291742,
+          "FedAvg_Clean_F1": 74.14116479863057,
+          "F1_vs_FedAvg_Clean_pp": -0.994458669456364,
+          "Held_Rounds": 0
+        },
+        {
+          "Seed": 102,
+          "Mode": "filter",
+          "FedAvg_Final_ASR": 95.3430827814079,
+          "Conclusive": true,
+          "Final_ASR": 0.0355602969284793,
+          "Max_ASR_r2_15": 0.600080010668089,
+          "Detection_Rate": 100.0,
+          "Honest_FPR": 0.0,
+          "Attackers": [
+            1,
+            7
+          ],
+          "First_Detection_Round": {
+            "1": 1,
+            "7": 1
+          },
+          "Attacked_F1": 72.41736376130567,
+          "FedAvg_Clean_F1": 73.35718217985678,
+          "F1_vs_FedAvg_Clean_pp": -0.9398184185511127,
+          "Held_Rounds": 0
+        },
+        {
+          "Seed": 103,
+          "Mode": "filter",
+          "FedAvg_Final_ASR": 98.97319642619016,
+          "Conclusive": true,
+          "Final_ASR": 0.0192618275029263,
+          "Max_ASR_r2_15": 0.7660280630009927,
+          "Detection_Rate": 96.66666666666667,
+          "Honest_FPR": 0.0,
+          "Attackers": [
+            5,
+            7
+          ],
+          "First_Detection_Round": {
+            "5": 1,
+            "7": 2
+          },
+          "Attacked_F1": 71.84043195948561,
+          "FedAvg_Clean_F1": 72.76076394547744,
+          "F1_vs_FedAvg_Clean_pp": -0.9203319859918224,
+          "Held_Rounds": 0
+        },
+        {
+          "Seed": 104,
+          "Mode": "filter",
+          "FedAvg_Final_ASR": 97.47670059711665,
+          "Conclusive": true,
+          "Final_ASR": 0.0311152598124194,
+          "Max_ASR_r2_15": 0.6237868752870753,
+          "Detection_Rate": 100.0,
+          "Honest_FPR": 0.0,
+          "Attackers": [
+            1,
+            6
+          ],
+          "First_Detection_Round": {
+            "1": 1,
+            "6": 1
+          },
+          "Attacked_F1": 69.1222412339096,
+          "FedAvg_Clean_F1": 73.3687750441811,
+          "F1_vs_FedAvg_Clean_pp": -4.246533810271501,
+          "Held_Rounds": 0
+        },
+        {
+          "Seed": 105,
+          "Mode": "filter",
+          "FedAvg_Final_ASR": 99.55105125127794,
+          "Conclusive": true,
+          "Final_ASR": 0.1348327925204842,
+          "Max_ASR_r2_15": 0.6608288512542413,
+          "Detection_Rate": 96.66666666666667,
+          "Honest_FPR": 0.0,
+          "Attackers": [
+            1,
+            5
+          ],
+          "First_Detection_Round": {
+            "1": 2,
+            "5": 1
+          },
+          "Attacked_F1": 72.50545175133999,
+          "FedAvg_Clean_F1": 73.7051823366079,
+          "F1_vs_FedAvg_Clean_pp": -1.1997305852679148,
+          "Held_Rounds": 0
+        },
+        {
+          "Seed": 106,
+          "Mode": "filter",
+          "FedAvg_Final_ASR": 95.66608881184158,
+          "Conclusive": true,
+          "Final_ASR": 0.0459320501992858,
+          "Max_ASR_r2_15": 5.058452238076188,
+          "Detection_Rate": 90.0,
+          "Honest_FPR": 0.0,
+          "Attackers": [
+            1,
+            6
+          ],
+          "First_Detection_Round": {
+            "1": 3,
+            "6": 1
+          },
+          "Attacked_F1": 69.0531173779967,
+          "FedAvg_Clean_F1": 74.11656671729666,
+          "F1_vs_FedAvg_Clean_pp": -5.063449339299964,
+          "Held_Rounds": 0
+        }
+      ],
+      "conclusive_seeds": [
+        102,
+        103,
+        104,
+        105,
+        106
+      ],
+      "verdict": "does not evade on these seeds"
+    },
+    "probe_camouflage_outside_bank_trigger": {
+      "per_seed": [
+        {
+          "Seed": 104,
+          "Mode": "filter",
+          "FedAvg_Final_ASR": 96.82031678297848,
+          "Conclusive": true,
+          "Final_ASR": 98.41164007052792,
+          "Max_ASR_r2_15": 98.61611177786668,
+          "Detection_Rate": 0.0,
+          "Honest_FPR": 5.555555555555555,
+          "Attackers": [
+            1,
+            6
+          ],
+          "First_Detection_Round": {},
+          "Attacked_F1": 71.61147661322977,
+          "FedAvg_Clean_F1": 73.3687750441811,
+          "F1_vs_FedAvg_Clean_pp": -1.7572984309513373,
+          "Held_Rounds": 0
+        },
+        {
+          "Seed": 105,
+          "Mode": "filter",
+          "FedAvg_Final_ASR": 99.04876205716316,
+          "Conclusive": true,
+          "Final_ASR": 99.10506586063327,
+          "Max_ASR_r2_15": 99.10506586063327,
+          "Detection_Rate": 0.0,
+          "Honest_FPR": 2.2222222222222223,
+          "Attackers": [
+            1,
+            5
+          ],
+          "First_Detection_Round": {},
+          "Attacked_F1": 72.33552693471592,
+          "FedAvg_Clean_F1": 73.7051823366079,
+          "F1_vs_FedAvg_Clean_pp": -1.3696554018919898,
+          "Held_Rounds": 0
+        },
+        {
+          "Seed": 106,
+          "Mode": "filter",
+          "FedAvg_Final_ASR": 96.86476715413907,
+          "Conclusive": true,
+          "Final_ASR": 96.56398630928568,
+          "Max_ASR_r2_15": 96.86773051221644,
+          "Detection_Rate": 3.3333333333333335,
+          "Honest_FPR": 2.2222222222222223,
+          "Attackers": [
+            1,
+            6
+          ],
+          "First_Detection_Round": {
+            "6": 1
+          },
+          "Attacked_F1": 72.75870043037142,
+          "FedAvg_Clean_F1": 74.11656671729666,
+          "F1_vs_FedAvg_Clean_pp": -1.357866286925244,
+          "Held_Rounds": 0
+        }
+      ],
+      "conclusive_seeds": [
+        104,
+        105,
+        106
+      ],
+      "verdict": "EVADES the defence"
+    }
+  }
+}
