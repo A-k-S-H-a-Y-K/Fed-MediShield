@@ -186,23 +186,22 @@ axes[0].set_ylabel("Share of updates (%)")
 save(fig, "fig12_score_distributions")
 
 # Fig 0. Method overview diagram.
-fig, ax = plt.subplots(figsize=(8.6, 3.0))
-ax.set_xlim(0, 100); ax.set_ylim(-9, 36); ax.axis("off")
-steps = [(0.5, "Clients", "local training\non private data\n(sites / hospitals)"),
-         (20.5, "Probe measurement", "588 probes, two\nserver-held folds:\nshift of P(Benign)"),
-         (40.5, "Breadth + profiles", "k-th largest source;\nexcess over peers\nand own clean profile"),
-         (60.5, "Bounded influence", "trust from score;\nnorm clipping;\n0 ≤ aᵢ ≤ pᵢ"),
-         (80.5, "Repair & safety", "first-episode revocation;\nheld round if ≥ 50%\nflagged")]
+fig, ax = plt.subplots(figsize=(7.0, 2.35))
+ax.set_xlim(0, 100); ax.set_ylim(-8, 31); ax.axis("off")
+steps = [(0.5, "Clients", "local training\non private\ndata"),
+         (20.5, "Probe\nmeasurement", "588 probes,\ntwo server\nfolds"),
+         (40.5, "Breadth +\nprofiles", "k-th largest\nsource; excess\nover peers"),
+         (60.5, "Bounded\ninfluence", "trust from\nscore; clipping;\n0 ≤ aᵢ ≤ pᵢ"),
+         (80.5, "Repair &\nsafety", "revocation;\nhold if ≥ 50%\nflagged")]
 for x, head, body in steps:
     key = x in (20.5, 40.5)
-    ax.add_patch(FancyBboxPatch((x, 4), 18, 26, boxstyle="round,pad=0.3,rounding_size=1.2", facecolor=SURF,
-                                edgecolor=SLOTS[0] if key else INK2, linewidth=1.4 if key else 0.8))
-    ax.text(x + 9, 25.5, head, ha="center", va="center", fontsize=7.8, color=INK, weight="bold")
-    ax.text(x + 9, 14, body, ha="center", va="center", fontsize=6.6, color=INK2, linespacing=1.5)
+    ax.add_patch(FancyBboxPatch((x, 4), 18, 25, boxstyle="round,pad=0.3,rounding_size=1.2", facecolor=SURF,
+                                edgecolor=SLOTS[0] if key else INK2, linewidth=1.6 if key else 0.9))
+    ax.text(x + 9, 23.5, head, ha="center", va="center", fontsize=9.5, color=INK, weight="bold", linespacing=1.1)
+    ax.text(x + 9, 11.5, body, ha="center", va="center", fontsize=8.8, color=INK2, linespacing=1.25)
 for x in (18.8, 38.8, 58.8, 78.8):
-    ax.add_patch(FancyArrowPatch((x, 17), (x + 1.6, 17), arrowstyle="-|>", mutation_scale=9, color=INK2, linewidth=1))
-ax.annotate("", xy=(9.5, 3.0), xytext=(89.5, 3.0), arrowprops=dict(arrowstyle="-|>", color=INK2, linewidth=0.9,
+    ax.add_patch(FancyArrowPatch((x, 16.5), (x + 1.6, 16.5), arrowstyle="-|>", mutation_scale=10, color=INK2, linewidth=1.1))
+ax.annotate("", xy=(9.5, 3.0), xytext=(89.5, 3.0), arrowprops=dict(arrowstyle="-|>", color=INK2, linewidth=1.0,
                                                                     connectionstyle="arc3,rad=-0.12"))
-ax.text(50, -1.2, "new global model broadcast to all clients for the next round", ha="center", fontsize=7, color=INK2)
-ax.text(50, 34, "Fed-MediShield server pipeline (per round)", ha="center", fontsize=9.5, color=INK, weight="bold")
+ax.text(50, -5.5, "new global model broadcast to all clients for the next round", ha="center", fontsize=8.8, color=INK2)
 save(fig, "fig0_method_overview")
