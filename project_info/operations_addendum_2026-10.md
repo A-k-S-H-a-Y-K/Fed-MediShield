@@ -374,3 +374,12 @@ Code first (FLAME, FLTrust with the clients' loss, camouflage random-group count
 - **C2 FLTrust with the clients' logit-adjusted loss** (`logs/extra2_baselines_*`, tables `logs/comparison_extra2_*`): CICIoMT2024 ASR 99.87%, clean F1 63.21 (plain-loss variant 61.95); ToN-IoT ASR 99.10%, F1 65.70. Trust honest 0.215 vs poisoned 0.158 (CICIoMT2024); rescale factor still 1.86. The loss mismatch was not the cause of FLTrust's failure.
 - **C3 FLAME**: CICIoMT2024 ASR 97.53% (per seed 95.4, 99.7, 99.8, 95.2; seed 65 0.6%), clean F1 70.25, poisoned updates excluded 37.5%, honest updates excluded 32.7% in clean runs; ToN-IoT ASR 99.31%, F1 64.41, 36.7% / 20.8%.
 - C1 (secret large probe bank): calibration `logs/bigbank_cal` (4508 probes); live development gate `logs/bigbank_devgate` PASSED on seeds 43 and 46 (detection 93%, honest FPR 0%, final ASR 0.02-0.03%). Evaluation runs in progress.
+
+## A46. C1 result: a secret large probe bank is not a reliable countermeasure (`logs/bigbank_result.json`)
+
+Large bank (1000 random 4-feature groups, probe seed 50821, 4508 probes), gate PASSED (A45). Evaluator `logs/evaluate_bigbank.py` (rules from the plan). All seeds conclusive.
+- Main attack and clean runs (112-114): final ASR 0.04-0.16%, detection 87-97%, honest FPR 0-1.7%, clean F1 equal to FedAvg (diff 0.00 / +0.93 / 0.00). No cost in the normal case.
+- Camouflage (attacker's 16 random groups) + out-of-bank trigger, the attack that evaded bsc_7: detection 53-83% (bsc_7: 0-3%); final ASR removed on 4 of 6 seeds, but 87.1% on seed 104 and 5.29% on seed 113 (above the 5% rule), with transient peaks of 76-87% before removal on several seeds. Verdict: evades (2 of 6 seeds).
+- Camouflage mirroring the new design (attacker's 1000 random groups) + out-of-bank trigger: detection 0%, final ASR 95.6-98.2% (= FedAvg). Evades completely.
+- Camouflage (16 groups) + main trigger: defended on 112 and 114, but 99.6% on seed 113 (detection 23%, honest FPR 6.7%), an attack the original bank defended on all 5 seeds (A44). Camouflage (1000 groups) + main trigger: defended (0.05-0.48%).
+- Interpretation: more and secret probes raise detection against a fixed attacker, but an attacker that scales its camouflage to the published design evades again, and the larger bank's higher thresholds cost detection elsewhere. Probe coverage alone does not close the adaptive gap; probes the attacker cannot imitate (data-dependent probes, trigger inversion) are future work. No further method change.

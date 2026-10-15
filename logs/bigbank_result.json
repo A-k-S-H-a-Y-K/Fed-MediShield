@@ -1,0 +1,277 @@
+{
+  "plan": "PLAN_review2_experiments.json C1",
+  "probe_count": 4508,
+  "main_attack": [
+    {
+      "Seed": 112,
+      "FedAvg_Final_ASR": 99.84146034286051,
+      "Conclusive": true,
+      "Final_ASR": 0.0400053340445392,
+      "Detection_Rate": 96.66666666666667,
+      "Attacked_Honest_FPR": 0.0,
+      "Clean_Honest_FPR": 0.0,
+      "Clean_F1": 73.86451321344877,
+      "FedAvg_Clean_F1": 73.86451321344877,
+      "Clean_F1_Diff_pp": 0.0,
+      "Utility_Check": true
+    },
+    {
+      "Seed": 113,
+      "FedAvg_Final_ASR": 99.81479012016416,
+      "Conclusive": true,
+      "Final_ASR": 0.1629846942555303,
+      "Detection_Rate": 93.33333333333333,
+      "Attacked_Honest_FPR": 0.0,
+      "Clean_Honest_FPR": 1.6666666666666667,
+      "Clean_F1": 74.31495511915344,
+      "FedAvg_Clean_F1": 73.38103292201316,
+      "Clean_F1_Diff_pp": 0.9339221971402765,
+      "Utility_Check": true
+    },
+    {
+      "Seed": 114,
+      "FedAvg_Final_ASR": 97.55374790712835,
+      "Conclusive": true,
+      "Final_ASR": 0.0385236550058526,
+      "Detection_Rate": 86.66666666666667,
+      "Attacked_Honest_FPR": 0.0,
+      "Clean_Honest_FPR": 0.0,
+      "Clean_F1": 73.74651772000004,
+      "FedAvg_Clean_F1": 73.74651772000004,
+      "Clean_F1_Diff_pp": 0.0,
+      "Utility_Check": true
+    }
+  ],
+  "adaptive": {
+    "camouflage16_outofbank_seeds104_106 (paired with the bsc_7 evasion)": {
+      "per_seed": [
+        {
+          "Seed": 104,
+          "FedAvg_Final_ASR": 96.82031678297848,
+          "Conclusive": true,
+          "Final_ASR": 87.0797587826525,
+          "Max_ASR_r2_15": 88.50957905498511,
+          "Detection_Rate": 76.66666666666667,
+          "Honest_FPR": 0.0,
+          "F1": 73.27071348931258,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -0.0980615548685222
+        },
+        {
+          "Seed": 105,
+          "FedAvg_Final_ASR": 99.04876205716316,
+          "Conclusive": true,
+          "Final_ASR": 0.0459320501992858,
+          "Max_ASR_r2_15": 76.15089419329985,
+          "Detection_Rate": 80.0,
+          "Honest_FPR": 0.0,
+          "F1": 72.34469564862381,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -1.3604866879840927
+        },
+        {
+          "Seed": 106,
+          "FedAvg_Final_ASR": 96.86476715413907,
+          "Conclusive": true,
+          "Final_ASR": 0.0251885436576728,
+          "Max_ASR_r2_15": 5.174023203093745,
+          "Detection_Rate": 83.33333333333333,
+          "Honest_FPR": 0.0,
+          "F1": 68.83964910919453,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -5.2769176081021385
+        }
+      ],
+      "conclusive_seeds": [
+        104,
+        105,
+        106
+      ],
+      "verdict": "EVADES on seeds [104]"
+    },
+    "camouflage16_outofbank": {
+      "per_seed": [
+        {
+          "Seed": 112,
+          "FedAvg_Final_ASR": 98.2353202649242,
+          "Conclusive": true,
+          "Final_ASR": 0.201508349261383,
+          "Max_ASR_r2_15": 86.79972144434073,
+          "Detection_Rate": 66.66666666666667,
+          "Honest_FPR": 0.0,
+          "F1": 71.94396304064853,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -1.9205501728002474
+        },
+        {
+          "Seed": 113,
+          "FedAvg_Final_ASR": 98.7346461009616,
+          "Conclusive": true,
+          "Final_ASR": 5.28663081003393,
+          "Max_ASR_r2_15": 5.28663081003393,
+          "Detection_Rate": 53.333333333333336,
+          "Honest_FPR": 1.1111111111111112,
+          "F1": 72.58917911393694,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -0.7918538080762261
+        },
+        {
+          "Seed": 114,
+          "FedAvg_Final_ASR": 95.32530263294365,
+          "Conclusive": true,
+          "Final_ASR": 0.2518854365767287,
+          "Max_ASR_r2_15": 1.8846957372094055,
+          "Detection_Rate": 76.66666666666667,
+          "Honest_FPR": 0.0,
+          "F1": 71.99843441085827,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -1.7480833091417765
+        }
+      ],
+      "conclusive_seeds": [
+        112,
+        113,
+        114
+      ],
+      "verdict": "EVADES on seeds [113]"
+    },
+    "camouflage1000_outofbank": {
+      "per_seed": [
+        {
+          "Seed": 112,
+          "FedAvg_Final_ASR": 97.88712569083286,
+          "Conclusive": true,
+          "Final_ASR": 98.11234090471322,
+          "Max_ASR_r2_15": 98.11234090471322,
+          "Detection_Rate": 0.0,
+          "Honest_FPR": 3.3333333333333335,
+          "F1": 72.40065381757576,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -1.4638593958730155
+        },
+        {
+          "Seed": 113,
+          "FedAvg_Final_ASR": 98.30940421685854,
+          "Conclusive": true,
+          "Final_ASR": 98.21013172126654,
+          "Max_ASR_r2_15": 98.21013172126654,
+          "Detection_Rate": 0.0,
+          "Honest_FPR": 0.0,
+          "F1": 72.67199289015596,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -0.7090400318571994
+        },
+        {
+          "Seed": 114,
+          "FedAvg_Final_ASR": 95.34011942333052,
+          "Conclusive": true,
+          "Final_ASR": 95.62608347779704,
+          "Max_ASR_r2_15": 95.64682698433865,
+          "Detection_Rate": 0.0,
+          "Honest_FPR": 3.3333333333333335,
+          "F1": 71.04261798570924,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -2.7038997342908004
+        }
+      ],
+      "conclusive_seeds": [
+        112,
+        113,
+        114
+      ],
+      "verdict": "EVADES on seeds [112, 113, 114]"
+    },
+    "camouflage16_main": {
+      "per_seed": [
+        {
+          "Seed": 112,
+          "FedAvg_Final_ASR": 99.45770547184068,
+          "Conclusive": true,
+          "Final_ASR": 0.0563038034700923,
+          "Max_ASR_r2_15": 0.2222518558029959,
+          "Detection_Rate": 90.0,
+          "Honest_FPR": 0.0,
+          "F1": 73.208039313253,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -0.6564739001957776
+        },
+        {
+          "Seed": 113,
+          "FedAvg_Final_ASR": 99.58661154820643,
+          "Conclusive": true,
+          "Final_ASR": 99.61476344994148,
+          "Max_ASR_r2_15": 99.61476344994148,
+          "Detection_Rate": 23.333333333333332,
+          "Honest_FPR": 6.666666666666667,
+          "F1": 72.15477029492514,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -1.226262627088019
+        },
+        {
+          "Seed": 114,
+          "FedAvg_Final_ASR": 95.67053384895765,
+          "Conclusive": true,
+          "Final_ASR": 0.0370419759671659,
+          "Max_ASR_r2_15": 0.2622571898475352,
+          "Detection_Rate": 93.33333333333333,
+          "Honest_FPR": 0.0,
+          "F1": 71.90685607173201,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -1.8396616482680344
+        }
+      ],
+      "conclusive_seeds": [
+        112,
+        113,
+        114
+      ],
+      "verdict": "EVADES on seeds [113]"
+    },
+    "camouflage1000_main": {
+      "per_seed": [
+        {
+          "Seed": 112,
+          "FedAvg_Final_ASR": 99.55697796743269,
+          "Conclusive": true,
+          "Final_ASR": 0.0622305196248388,
+          "Max_ASR_r2_15": 0.2029900283000696,
+          "Detection_Rate": 90.0,
+          "Honest_FPR": 0.0,
+          "F1": 73.95245158040115,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": 0.0879383669523719
+        },
+        {
+          "Seed": 113,
+          "FedAvg_Final_ASR": 99.53178942377502,
+          "Conclusive": true,
+          "Final_ASR": 0.4756189714184113,
+          "Max_ASR_r2_15": 85.39657139470448,
+          "Detection_Rate": 83.33333333333333,
+          "Honest_FPR": 0.0,
+          "F1": 72.61847489106442,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -0.762558030948739
+        },
+        {
+          "Seed": 114,
+          "FedAvg_Final_ASR": 95.83648190129054,
+          "Conclusive": true,
+          "Final_ASR": 0.0548221244314056,
+          "Max_ASR_r2_15": 0.9749448074558088,
+          "Detection_Rate": 86.66666666666667,
+          "Honest_FPR": 2.2222222222222223,
+          "F1": 71.68324242122962,
+          "Held_Rounds": 0,
+          "F1_vs_FedAvg_Clean_pp": -2.063275298770421
+        }
+      ],
+      "conclusive_seeds": [
+        112,
+        113,
+        114
+      ],
+      "verdict": "does not evade on these seeds"
+    }
+  }
+}
