@@ -243,7 +243,7 @@ instead of holding it. None of those runs had an invalid round, so both versions
 there (see the Protocol paragraph of the paper). Seeds 82–86, 107–111 and all later runs used
 `medishield_bsc_7`.
 
-**Release.** The paper cites release `v1.0` (commit `9728b17`), which holds the code, protocol files and
+**Release.** The paper cites release `v1.0` (commit `c6c605b`), which holds the code, protocol files and
 recorded results used for the paper. Later commits only update the paper source and this README.
 
 ## Scope and limitations
