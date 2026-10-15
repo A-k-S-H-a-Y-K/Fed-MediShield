@@ -189,7 +189,7 @@ save(fig, "fig12_score_distributions")
 fig, ax = plt.subplots(figsize=(7.0, 2.35))
 ax.set_xlim(0, 100); ax.set_ylim(-8, 31); ax.axis("off")
 steps = [(0.5, "Clients", "local training\non private\ndata"),
-         (20.5, "Probe\nmeasurement", "588 probes,\ntwo server\nfolds"),
+         (20.5, "Probe\nmeasurement", "fixed probe\nbank, two\nserver folds"),
          (40.5, "Breadth +\nprofiles", "k-th largest\nsource; excess\nover peers"),
          (60.5, "Bounded\ninfluence", "trust from\nscore; clipping;\n0 ≤ aᵢ ≤ pᵢ"),
          (80.5, "Repair &\nsafety", "revocation;\nhold if ≥ 50%\nflagged")]

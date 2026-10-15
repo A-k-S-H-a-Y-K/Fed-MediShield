@@ -383,3 +383,7 @@ Large bank (1000 random 4-feature groups, probe seed 50821, 4508 probes), gate P
 - Camouflage mirroring the new design (attacker's 1000 random groups) + out-of-bank trigger: detection 0%, final ASR 95.6-98.2% (= FedAvg). Evades completely.
 - Camouflage (16 groups) + main trigger: defended on 112 and 114, but 99.6% on seed 113 (detection 23%, honest FPR 6.7%), an attack the original bank defended on all 5 seeds (A44). Camouflage (1000 groups) + main trigger: defended (0.05-0.48%).
 - Interpretation: more and secret probes raise detection against a fixed attacker, but an attacker that scales its camouflage to the published design evades again, and the larger bank's higher thresholds cost detection elsewhere. Probe coverage alone does not close the adaptive gap; probes the attacker cannot imitate (data-dependent probes, trigger inversion) are future work. No further method change.
+
+## A47. Pooling over all three confirmations (third review)
+
+The headline now pools all fresh confirmation seeds of the final configuration: 71-75 and 82-86 (planned before their runs) and 107-111 (planned and committed on 14 Oct 2026, after the 82-86 result was known). 15 seeds, 12 conclusive: final ASR 0.17 +/- 0.25% (max 0.81%) vs FedAvg 99.09 +/- 1.59%; detection 96.1%; clean-update FPR 0.44%; clean F1 vs FedAvg -0.55 (95% CI -1.47 to +0.38, all 15 seeds; -0.05 [-0.37, +0.28] without 82-86); attacked F1 vs oracle +0.44 (-0.40 to +1.28). Abstract shortened to 220 words; Fig. 1 label "fixed probe bank".
