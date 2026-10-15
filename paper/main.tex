@@ -1,4 +1,5 @@
 \documentclass[conference]{IEEEtran}
+\raggedbottom
 \IEEEoverridecommandlockouts
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts,amsthm}
@@ -52,6 +53,7 @@ Fed-MediShield instead asks what each update does to the decision we want to pro
 \item a bounded-influence aggregation with first-episode revocation and a hold rule, with $0 \le a_i \le p_i$ for every client, and simple properties of its influence bound, separation condition and cost;
 \item an evaluation on CICIoMT2024~\cite{dadkhah2024ciciomt} (including its official test split) and ToN-IoT~\cite{moustafa2021ton} with criteria fixed in advance, against eight baselines and score-aware adaptive attacks, reporting every failed confirmation, and a security analysis showing where probing fails: an out-of-bank camouflage attack, and a secret-bank countermeasure that it also evades.
 \end{itemize}
+
 The evidence therefore covers non-adaptive attackers and a score-aware attacker that camouflages probe-like inputs; it gives no guarantee against an attacker who knows where the probes look.
 
 \section{Related Work}
