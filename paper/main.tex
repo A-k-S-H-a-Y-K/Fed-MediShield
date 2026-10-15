@@ -10,8 +10,6 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{placeins}
-\usepackage{adjustbox}
-\usepackage{array}
 \usepackage[hidelinks]{hyperref}
 % let more of each page hold figures so they stay near their text
 \renewcommand{\topfraction}{0.9}
@@ -225,32 +223,31 @@ Fig.~\ref{fig:rounds} shows the ASR per round. Under FedAvg the backdoor reaches
 \caption{Robustness of the final configuration on CICIoMT2024. Final ASR of Fed-MediShield and of FedAvg under the same attack; Detect.: share of poisoned updates flagged; $\Delta$F1: attacked-run macro-F1 minus attacked FedAvg (adaptive and countermeasure rows: minus clean FedAvg). Verdict: S/NS = supported/not supported under criteria fixed in advance; D = descriptive.}
 \label{tab:robust}
 \setlength{\tabcolsep}{3pt}
-\footnotesize
-\begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}p{3.1cm}p{1.45cm}cccc>{\raggedright\arraybackslash}p{4.0cm}@{}}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lp{1.6cm}ccccp{5.2cm}@{}}
 \toprule
 Setting & Seeds & ASR (\%) & FedAvg (\%) & Detect. (\%) & $\Delta$F1 & Verdict \\
 \midrule
 Out-of-bank trigger$^a$ & 76--78 & 0.05--0.64 & 97.7--98.7 & 87--90 & $-2.3$ to $+0.1$ & NS: one attacker first flagged at its 4th poisoned round (92.7\% in round 3) \\
 Intermittent attacker & 76--78 & 0.04--0.71 & 95.3--99.8 & 94--100 & $-1.1$ to $+0.1$ & S \\
-Three attackers & 76--78 & 0.03--0.96 & 99.8--100 & 93--98 & $-4.0$ to $-0.8$ & NS: utility (oracle $-2.5$: 3 of 8 clients excluded) \\
+Three attackers & 76--78 & 0.03--0.96 & 99.8--100 & 93--98 & $-4.0$ to $-0.8$ & NS: utility (oracle $-2.5$) \\
 Blended trigger & 79--81 & 0.75--1.79 & 82.0--96.0 & 90--97 & $-1.8$ to $+0.2$ & S \\
-1 / 2 / 3 attackers$^b$ & 79--81, 98, 99 & 0.04 / 0.05 / 0.17 & 79 / 99 / 99.9 & 96 / 97 / 93 & $-0.8$ / $-2.8$ / $-3.1$ & D; honest FPR 10\% on seed 80 (2 attackers) \\
-4 attackers (no honest majority) & 79--81 & stopped / 99.9$^c$ & 99.8--99.9 & -- & -- & D: not defended (outside the threat model) \\
+1 / 2 / 3 attackers$^b$ & 79--81, 98, 99 & 0.04 / 0.05 / 0.17 & 79 / 99 / 99.9 & 96 / 97 / 93 & $-0.8$ / $-2.8$ / $-3.1$ & D; honest FPR 10\% on seed 80 (2 att.) \\
+4 attackers (no honest majority) & 79--81 & stopped / 99.9$^c$ & 99.8--99.9 & -- & -- & D: not defended (outside threat model) \\
 Poison rate 0.2 / 0.35 / 0.8 & 79--81 & $\leq$0.15 / 0.08 / 0.19 & 79--99.9 & 90--100 & $-1.1$ / $-1.9$ / $-2.1^b$ & D \\
-Persistence (attack in rounds 1--7) & 43, 46, 87--89 & 0.02--0.09 & 95.2--95.7$^d$ & 86--100 & 0 to $-4.3$ & D \\
-Adaptive: probe camouflage & 101--106 & 0.02--0.13$^e$ & 95.3--99.6$^e$ & 90--100 & $-5.1$ to $-0.9$ & D: not evaded \\
-Adaptive: camouflage + out-of-bank trigger & 104--106 & \textbf{96.6--99.1} & 96.8--99.1 & 0--3 & $-1.8$ to $-1.4$ & D: \textbf{evades the defence} \\
+Persistence (attack rounds 1--7) & 43, 46, 87--89 & 0.02--0.09 & 95.2--95.7$^d$ & 86--100 & 0 to $-4.3$ & D \\
+\multicolumn{7}{@{}l}{\emph{Adaptive attacks}} \\
+Probe camouflage & 101--106 & 0.02--0.13$^e$ & 95.3--99.6$^e$ & 90--100 & $-5.1$ to $-0.9$ & D: not evaded \\
+Camouflage + out-of-bank trigger & 104--106 & \textbf{96.6--99.1} & 96.8--99.1 & 0--3 & $-1.8$ to $-1.4$ & D: \textbf{evades the defence} \\
 \midrule
 \multicolumn{7}{@{}l}{\emph{Countermeasure (designed after the evasion): secret bank of 4508 probes}} \\
 Main attack & 112--114 & 0.04--0.16 & 97.6--99.8 & 87--97 & $-3.1$ to 0.0 & D \\
-Camouflage + out-of-bank trigger & 104--106, 112--114 & 0.03--\textbf{87.1} & 95.3--99.1 & 53--83 & $-5.3$ to $-0.1$ & D: removed on 4 of 6 seeds; \textbf{evades} on 104 and 113 \\
-Camouflage mirroring the bank + out-of-bank & 112--114 & \textbf{95.6--98.2} & 95.3--98.3 & 0 & $-2.7$ to $-0.7$ & D: \textbf{evades the defence} \\
-Camouflage (16 groups) + main trigger & 112--114 & 0.04--\textbf{99.6} & 95.7--99.6 & 23--93 & $-1.8$ to $-0.7$ & D: \textbf{evades} on seed 113 \\
-Camouflage (1000 groups) + main trigger & 112--114 & 0.05--0.48 & 95.8--99.6 & 83--90 & $-2.1$ to $+0.1$ & D \\
+Camouflage + out-of-bank trigger & 104--106, 112--114 & 0.03--\textbf{87.1} & 95.3--99.1 & 53--83 & $-5.3$ to $-0.1$ & D: removed on 4 of 6 seeds; \textbf{evades} on 104, 113 \\
+Mirrored camouflage + out-of-bank & 112--114 & \textbf{95.6--98.2} & 95.3--98.3 & 0 & $-2.7$ to $-0.7$ & D: \textbf{evades the defence} \\
+16-group camouflage + main trigger & 112--114 & 0.04--\textbf{99.6} & 95.7--99.6 & 23--93 & $-1.8$ to $-0.7$ & D: \textbf{evades} on seed 113 \\
+1000-group camouflage + main trigger & 112--114 & 0.05--0.48 & 95.8--99.6 & 83--90 & $-2.1$ to $+0.1$ & D \\
 \bottomrule
-\end{tabular}
-\end{adjustbox}
+\end{tabular}}
 
 \vspace{2pt}
 \begin{minipage}{\textwidth}\footnotesize
