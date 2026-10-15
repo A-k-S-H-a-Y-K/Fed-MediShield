@@ -195,7 +195,7 @@ FLAME~\cite{nguyen2022flame} & 97.53$\pm$2.59 & 70.25$\pm$5.85 & 37.5 & 32.7 & 9
 
 \vspace{2pt}
 \begin{minipage}{0.92\textwidth}\footnotesize
-Per-seed ASR: $^a$95.9, 0.0, 99.6, 0.8; $^b$0.1, 0.1, 0.1, 99.99, 0.2. Inconclusive seed 65 (FedAvg final ASR 1.3\%): Fed-MediShield 0.02\%, Krum 95.9\%, Multi-Krum 99.9\%, median 95.6\%, trimmed mean 95.6\%, RFA 0.8\%, Fed-ADH 0.6\%, FLTrust 98.2\% / 95.5\%, FLAME 0.6\%. Clean-run F1 over all five seeds: FedAvg 74.06, Fed-MediShield 73.73, Krum 64.92, Multi-Krum 59.99, median 70.69, trimmed mean 72.50, RFA 73.75, Fed-ADH 73.91, FLTrust 59.83 / 62.55, FLAME 70.60. FedAvg, RFA and Fed-ADH share the mean ASR 99.81\% because the ASR saturates (per seed 99.72--99.86\% of 67,491 triggered records).
+Per-seed ASR: $^a$95.9, 0.0, 99.6, 0.8; $^b$0.1, 0.1, 0.1, 99.99, 0.2. Inconclusive seed 65 (FedAvg final ASR 1.3\%): Fed-MediShield 0.02\%, Krum 95.9\%, Multi-Krum 99.9\%, median 95.6\%, trimmed mean 95.6\%, RFA 0.8\%, Fed-ADH 0.6\%, FLTrust 98.2\% / 95.5\%, FLAME 0.6\%. Clean-run F1 over all five seeds: FedAvg 74.06, Fed-MediShield 73.73, Krum 64.92, Multi-Krum 59.99, median 70.69, trimmed mean 72.50, RFA 73.75, Fed-ADH 73.91, FLTrust 59.83 / 62.55, FLAME 70.60. FedAvg, RFA and Fed-ADH share the mean 99.81\% because the ASR saturates (per seed 99.72--99.86\%).
 \end{minipage}
 \end{table*}
 
@@ -210,7 +210,7 @@ Fig.~\ref{fig:rounds} shows the ASR per round. Under FedAvg the backdoor reaches
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=0.62\textwidth]{fig12_score_distributions}
+\includegraphics[width=0.56\textwidth]{fig12_score_distributions}
 \caption{Suspicion score of honest and poisoned updates relative to the alert threshold (five seeds per dataset).}
 \label{fig:scores}
 \end{figure*}
@@ -221,7 +221,7 @@ The frozen final models of the main evaluation were evaluated once on the offici
 
 \begin{figure*}[!t]
 \centering
-\includegraphics[width=0.58\textwidth]{fig13_official_test_flood}
+\includegraphics[width=0.52\textwidth]{fig13_official_test_flood}
 \caption{Official CICIoMT2024 test split, Fed-MediShield under attack (five seeds pooled): six classes (left) and DoS+DDoS merged (right).}
 \label{fig:test}
 \end{figure*}
@@ -239,7 +239,7 @@ As a countermeasure, designed after seeing this evasion and reported separately,
 \label{tab:robust}
 \setlength{\tabcolsep}{3pt}
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}lcccccp{4.6cm}@{}}
+\begin{tabular}{@{}lcccccp{6.2cm}@{}}
 \toprule
 Setting & Seeds & ASR (\%) & FedAvg (\%) & Detect. (\%) & $\Delta$F1 & Verdict \\
 \midrule
@@ -264,7 +264,7 @@ Camouflage + main trigger (16 / 1000 groups) & 112--114 & 0.04--\textbf{99.6} / 
 
 \vspace{2pt}
 \begin{minipage}{\textwidth}\footnotesize
-$^a$Columns 2, 8, 15, 36 set to 4.5, selected before any attacked run. $^b$Means over seeds. $^c$Stopped on seeds 79 (final version: two rounds held, then stopped) and 81 (previous version); on seed 80 the previous version did not stop and the ASR ended at 99.9\%. $^d$Seeds 43 and 46 are development seeds; seed 87 inconclusive (FedAvg 1.3\%); $\Delta$F1 0 on 87--89, $-4.3$ and $-2.2$ on 43 and 46 (DDoS/DoS swap). Seed 79 also motivated the hold rule (Section~\ref{sec:setup}); the rows on seeds 79--81 were run before that change with the previous version, except the two- and four-attacker runs on seed 79, which are therefore not independent tests. $^e$Conclusive seeds 102--106; seed 101 inconclusive (FedAvg 0.3\%).
+$^a$Columns 2, 8, 15, 36 set to 4.5, selected before any attacked run. $^b$Means over seeds. $^c$Stopped on 79 (final version, after two held rounds) and 81 (previous version); 99.9\% on 80 (previous version, no stop). $^d$43, 46: development seeds; 87 inconclusive (FedAvg 1.3\%); $\Delta$F1 0 on 87--89, $-4.3$/$-2.2$ on 43/46 (DDoS/DoS swap). Seed 79 also motivated the hold rule (Section~\ref{sec:setup}); its two- and four-attacker runs used the final version and are not independent tests; the other rows on 79--81 used the previous version. $^e$Conclusive seeds 102--106; seed 101 inconclusive (FedAvg 0.3\%).
 \end{minipage}
 \end{table*}
 
@@ -306,7 +306,7 @@ Geometry-based rules fail here because a backdoor client that poisons half of it
 
 \section{Limitations}
 \label{sec:limits}
-(i) \emph{Adaptive evasion.} An attacker who knows the probe design and both camouflages probe-like inputs and places the trigger outside the probe bank evades the defence completely (Table~\ref{tab:robust}). A secret bank of 4508 probes raised detection against this attacker but still missed it on two of six seeds and was evaded completely by an attacker mirroring its design; probes beyond feature groups are untested. (ii) \emph{Failed confirmations.} The replication of the final version, the out-of-bank trigger and the three-attacker test did not meet all criteria fixed in advance; several utility failures coincide with the DDoS/DoS ambiguity of our subset, but seed-level attribution is not established. (iii) \emph{Descriptive results.} On ToN-IoT and with 32 clients, small attackers were often flagged only after their third poisoned round, so the backdoor was present early (mean ASR over rounds 8\% on ToN-IoT); the live gate on detection timing failed, so these results are descriptive. (iv) Under extreme heterogeneity ($\alpha=0.1$) one attacker held 46\% of the data and could not be excluded without destroying utility. (v) A source-specific backdoor that flips only one or two classes partly evades the breadth statistic (detection 31--77\%), although such backdoors were also weak without defence in our tests. (vi) The calibration assumes honest pilot runs of the same federation, and $k$ must not exceed the number of classes the backdoor shifts. (vii) \emph{Availability.} The hold rule keeps poison out but can be abused: an honest minority facing many attackers, or induced false alarms, can stop training. (viii) Excluding attackers removes their genuine data; the oracle measures this cost for excluding these particular attackers, which is not a general lower bound. (ix) The server needs plaintext updates and a trusted reference sample, which conflicts with secure aggregation. (x) We used a six-file subset of CICIoMT2024, an MLP, synthetic feature-space triggers, 15 rounds, full participation and up to 32 clients; partial participation is untested.
+(i) \emph{Adaptive evasion.} An attacker who knows the probe design and both camouflages probe-like inputs and places the trigger outside the probe bank evades the defence completely (Table~\ref{tab:robust}). A secret bank of 4508 probes raised detection against this attacker but still missed it on two of six seeds and was evaded completely by an attacker mirroring its design; probes beyond feature groups are untested. (ii) \emph{Failed confirmations.} The replication of the final version, the out-of-bank trigger and the three-attacker test did not meet all criteria fixed in advance; several utility failures coincide with the DDoS/DoS ambiguity of our subset, but seed-level attribution is not established. (iii) \emph{Descriptive results.} On ToN-IoT and with 32 clients, small attackers were often flagged only after their third poisoned round, so the backdoor was present early (mean ASR over rounds 8\% on ToN-IoT); the live gate on detection timing failed, so these results are descriptive. (iv) Under extreme heterogeneity ($\alpha=0.1$) one attacker held 46\% of the data and could not be excluded without destroying utility. (v) A source-specific backdoor that flips only one or two classes partly evades the breadth statistic (detection 31--77\%), although such backdoors were also weak without defence in our tests. (vi) The calibration assumes honest pilot runs of the same federation, and $k$ must not exceed the number of classes the backdoor shifts. (vii) \emph{Availability.} Many attackers or induced false alarms can trigger the hold rule and stop training. (viii) Exclusion also removes the attackers' genuine data; the oracle measures this cost only for these attackers. (ix) The server needs plaintext updates and a trusted reference sample, which conflicts with secure aggregation. (x) We used a six-file subset of CICIoMT2024, an MLP, synthetic feature-space triggers, 15 rounds, full participation and up to 32 clients; partial participation is untested.
 
 \section{Conclusion}
 Fed-MediShield protects a federated IoMT IDS by probing the decision an attacker wants to change. Across three confirmations on fifteen fresh seeds it removed the backdoor without significant loss of utility, although one confirmation did not meet all criteria; among FedAvg and eight robust baselines it was the only method that removed the backdoor while preserving utility, and it withstood a score-aware camouflage attack. It does not withstand an attacker who also moves the trigger outside the probe bank, and a larger secret bank did not reliably fix this. Future work will address probes that an attacker cannot imitate, faster detection of small attackers, source-specific backdoors, compatibility with secure aggregation, and the full CICIoMT2024 dataset.
