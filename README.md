@@ -1,5 +1,12 @@
 # Fed-MediShield
 
+**In plain words:** when several hospitals train one intrusion detection model together, a dishonest
+hospital can secretly teach it to let certain attacks through. Fed-MediShield lets the central server catch
+these poisoned contributions by testing what each one does to the model, and in our experiments it removed
+the hidden backdoor without hurting normal detection.
+
+![Attack success rate per training round: without a defence the backdoor reaches about 99%, with Fed-MediShield it stays near zero](figures/fig1_asr_per_round.png)
+
 Code for the paper **"Fed-MediShield: Behaviour-Probing Defence Against Backdoor Attacks in Federated
 Intrusion Detection for the Internet of Medical Things"** (Akshay K, IIT Patna).
 
