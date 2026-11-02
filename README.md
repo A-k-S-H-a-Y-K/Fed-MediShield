@@ -56,7 +56,6 @@ extreme heterogeneity (Dirichlet α = 0.1), and source-specific backdoors partly
 | `logs/*_result.json`, `logs/*/summary.csv` | Recorded verdicts and summary tables behind the paper |
 | `logs/evaluate_*.py`, `compare_methods.py`, `make_figure*.py` | Evaluation, comparison-table and figure scripts |
 | `figures/` | All figures (paper Figs. 1–4 and supplementary ones) |
-| `paper/` | LaTeX source of the paper |
 | `project_info/` | Full development record, including failed attempts (`operations.md`, `operations_addendum_2026-10.md`) |
 | `archive/early_pipeline/` | Early-stage scripts kept for the record; not used by the final pipeline |
 
@@ -251,7 +250,7 @@ there (see the Protocol paragraph of the paper). Seeds 82–86, 107–111 and al
 `medishield_bsc_7`.
 
 **Release.** The paper cites release `v1.0` (commit `853111e`), which holds the code, protocol files and
-recorded results used for the paper. Later commits only update the paper source and this README.
+recorded results used for the paper. Later commits only update this README and the repository layout.
 
 ## Scope and limitations
 

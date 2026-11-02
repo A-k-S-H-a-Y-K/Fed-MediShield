@@ -12,7 +12,6 @@
 !/project_info/
 !/data/
 !/logs/
-!/paper/
 
 # data: preparation scripts and small metadata only
 /data/*
